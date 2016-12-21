@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimaryDark">#3194be</color>
+	<color name="colorAccent">#41ADDB</color>
+	<color name="colorPrimary">#41ADDB</color>
+	<color name="header_color">#41ADDB</color>
+	<color name="white">#FFFFFF</color>
+	<color name="dark_white">#f7efefef</color>
+	<color name="strip_color">#FAC78B </color>
+	</resources>

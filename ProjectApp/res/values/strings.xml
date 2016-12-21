@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_type">com.hitvardhan.project_app.login</string>
+	<string name="app_name"><b>PROJECT APP</b></string>
+	<string name="app_package">com.hitvardhan.project_app</string>
+    <string name="welcome">Welcome %s</string>
+	<string name="logout_button">Logout</string>
+	<string name="fetch_contacts_button">Fetch Contacts</string>
+	<string name="fetch_accounts_button">Fetch Accounts</string>
+	<string name="clear_button">Clear</string>
+	<string name="user_id">User ID</string>
+	<string name="name_of_user">Name</string>
+	<string name="Email">Email</string>
+	<string name="welcome_string">WELCOME</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

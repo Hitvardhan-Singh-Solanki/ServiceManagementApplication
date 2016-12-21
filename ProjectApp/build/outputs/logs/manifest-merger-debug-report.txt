@@ -1,0 +1,624 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:1-85:12
+	package
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:70-106
+	android:versionName
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:131-156
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+	android:versionCode
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:107-130
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:11-69
+	android:installLocation
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:157-195
+uses-permission#com.javapapers.currentlocationinmap.permission.MAPS_RECEIVE
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:10:2-96
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:10:19-93
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:11:2-64
+MERGED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:14:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:19:5-66
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:18:5-66
+MERGED from [com.google.firebase:firebase-crash:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\10.0.1\AndroidManifest.xml:18:5-66
+MERGED from [com.google.android.gms:play-services-gcm:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.1\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\10.0.1\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\10.0.1\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:11:19-61
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:12:2-78
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:12:19-75
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:13:2-95
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:13:19-92
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:14:2-78
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:14:19-75
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:15:2-76
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:15:19-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:16:2-76
+MERGED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:11:5-79
+MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:20:5-78
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-nearby:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\10.0.1\AndroidManifest.xml:4:5-78
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:19:5-78
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\10.0.1\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:16:19-73
+application
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:21:2-76:16
+MERGED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:23:5-103:19
+MERGED from [com.google.android.gms:play-services:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services\10.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:23:5-27:19
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:19:5-26:19
+MERGED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:4:5-8:19
+MERGED from [com.google.android.gms:play-services-cast:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.android.support:mediarouter-v7:24.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:palette-v7:24.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-clearcut:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-config:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-config\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-awareness:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-awareness\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-crash:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\10.0.1\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\10.0.1\AndroidManifest.xml:19:5-20:19
+MERGED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:19:5-29:19
+MERGED from [com.google.android.gms:play-services-fitness:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-games:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-drive:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-gass:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\10.0.1\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-gcm:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.1\AndroidManifest.xml:23:5-19
+MERGED from [com.google.firebase:firebase-appindexing:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-appindexing\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\10.0.1\AndroidManifest.xml:23:5-19
+MERGED from [com.google.android.gms:play-services-location:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\10.0.1\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-nearby:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\10.0.1\AndroidManifest.xml:5:5-19
+MERGED from [com.google.android.gms:play-services-panorama:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-places:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-plus:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-safetynet:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:23:5-33:19
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:24:5-33:19
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:28:5-50:19
+MERGED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-v4-impl\10.0.1\AndroidManifest.xml:19:5-19
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\10.0.1\AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-vision:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\10.0.1\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-identity:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-wearable:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\10.0.1\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:cardview-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\AndroidManifest.xml:22:5-20
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:23:3-35
+	android:manageSpaceActivity
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:26:3-81
+	android:icon
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:22:3-55
+	android:theme
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:25:3-34
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:24:3-32
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:39:3-41:46
+	android:value
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:41:4-43
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:40:4-49
+activity#com.hitvardhan.project_app.activity.SplashActivity
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:48:3-55:14
+	android:label
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:50:4-36
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:49:4-43
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:51:4-54:20
+action#android.intent.action.MAIN
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:52:5-56
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:52:13-54
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:53:5-64
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:53:15-62
+activity#com.hitvardhan.project_app.activity.MainActivity
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:57:3-64:14
+	android:label
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:59:4-36
+	android:theme
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:60:4-47
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:58:4-41
+intent-filter#android.intent.category.DEFAULT
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:61:4-63:20
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:62:5-63
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:62:15-61
+activity#com.hitvardhan.project_app.activity.TaskDetailsActivity
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:65:3-71:14
+	android:label
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:67:4-36
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:66:4-48
+meta-data#com.google.android.gms.version
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:73:3-75:60
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:75:4-57
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:74:4-49
+uses-sdk
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:77:2-70
+MERGED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:materialdrawer:5.8.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\materialdrawer\5.8.1\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:materialize:1.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\materialize\1.0.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:iconics-core:2.8.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\iconics-core\2.8.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:fastadapter:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\fastadapter\2.1.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.android.gms:play-services:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services\10.0.1\AndroidManifest.xml:4:5-42
+MERGED from [com.google.android.gms:play-services-ads:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:22:5-42
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-auth-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\10.0.1\AndroidManifest.xml:4:5-42
+MERGED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-cast:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.android.support:mediarouter-v7:24.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:palette-v7:24.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-clearcut:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-config:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-config\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-awareness:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-awareness\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-crash:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\10.0.1\AndroidManifest.xml:20:5-42
+MERGED from [com.google.firebase:firebase-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-database:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-database\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.firebase:firebase-database-connection:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-storage:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.firebase:firebase-storage-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-fitness:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-games:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-drive:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-gass:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-gcm:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-appindexing:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-appindexing\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-instantapps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-instantapps\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-location:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-nearby:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-panorama:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-places:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-plus:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-safetynet:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tagmanager:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-v4-impl\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-vision:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-wallet:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\10.0.1\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-identity:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\AndroidManifest.xml:23:5-42
+MERGED from [com.google.android.gms:play-services-wearable:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\AndroidManifest.xml:17:5-42
+MERGED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:transition:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:cardview-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\AndroidManifest.xml:20:5-43
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:77:39-68
+	android:minSdkVersion
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:77:12-38
+permission#com.hitvardhan.project_app.C2D_MESSAGE
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:83:2-105
+	android:protectionLevel
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:83:68-103
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:83:14-67
+uses-permission#com.hitvardhan.project_app.C2D_MESSAGE
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:84:2-74
+	android:name
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:84:19-72
+uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:12:22-77
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:13:5-71
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:13:22-68
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:15:5-74
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:15:22-71
+uses-permission#android.permission.USE_CREDENTIALS
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:16:5-74
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:16:22-71
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:17:5-68
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:21:5-67
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\10.0.1\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:17:22-65
+uses-permission#android.permission.GET_TASKS
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:18:5-68
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:18:22-65
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:19:5-82
+MERGED from [com.google.android.gms:play-services-gcm:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.1\AndroidManifest.xml:20:5-81
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\10.0.1\AndroidManifest.xml:20:5-81
+MERGED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:19:22-79
+uses-permission-sdk-23
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:21:5-81
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:21:29-78
+meta-data#android.content.APP_RESTRICTIONS
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:26:9-28:56
+	android:resource
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:28:13-53
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:27:13-60
+service#com.salesforce.androidsdk.auth.AuthenticatorService
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:31:9-41:19
+	android:exported
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:33:13-36
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:32:13-79
+intent-filter#android.accounts.AccountAuthenticator
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:34:13-36:29
+action#android.accounts.AccountAuthenticator
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:35:17-80
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:35:25-77
+meta-data#android.accounts.AccountAuthenticator
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:38:13-40:57
+	android:resource
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:40:17-54
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:39:17-69
+activity#com.salesforce.androidsdk.ui.LoginActivity
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:44:9-46:67
+	android:theme
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:46:13-64
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:45:13-70
+activity#com.salesforce.androidsdk.ui.PasscodeActivity
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:49:9-51:67
+	android:theme
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:51:13-64
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:50:13-73
+activity#com.salesforce.androidsdk.ui.ManageSpaceActivity
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:54:9-57:67
+	android:excludeFromRecents
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:56:13-46
+	android:theme
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:57:13-64
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:55:13-76
+activity#com.salesforce.androidsdk.ui.ServerPickerActivity
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:60:9-63:67
+	android:excludeFromRecents
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:62:13-46
+	android:theme
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:63:13-64
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:61:13-77
+activity#com.salesforce.androidsdk.ui.AccountSwitcherActivity
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:66:9-69:67
+	android:excludeFromRecents
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:68:13-46
+	android:theme
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:69:13-64
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:67:13-80
+receiver#com.salesforce.androidsdk.push.PushBroadcastReceiver
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:75:9-89:20
+	android:exported
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:77:13-36
+	android:permission
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:78:13-73
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:76:13-80
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:79:13-83:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:80:17-81
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:80:25-78
+category#${applicationId}
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:82:17-61
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:82:27-58
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+intent-filter#${applicationId}+com.google.android.c2dm.intent.REGISTRATION
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:84:13-88:29
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:85:17-86
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:85:25-83
+receiver#com.salesforce.androidsdk.push.PushService$RetryRegistrationAlarmReceiver
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:90:9-92:40
+	android:exported
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:92:13-37
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:91:13-101
+receiver#com.salesforce.androidsdk.push.PushService$SFDCRegistrationRetryAlarmReceiver
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:93:9-95:40
+	android:exported
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:95:13-37
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:94:13-105
+receiver#com.salesforce.androidsdk.push.PushService$UnregisterRetryAlarmReceiver
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:96:9-98:40
+	android:exported
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:98:13-37
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:97:13-99
+service#com.salesforce.androidsdk.push.PushService
+ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:100:9-102:40
+	android:exported
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:102:13-37
+	android:name
+		ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:101:13-70
+activity#com.google.android.gms.ads.AdActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:25:9-232
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:25:72-181
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:25:182-230
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:25:19-71
+activity#com.google.android.gms.ads.purchase.InAppPurchaseActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:26:9-131
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:26:92-129
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:26:19-91
+activity#com.google.android.gms.appinvite.PreviewActivity
+ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:20:9-25:20
+	android:exported
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:20:51-74
+	android:theme
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:20:75-121
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:20:19-50
+intent-filter#android.intent.category.DEFAULT+com.google.android.gms.appinvite.ACTION_PREVIEW
+ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:21:13-24:29
+action#com.google.android.gms.appinvite.ACTION_PREVIEW
+ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:22:17-89
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\AndroidManifest.xml:22:25-87
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:20:9-189
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:20:129-162
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:20:163-187
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:20:69-128
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:20:19-68
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:24:9-184
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:24:64-87
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:24:88-182
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\AndroidManifest.xml:24:18-63
+receiver#com.google.android.gms.cast.framework.media.MediaIntentReceiver
+ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:5:9-99
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:5:19-97
+service#com.google.android.gms.cast.framework.media.MediaNotificationService
+ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:6:9-103
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:6:18-101
+service#com.google.android.gms.cast.framework.ReconnectionService
+ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:7:9-92
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\AndroidManifest.xml:7:18-90
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:23:9-27:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:23:88-111
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:23:18-87
+intent-filter#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:24:13-26:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:24:28-51
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\AndroidManifest.xml:25:25-75
+service#com.google.android.gms.tagmanager.TagManagerService
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:24:9-134
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:24:110-132
+	android:exported
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:24:85-109
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:24:18-84
+activity#com.google.android.gms.tagmanager.TagManagerPreviewActivity
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:25:9-32:20
+	android:noHistory
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:25:94-118
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:25:19-93
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:26:13-31:29
+data
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:27:17-71
+	android:scheme
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:27:23-69
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+action#android.intent.action.VIEW
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:28:17-68
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:28:25-66
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\AndroidManifest.xml:30:27-75
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:27:162-184
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:27:17-104
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\AndroidManifest.xml:32:16-87
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:24:17-71
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:26:22-76
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:30:9-36:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:30:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:30:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:30:19-84
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:31:13-35:29
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:40:9-119
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:40:93-117
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:40:19-92
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:44:9-48:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:44:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:44:18-82
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:45:13-47:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:45:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:46:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\AndroidManifest.xml:46:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\AndroidManifest.xml:6:19-78
+		INJECTED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\AndroidManifest.xml:6:79-143
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:19:19-85

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <!-- for text -->
+    <style name="AppTabTextAppearance" parent="Widget.Design.TabLayout">
+       <item name="tabIndicatorColor">@color/strip_color</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+        <item name="tabBackground">@color/header_color</item>
+        <item name="tabSelectedTextColor">@color/strip_color</item>
+    </style>
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/dark_white</item>
+        <item name="textAllCaps">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+
+</resources>

@@ -1,0 +1,625 @@
+[
+    {
+        "outputFile": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 7,
+                    "endColumn": 12,
+                    "endOffset": 469
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 7,
+                        "endColumn": 12,
+                        "endOffset": 469
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 474,
+                    "endLine": 13,
+                    "endColumn": 12,
+                    "endOffset": 894
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 474,
+                        "endLine": 13,
+                        "endColumn": 12,
+                        "endOffset": 894
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 899,
+                    "endLine": 19,
+                    "endColumn": 12,
+                    "endOffset": 1322
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 899,
+                        "endLine": 19,
+                        "endColumn": 12,
+                        "endOffset": 1322
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1327,
+                    "endLine": 25,
+                    "endColumn": 12,
+                    "endOffset": 1748
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1327,
+                        "endLine": 25,
+                        "endColumn": 12,
+                        "endOffset": 1748
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1753,
+                    "endLine": 31,
+                    "endColumn": 12,
+                    "endOffset": 2175
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1753,
+                        "endLine": 31,
+                        "endColumn": 12,
+                        "endOffset": 2175
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 2180,
+                    "endLine": 37,
+                    "endColumn": 12,
+                    "endOffset": 2600
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2180,
+                        "endLine": 37,
+                        "endColumn": 12,
+                        "endOffset": 2600
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 2605,
+                    "endColumn": 88,
+                    "endOffset": 2689
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2605,
+                        "endColumn": 88,
+                        "endOffset": 2689
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 2694,
+                    "endColumn": 100,
+                    "endOffset": 2790
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 2694,
+                        "endColumn": 100,
+                        "endOffset": 2790
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2795,
+                    "endColumn": 102,
+                    "endOffset": 2893
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 2795,
+                        "endColumn": 102,
+                        "endOffset": 2893
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 2898,
+                    "endLine": 45,
+                    "endColumn": 12,
+                    "endOffset": 3301
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 2898,
+                        "endLine": 45,
+                        "endColumn": 12,
+                        "endOffset": 3301
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 3306,
+                    "endLine": 50,
+                    "endColumn": 12,
+                    "endOffset": 3721
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 3306,
+                        "endLine": 50,
+                        "endColumn": 12,
+                        "endOffset": 3721
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 3726,
+                    "endLine": 55,
+                    "endColumn": 12,
+                    "endOffset": 4143
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 3726,
+                        "endLine": 55,
+                        "endColumn": 12,
+                        "endOffset": 4143
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 4148,
+                    "endLine": 57,
+                    "endColumn": 12,
+                    "endOffset": 4250
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 4148,
+                        "endLine": 57,
+                        "endColumn": 12,
+                        "endOffset": 4250
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 58,
+                    "startColumn": 4,
+                    "startOffset": 4255,
+                    "endLine": 59,
+                    "endColumn": 12,
+                    "endOffset": 4379
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 4255,
+                        "endLine": 59,
+                        "endColumn": 12,
+                        "endOffset": 4379
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 4384,
+                    "endLine": 65,
+                    "endColumn": 12,
+                    "endOffset": 4655
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 7,
+                        "endColumn": 12,
+                        "endOffset": 326
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 66,
+                    "startColumn": 4,
+                    "startOffset": 4660,
+                    "endLine": 69,
+                    "endColumn": 12,
+                    "endOffset": 4939
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 331,
+                        "endLine": 11,
+                        "endColumn": 12,
+                        "endOffset": 610
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 4944,
+                    "endLine": 74,
+                    "endColumn": 12,
+                    "endOffset": 5239
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 615,
+                        "endLine": 16,
+                        "endColumn": 12,
+                        "endOffset": 910
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 5244,
+                    "endLine": 80,
+                    "endColumn": 12,
+                    "endOffset": 5539
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 915,
+                        "endLine": 22,
+                        "endColumn": 12,
+                        "endOffset": 1210
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 5544,
+                    "endLine": 84,
+                    "endColumn": 12,
+                    "endOffset": 5835
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1215,
+                        "endLine": 26,
+                        "endColumn": 12,
+                        "endOffset": 1506
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 5840,
+                    "endLine": 93,
+                    "endColumn": 12,
+                    "endOffset": 6257
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1511,
+                        "endLine": 35,
+                        "endColumn": 12,
+                        "endOffset": 1928
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 6262,
+                    "endLine": 98,
+                    "endColumn": 12,
+                    "endOffset": 6569
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 1933,
+                        "endLine": 40,
+                        "endColumn": 12,
+                        "endOffset": 2240
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 6574,
+                    "endLine": 102,
+                    "endColumn": 12,
+                    "endOffset": 6745
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 2245,
+                        "endLine": 44,
+                        "endColumn": 12,
+                        "endOffset": 2416
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 103,
+                    "startColumn": 4,
+                    "startOffset": 6750,
+                    "endLine": 106,
+                    "endColumn": 12,
+                    "endOffset": 6933
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 2421,
+                        "endLine": 48,
+                        "endColumn": 12,
+                        "endOffset": 2604
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 107,
+                    "startColumn": 4,
+                    "startOffset": 6938,
+                    "endLine": 110,
+                    "endColumn": 12,
+                    "endOffset": 7145
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 2609,
+                        "endLine": 52,
+                        "endColumn": 12,
+                        "endOffset": 2816
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 111,
+                    "startColumn": 4,
+                    "startOffset": 7150,
+                    "endColumn": 70,
+                    "endOffset": 7216
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 4384,
+                        "endColumn": 70,
+                        "endOffset": 4450
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 112,
+                    "startColumn": 4,
+                    "startOffset": 7221,
+                    "endColumn": 82,
+                    "endOffset": 7299
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 4455,
+                        "endColumn": 82,
+                        "endOffset": 4533
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 113,
+                    "startColumn": 4,
+                    "startOffset": 7304,
+                    "endLine": 165,
+                    "endColumn": 12,
+                    "endOffset": 11238
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 4538,
+                        "endLine": 114,
+                        "endColumn": 12,
+                        "endOffset": 8472
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 166,
+                    "startColumn": 4,
+                    "startOffset": 11243,
+                    "endLine": 219,
+                    "endColumn": 12,
+                    "endOffset": 15320
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 115,
+                        "startColumn": 4,
+                        "startOffset": 8477,
+                        "endLine": 168,
+                        "endColumn": 12,
+                        "endOffset": 12554
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 220,
+                    "startColumn": 4,
+                    "startOffset": 15325,
+                    "endColumn": 90,
+                    "endOffset": 15411
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-v11\\values-v11.xml",
+                    "position": {
+                        "startLine": 169,
+                        "startColumn": 4,
+                        "startOffset": 12559,
+                        "endColumn": 90,
+                        "endOffset": 12645
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 221,
+                    "startColumn": 4,
+                    "startOffset": 15416,
+                    "endLine": 222,
+                    "endColumn": 8,
+                    "endOffset": 15537
+                },
+                "from": {
+                    "file": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-appinvite\\10.0.1\\res\\values-v11\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 172,
+                        "endLine": 5,
+                        "endColumn": 8,
+                        "endOffset": 293
+                    }
+                }
+            }
+        ]
+    }
+]

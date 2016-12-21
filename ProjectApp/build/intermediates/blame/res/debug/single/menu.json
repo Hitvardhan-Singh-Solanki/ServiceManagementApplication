@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\menu\\sf__login.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\ProjectApp.forcedroid.libs\\SalesforceSDK\\unspecified\\res\\menu\\sf__login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main_drawer.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\menu\\sf__clear_custom_url.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\ProjectApp.forcedroid.libs\\SalesforceSDK\\unspecified\\res\\menu\\sf__clear_custom_url.xml"
+    }
+]

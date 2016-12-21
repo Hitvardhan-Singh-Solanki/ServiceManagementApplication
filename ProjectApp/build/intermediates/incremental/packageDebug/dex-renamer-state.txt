@@ -1,0 +1,7 @@
+#Wed Dec 21 14:40:52 IST 2016
+base.0=C\:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_cc6344daf628b700d63630990f5f93f72b260288
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a8a397b31f57e09ecb255f8fa60167c9a1c8a498\\classes.dex
+base.1=C\:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a8a397b31f57e09ecb255f8fa60167c9a1c8a498
+file.0=C\:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_cc6344daf628b700d63630990f5f93f72b260288\\classes.dex

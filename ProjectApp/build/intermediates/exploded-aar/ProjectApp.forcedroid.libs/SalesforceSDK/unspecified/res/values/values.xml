@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="oauthScopes">
+        <item>api</item>
+    </string-array>
+    <color name="sf__forgot_passcode_text">#000</color>
+    <color name="sf__hint_color">#42000000</color>
+    <color name="sf__passcode_bg">#888888</color>
+    <color name="sf__passcode_error_text">#F00</color>
+    <color name="sf__passcode_layout_bg">#000000</color>
+    <color name="sf__success_color">#009688</color>
+    <color name="sf__warning_color">#f4511e</color>
+    <dimen name="sf__button_font_size">24dp</dimen>
+    <dimen name="sf__button_margin">2dp</dimen>
+    <dimen name="sf__custom_url_layout_padding">0dp</dimen>
+    <dimen name="sf__custom_url_margin_top">7dp</dimen>
+    <dimen name="sf__passcode_error_margin_top">21dp</dimen>
+    <dimen name="sf__passcode_forgot_margin_top">21dp</dimen>
+    <dimen name="sf__passcode_instr_margin_left">30dp</dimen>
+    <dimen name="sf__passcode_instr_margin_right">30dp</dimen>
+    <dimen name="sf__passcode_instr_margin_top">10dp</dimen>
+    <dimen name="sf__passcode_layout_margin_top">100dp</dimen>
+    <dimen name="sf__passcode_layout_padding">20dp</dimen>
+    <dimen name="sf__passcode_layout_width">300dp</dimen>
+    <dimen name="sf__passcode_text_min_width">160dp</dimen>
+    <dimen name="sf__passcode_title_margin_bottom">10dp</dimen>
+    <dimen name="sf__passcode_title_margin_top">10dp</dimen>
+    <dimen name="sf__server_button_margin">2dp</dimen>
+    <dimen name="sf__server_layout_padding">0dp</dimen>
+    <dimen name="sf__server_picker_margin_bottom">3dp</dimen>
+    <dimen name="sf__server_picker_margin_left">3dp</dimen>
+    <dimen name="sf__server_picker_margin_right">3dp</dimen>
+    <dimen name="sf__server_picker_margin_top">7dp</dimen>
+    <string name="account_type">com.salesforce.androidsdk</string>
+    <string name="androidPushNotificationClientId"/>
+    <string name="api_version">v36.0</string>
+    <string name="app_name">SalesforceSDK</string>
+    <string name="app_package">com.salesforce.androidsdk</string>
+    <string name="oauthRedirectURI">testsfdc:///mobilesdk/detect/oauth/done</string>
+    <string name="oauth_display_type">touch</string>
+    <string name="remoteAccessConsumerKey">3MVG9Iu66FKeHhINkB1l7xt7kR8czFcCTUhgoA8Ol2Ltf1eYHOU4SqQRSEitYFDUpqRWcoQ2.dBv_a1Dyu5xa</string>
+    <string name="sf__access_token_revoked">Your access token has been revoked by the administrator. You will now be logged out.</string>
+    <string name="sf__add_new_account">Add New Account</string>
+    <string name="sf__app_service_host_labels_description">Used to specify login host labels for the application.</string>
+    <string name="sf__app_service_hosts_description">Used to specify login hosts for the application.</string>
+    <string name="sf__auth_login_production">Production</string>
+    <string name="sf__auth_login_sandbox">Sandbox</string>
+    <string name="sf__clear_cookies">Clear Cookies</string>
+    <string name="sf__custom_url_button">Add Connection</string>
+    <string name="sf__fingerprint_cancel">Use Passcode</string>
+    <string name="sf__fingerprint_description">Confirm fingerprint to continue</string>
+    <string name="sf__fingerprint_failed">Fingerprint Authentication Failed</string>
+    <string name="sf__fingerprint_hint">Touch sensor</string>
+    <string name="sf__fingerprint_success">Success</string>
+    <string name="sf__generic_authentication_error">Authentication error. Please try again.</string>
+    <string name="sf__generic_authentication_error_title">Error</string>
+    <string name="sf__generic_error">An error has occurred %s\nPlease try again</string>
+    <string name="sf__invalid_server_url">Please type in a valid URL starting with https://</string>
+    <string name="sf__jwt_authentication_error">JWT authentication error. Please try again.</string>
+    <string name="sf__login_title">Login</string>
+    <string name="sf__manage_space_confirmation">Clearing user data will log the current user out. Are you sure you want to perform this action?</string>
+    <string name="sf__managed_app_callback_url_description">Used to specify OAuth callback URL for the application.</string>
+    <string name="sf__managed_app_cert_alias_description">Used to specify the certificate alias required for the application.</string>
+    <string name="sf__managed_app_error">Authentication only allowed from managed device.</string>
+    <string name="sf__managed_app_oauth_id_description">Used to specify OAuth consumer key for the application.</string>
+    <string name="sf__only_show_authorized_hosts_description">Used to specify that only authorized hosts can be shown.</string>
+    <string name="sf__passcode_change_instructions">For increased security, your admininstrator requires you to change your passcode.</string>
+    <string name="sf__passcode_confirm_instructions">Confirm your mobile passcode for %s</string>
+    <string name="sf__passcode_confirm_title">Re-enter your %s passcode</string>
+    <string name="sf__passcode_create_instructions">For increased security, please create a passcode that you will use to access %s when the session has timed out due to inactivity.</string>
+    <string name="sf__passcode_create_title">Create %s passcode</string>
+    <string name="sf__passcode_enter_instructions">Enter your mobile passcode for %s</string>
+    <string name="sf__passcode_enter_title">Enter %s Passcode</string>
+    <string name="sf__passcode_final">Final passcode attempt</string>
+    <string name="sf__passcode_forgot_string">&lt;u>Forgot Passcode?&lt;/u></string>
+    <string name="sf__passcode_logout_confirmation">Are you sure you want to logout?</string>
+    <string name="sf__passcode_logout_no">No</string>
+    <string name="sf__passcode_logout_yes">Yes</string>
+    <string name="sf__passcode_min_length">The passcode must be at least %d characters long</string>
+    <string name="sf__passcode_try_again">The passcode you entered is incorrect. Please try again. You have %d attempts remaining.</string>
+    <string name="sf__passcodes_dont_match">Passcodes don\'t match!</string>
+    <string name="sf__pick_server">Change Server</string>
+    <string name="sf__reload">Reload</string>
+    <string name="sf__require_cert_auth_description">Used to specify if certificate based authentication is required for the application.</string>
+    <string name="sf__server_picker_title">Pick Login Server</string>
+    <string name="sf__server_url_add_title">Add Connection</string>
+    <string name="sf__server_url_default_apply">Apply</string>
+    <string name="sf__server_url_default_cancel">Cancel</string>
+    <string name="sf__server_url_default_custom_label">Name</string>
+    <string name="sf__server_url_default_custom_url">URL</string>
+    <string name="sf__server_url_edit_title">Edit Connection</string>
+    <string name="sf__server_url_reset">Reset</string>
+    <string name="sf__ssl_error">SSL Error: %s.</string>
+    <string name="sf__ssl_expired">Expired Certificate</string>
+    <string name="sf__ssl_id_mismatch">Hostname Mismatch</string>
+    <string name="sf__ssl_not_yet_valid">Certificate Not Yet Valid</string>
+    <string name="sf__ssl_unknown_error">Unknown Error</string>
+    <string name="sf__ssl_untrusted">Untrusted Certificate Authority</string>
+    <string name="sf__switch_account">Switch Account</string>
+    <style name="SalesforceSDK">
+    </style>
+    <style name="SalesforceSDK.AccountSwitcher">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="SalesforceSDK.AccountSwitcher.Button">
+        <item name="android:layout_marginTop">@dimen/sf__custom_url_margin_top</item>
+    </style>
+    <style name="SalesforceSDK.AccountSwitcher.Button.AddAccount">
+        <item name="android:textSize">@dimen/sf__button_font_size</item>
+        <item name="android:layout_margin">@dimen/sf__button_margin</item>
+    </style>
+    <style name="SalesforceSDK.AccountSwitcher.Button.Apply">
+        <item name="android:textSize">@dimen/sf__button_font_size</item>
+        <item name="android:layout_margin">@dimen/sf__button_margin</item>
+    </style>
+    <style name="SalesforceSDK.AccountSwitcher.List">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="SalesforceSDK.ActionBarTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/SalesforceSDKActionBar</item>
+    </style>
+    <style name="SalesforceSDK.Passcode">
+    </style>
+    <style name="SalesforceSDK.Passcode.Background">
+    	<item name="android:background">@color/sf__passcode_layout_bg</item>    
+    </style>
+    <style name="SalesforceSDK.Passcode.Box">
+        <item name="android:padding">@dimen/sf__passcode_layout_padding</item>
+        <item name="android:layout_width">@dimen/sf__passcode_layout_width</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/sf__passcode_layout_margin_top</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/sf__passcode_bg</item>
+    </style>
+    <style name="SalesforceSDK.Passcode.Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        </style>
+    <style name="SalesforceSDK.Passcode.Text.Entry">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLength">10</item>
+        <item name="android:minWidth">@dimen/sf__passcode_text_min_width</item>
+        <item name="android:imeOptions">actionGo</item>
+    </style>
+    <style name="SalesforceSDK.Passcode.Text.Error">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/sf__passcode_error_margin_top</item>
+        <item name="android:textColor">@color/sf__passcode_error_text</item>
+    </style>
+    <style name="SalesforceSDK.Passcode.Text.ForgotPassword">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/sf__passcode_forgot_margin_top</item>
+        <item name="android:textColor">@color/sf__forgot_passcode_text</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="SalesforceSDK.Passcode.Text.Instructions">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/sf__passcode_instr_margin_top</item>
+        <item name="android:layout_marginLeft">@dimen/sf__passcode_instr_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/sf__passcode_instr_margin_right</item>
+    </style>
+    <style name="SalesforceSDK.Passcode.Text.Title">
+        <item name="android:layout_marginTop">@dimen/sf__passcode_title_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/sf__passcode_title_margin_bottom</item>
+    </style>
+    <style name="SalesforceSDK.ServerPicker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="SalesforceSDK.ServerPicker.Button">
+        <item name="android:layout_marginTop">@dimen/sf__custom_url_margin_top</item>
+    </style>
+    <style name="SalesforceSDK.ServerPicker.Button.OkCancel">
+        <item name="android:layout_margin">@dimen/sf__button_margin</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="SalesforceSDK.ServerPicker.ButtonContainer">
+        <item name="android:padding">@dimen/sf__custom_url_layout_padding</item>
+    </style>
+    <style name="SalesforceSDK.ServerPicker.EditText">
+        <item name="android:layout_marginTop">@dimen/sf__server_picker_margin_top</item>
+		<item name="android:layout_marginLeft">@dimen/sf__server_picker_margin_left</item>
+		<item name="android:layout_marginRight">@dimen/sf__server_picker_margin_right</item>
+		<item name="android:layout_marginBottom">@dimen/sf__server_picker_margin_bottom</item> 
+		<item name="android:inputType">text</item>
+    </style>
+    <style name="SalesforceSDK.ServerPicker.List">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="SalesforceSDKActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/sf__header_bg</item>
+    </style>
+</resources>

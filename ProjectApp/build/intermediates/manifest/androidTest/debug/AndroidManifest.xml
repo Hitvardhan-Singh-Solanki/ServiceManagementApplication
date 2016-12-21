@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.salesforce.samples.templateapp.tests">
+
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="23" />
+
+    <application>
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+    <instrumentation android:name="com.salesforce.androidsdk.util.test.JUnitReportTestRunner"
+                     android:targetPackage="com.hitvardhan.project_app"
+                     android:handleProfiling="false"
+                     android:functionalTest="false"
+                     android:label="Tests for com.hitvardhan.project_app"/>
+</manifest>
