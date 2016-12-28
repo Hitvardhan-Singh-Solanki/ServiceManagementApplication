@@ -10,4 +10,14 @@ android:layout_height="match_parent">
 
 </android.support.v7.widget.RecyclerView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/todays_task_empty_view"
+        android:text="No Tasks for today"
+        android:gravity="center"
+        android:textSize="32dp"
+        android:textColor="#918282"/>
+
 </RelativeLayout>

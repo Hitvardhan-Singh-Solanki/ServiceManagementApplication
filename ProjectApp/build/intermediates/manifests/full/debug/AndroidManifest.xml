@@ -52,9 +52,11 @@
 
     <application
         android:name="com.hitvardhan.project_app.ProjectAppApp"
+        android:allowBackup="true"
         android:icon="@drawable/quantum_ic_refresh_white_24"
         android:label="@string/app_name"
         android:manageSpaceActivity="com.salesforce.androidsdk.ui.ManageSpaceActivity"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
         <!--
@@ -89,7 +91,8 @@
         </activity>
         <activity
             android:name="com.hitvardhan.project_app.activity.TaskDetailsActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

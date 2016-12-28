@@ -43,6 +43,7 @@
         android:paddingLeft="20dp"
         android:paddingBottom="10dp"
         android:paddingRight="20dp"
+        android:id="@+id/MainLinearCardView"
         >
 
     <LinearLayout
@@ -54,16 +55,32 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1">
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+     <TextView
         android:id="@+id/title_name_task"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="17dp"
         android:fontFamily="sans-serif"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+         android:layout_weight="1"/>
 
+     <ImageView
+         android:layout_marginTop="10dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+         android:gravity="center"
+         android:layout_gravity="center_vertical"
+         android:background="@drawable/bg_circle_red"
+         android:id="@+id/redDot_status">
+
+     </ImageView>
+    </LinearLayout>
         <TextView
             android:id="@+id/TaskDescriptionDetailsRecyclerView"
             android:textColor="#000000"
@@ -86,7 +103,8 @@
             android:layout_width="23dp"
             android:layout_height="23dp"
             android:src="@drawable/ic_calendar_main"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:id="@+id/setDateNull"/>
 
         <TextView
             android:id="@+id/due_date_task"

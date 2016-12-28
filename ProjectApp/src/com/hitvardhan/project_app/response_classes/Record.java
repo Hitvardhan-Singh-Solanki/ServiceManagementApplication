@@ -13,7 +13,6 @@ public class Record implements Serializable{
     private String Description__c;
     private String Status__c;
     private String Id;
-    private String External_id__c;
     private String id;
     private String Email_Id__c;
     private Location__c Location__c;
@@ -70,13 +69,6 @@ public class Record implements Serializable{
         Id = Id;
     }
 
-    public String getExternal_id__c() {
-        return External_id__c;
-    }
-
-    public void setExternal_id__c(String external_id__c) {
-        External_id__c = external_id__c;
-    }
 
     public String getEmail_Id__c() {
         return Email_Id__c;

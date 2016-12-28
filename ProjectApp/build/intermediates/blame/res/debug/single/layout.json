@@ -104,6 +104,10 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_lines_media.xml"
     },
     {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\admin_fragment.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\layout\\admin_fragment.xml"
+    },
+    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\sf__account_switcher.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\ProjectApp.forcedroid.libs\\SalesforceSDK\\unspecified\\res\\layout\\sf__account_switcher.xml"
     },
@@ -192,10 +196,6 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
-        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\layout\\main.xml"
-    },
-    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\material_drawer_item_profile.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\layout\\material_drawer_item_profile.xml"
     },
@@ -260,6 +260,10 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\layout\\fragment_home.xml"
+    },
+    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\mr_chooser_list_item.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\24.0.0\\res\\layout\\mr_chooser_list_item.xml"
     },
@@ -322,6 +326,10 @@
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\material_drawer_item_secondary_switch.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\layout\\material_drawer_item_secondary_switch.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\service_engineer_layout.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\layout\\service_engineer_layout.xml"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
@@ -434,10 +442,6 @@
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\material_drawer_item_profile_setting.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\layout\\material_drawer_item_profile_setting.xml"
-    },
-    {
-        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\header.xml",
-        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\layout\\header.xml"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",

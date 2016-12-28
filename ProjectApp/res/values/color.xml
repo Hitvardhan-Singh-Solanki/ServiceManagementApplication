@@ -7,4 +7,6 @@
 	<color name="white">#FFFFFF</color>
 	<color name="dark_white">#f7efefef</color>
 	<color name="strip_color">#FAC78B </color>
+	<color name="nullDate">#73da1e1e</color>
+	<color name="pathColorTodaysTask">#ced419c4</color>
 	</resources>

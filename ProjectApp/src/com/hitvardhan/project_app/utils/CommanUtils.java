@@ -50,24 +50,6 @@ public class CommanUtils extends Activity{
     }
 
 
-
-
-
-    /*public static void  makeMarker(GoogleMap mMap, double Lat, double Lng, String markerTitle){
-    LatLng sydney = new LatLng(Lat, Lng);
-    mMap.addMarker(new MarkerOptions().position(sydney).title(markerTitle));
-    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
-    mMap.animateCamera(zoom);
-    mMap.getUiSettings().setZoomControlsEnabled(true);
-    mMap.getUiSettings().setAllGesturesEnabled(true);
-    mMap.setTrafficEnabled(true);
-    mMap.setBuildingsEnabled(true);
-    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-}*/
-
-
-
 public static ArrayList<String> getTodaysDateArray(){
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat mdformat = new SimpleDateFormat("yyyy / MM / dd ");
@@ -103,6 +85,14 @@ public static ArrayList<String> getTodaysDateArray(){
         SimpleDateFormat mdformat = new SimpleDateFormat("dd-MM-yyyy ");
         strDateformat = mdformat.format(date);
         return strDateformat;
+    }
+
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }

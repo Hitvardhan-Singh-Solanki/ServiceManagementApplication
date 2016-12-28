@@ -1,13 +1,20 @@
 package com.hitvardhan.project_app.Adapters;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.vision.text.Line;
 import com.hitvardhan.project_app.R;
+import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.utils.CommanUtils;
 
@@ -25,11 +32,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
 
     private List<Record> mRcordList;
 
+
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView name;
         public TextView date;
         public TextView desc;
         public TextView SerialNumber1;
+        public ImageView redDotStatus;
 
         public MyViewHolder(View view) {
             super(view);
@@ -37,7 +47,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
             date = (TextView) view.findViewById(R.id.due_date_task);
             desc = (TextView) view.findViewById(R.id.TaskDescriptionDetailsRecyclerView);
             SerialNumber1 = (TextView) view.findViewById(R.id.SerialNumber);
-
+            redDotStatus = (ImageView) view.findViewById(R.id.redDot_status);
         }
 
         @Override
@@ -57,7 +67,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
         return new MyViewHolder(itemView);
 
     }
-
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Record mRecord = mRcordList.get(position);
@@ -75,10 +84,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
             //Due Date
             if(mRecord.getDue_Date__c()!= null) {
                 holder.date.setText(mRecord.getDue_Date__c());
+
             }
             else{
                 System.out.print("NOT FOUND");
-                holder.date.setText("");
+                holder.date.setText("Please set the date!");
             }
 
             //Get description
@@ -88,14 +98,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
                 holder.desc.setText(upperString1);
             }else{
                 System.out.print("NOT FOUND");
-                holder.desc.setText("");
+                holder.desc.setVisibility(View.GONE);
             }
 
             holder.SerialNumber1.setText(""+(position+1));
 
+            if(mRecord.getStatus__c().equalsIgnoreCase("Completed"))
+            {holder.redDotStatus.setVisibility(View.GONE);}
         }
     }
-
     @Override
     public int getItemCount() {
         return mRcordList.size();

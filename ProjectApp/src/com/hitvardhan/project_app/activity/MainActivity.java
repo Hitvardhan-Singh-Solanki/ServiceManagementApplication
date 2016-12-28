@@ -12,17 +12,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+//import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -35,9 +36,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -52,9 +55,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.gson.Gson;
-import com.hitvardhan.project_app.DataParser;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.fragment.TodayTaskListFragment;
 import com.hitvardhan.project_app.fragment.MoreTaskListFragment;
@@ -62,6 +63,9 @@ import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
+import com.hitvardhan.project_app.utils.FetchUrl;
+import com.hitvardhan.project_app.utils.getRouteLatlngURL;
+import com.hitvardhan.project_app.utils.nearestPointUtil;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
 import com.salesforce.androidsdk.rest.ClientManager;
@@ -73,94 +77,102 @@ import com.salesforce.androidsdk.security.PasscodeManager;
 import com.salesforce.androidsdk.util.EventsObservable;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import static com.mikepenz.iconics.Iconics.TAG;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+public class MainActivity extends AppCompatActivity
+        implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
         NavigationView.OnNavigationItemSelectedListener {
 
 
     //Variable Declaration
-    private TextView mTxtvHeader;
     public static RestClient client;
     private Gson gson = new Gson();
-    private Response res;
+    public static Response res;
     private PasscodeManager passcodeManager;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private GoogleMap mMap;
+    public static GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
     private Marker mCurrLocationMarker;
-    private LocationRequest mLocationRequest;
+    public static LocationRequest mLocationRequest;
     public TextView UserName;
     public TextView UserEmailId;
     public ImageView imgProfile;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     public List<Double> lattitueOfTasks, LongitudesOfTask;
     public TextView LogoutButtonNavigation;
-
-    ArrayList<LatLng> MarkerPoints;
-
-
-    private String serverKey = "AIzaSyBB4Ryb2PjvJZcOBfFebY1NNMh0EoSFgNY";
-    private LatLng camera = new LatLng(37.782437, -122.4281893);
-    private LatLng origin = new LatLng(37.7849569, -122.4068855);
-    private LatLng dest = new LatLng(37.7814432, -122.4460177);
+    public static boolean isStatusChanged;
+    public static LatLng latLngMyLoc;
+    private ArrayList<LatLng> MarkerPoints;
+    private ArrayList<LatLng> LatLngOfTasks;
+    private FrameLayout frm;
+    private NavigationView navigationView;
+    private DrawerLayout drawer;
+    private ImageView reloadButtonNavHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Setup view
         setContentView(R.layout.main_activity_with_navigation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        isStatusChanged=false;//
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.header_color));
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
         toggle.syncState();
         drawer.setDrawerListener(toggle);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //navigationView.setNavigationItemSelectedListener(this);
         View navHeader = navigationView.getHeaderView(0);
         // Gets an instance of the passcode manager.
         passcodeManager = SalesforceSDKManager.getInstance().getPasscodeManager();
-        initUi();
 
+        //Set the username and otherInfo from the client to header
         UserName = (TextView) navHeader.findViewById(R.id.Client_name_from_request);
         UserEmailId = (TextView) navHeader.findViewById(R.id.Client_email_id_from_request);
         imgProfile = (ImageView) navHeader.findViewById(R.id.imageView_profile);
-        LogoutButtonNavigation = (TextView) findViewById(R.id.Navigation_logout_button);
+        reloadButtonNavHeader = (ImageView) navHeader.findViewById(R.id.reload_nav_header_image);
 
-        LogoutButtonNavigation.setOnClickListener(new View.OnClickListener() {
+
+        //onclickListner for reload button
+        reloadButtonNavHeader.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "click", Toast.LENGTH_SHORT).show();
+            public void onClick(View v)
+            {
+                Toast.makeText(MainActivity.this,"Logout Clicked",Toast.LENGTH_SHORT).show();
+               refresh();
             }
         });
 
-       // LogoutButtonNavigation.setOnClickListener(LogoutHandler);
+
+        //Logout on navigation button
+
+        LogoutButtonNavigation = (TextView) findViewById(R.id.Navigation_logout_button);
+
         //Get tabs
+
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+
         //Get the layout for each tab
+
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        //Check for availabilty of playservices
+
+
+
+        //Check for availability of playservices
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
@@ -174,10 +186,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        
     }
 
-    ;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -216,39 +228,41 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             return true;
         } else if (id == R.id.action_refresh) {
 
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
+
+
+
+
             //Handles refresh action
-            if (isNetworkAvailable()) {
-                try {
-                    Snackbar.make((View) findViewById(R.id.root), "You are Online",
-                            Snackbar.LENGTH_SHORT).show();
-                    /*getDetailsofTask();*/
-                    Intent intent = getIntent();
-                    finish();
-                    startActivity(intent);
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            } else {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("No Network")
-                        .setMessage("Seems like your device is offline")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .setIcon(R.drawable.ic_alert_exclamation_mark)
-                        .show();
-                return true;
-            }
+            return refresh();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    /**
+    private boolean refresh() {
+        if (CommanUtils.isNetworkAvailable(getBaseContext())) {
+            try {
+                Snackbar.make((View) findViewById(R.id.root), "You are Online",
+                        Snackbar.LENGTH_SHORT).show();
+                    getDetailsofTask();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("No Network")
+                    .setMessage("Seems like your device is offline")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    })
+                    .setIcon(R.drawable.ic_no_network)
+                    .show();
+        }
+        return true;
+    }
+
+  /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
@@ -277,95 +291,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
 
-
-
-
-
-
-        // Setting onclick event listener for the map
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-
-            @Override
-            public void onMapClick(LatLng point) {
-
-                // Already two locations
-                if (MarkerPoints.size() > 1) {
-                    MarkerPoints.clear();
-                    mMap.clear();
-                }
-
-                // Adding new item to the ArrayList
-                MarkerPoints.add(point);
-
-                // Creating MarkerOptions
-                MarkerOptions options = new MarkerOptions();
-
-                // Setting the position of the marker
-                options.position(point);
-
-                /**
-                 * For the start location, the color of marker is GREEN and
-                 * for the end location, the color of marker is RED.
-                 */
-                if (MarkerPoints.size() == 1) {
-                    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                } else if (MarkerPoints.size() == 2) {
-                    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                }
-
-
-                // Add new marker to the Google Map Android API V2
-                mMap.addMarker(options);
-
-                // Checks, whether start and end locations are captured
-                if (MarkerPoints.size() >= 2) {
-                    LatLng origin = MarkerPoints.get(0);
-                    LatLng dest = MarkerPoints.get(1);
-
-                    // Getting URL to the Google Directions API
-                    String url = getUrl(origin, dest);
-                    Log.d("onMapClick", url.toString());
-                    FetchUrl FetchUrl = new FetchUrl();
-
-                    // Start downloading json data from Google Directions API
-                    FetchUrl.execute(url);
-                    //move map camera
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-                }
-
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.getUiSettings().setAllGesturesEnabled(true);
-        mMap.setTrafficEnabled(true);
-        mMap.setBuildingsEnabled(true);
-        if (isNetworkAvailable()) {
+        if (CommanUtils.isNetworkAvailable(getBaseContext())) {
             try {
                 getDetailsofTask();
 
@@ -380,241 +306,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     })
-                    .setIcon(R.drawable.ic_alert_exclamation_mark)
+                    .setIcon(R.drawable.ic_no_network)
                     .show();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private String getUrl(LatLng origin, LatLng dest) {
-
-        // Origin of route
-        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
-
-        // Destination of route
-        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
-
-
-        // Sensor enabled
-        String sensor = "sensor=false";
-
-        // Building the parameters to the web service
-        String parameters = str_origin + "&" + str_dest + "&" + sensor;
-
-        // Output format
-        String output = "json";
-
-        // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
-
-
-        return url;
-    }
-
-
-
-
-    /**
-     * A method to download json data from url
-     */
-    private String downloadUrl(String strUrl) throws IOException {
-        String data = "";
-        InputStream iStream = null;
-        HttpURLConnection urlConnection = null;
-        try {
-            URL url = new URL(strUrl);
-
-            // Creating an http connection to communicate with url
-            urlConnection = (HttpURLConnection) url.openConnection();
-
-            // Connecting to url
-            urlConnection.connect();
-
-            // Reading data from url
-            iStream = urlConnection.getInputStream();
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
-
-            StringBuffer sb = new StringBuffer();
-
-            String line = "";
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-
-            data = sb.toString();
-            Log.d("downloadUrl", data.toString());
-            br.close();
-
-        } catch (Exception e) {
-            Log.d("Exception", e.toString());
-        } finally {
-            iStream.close();
-            urlConnection.disconnect();
-        }
-        return data;
-    }
-
-
-
-
-
-
-
-    // Fetches data from url passed
-    private class FetchUrl extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... url) {
-
-            // For storing data from web service
-            String data = "";
-
-            try {
-                // Fetching the data from web service
-                data = downloadUrl(url[0]);
-                Log.d("Background Task data", data.toString());
-            } catch (Exception e) {
-                Log.d("Background Task", e.toString());
-            }
-            return data;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            ParserTask parserTask = new ParserTask();
-
-            // Invokes the thread for parsing the JSON data
-            parserTask.execute(result);
-
-        }
-    }
-
-
-    /**
-     * A class to parse the Google Places in JSON format
-     */
-    private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String, String>>>> {
-
-        // Parsing the data in non-ui thread
-        @Override
-        protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
-
-            JSONObject jObject;
-            List<List<HashMap<String, String>>> routes = null;
-
-            try {
-                jObject = new JSONObject(jsonData[0]);
-                Log.d("ParserTask",jsonData[0].toString());
-                DataParser parser = new DataParser();
-                Log.d("ParserTask", parser.toString());
-
-                // Starts parsing data
-                routes = parser.parse(jObject);
-                Log.d("ParserTask","Executing routes");
-                Log.d("ParserTask",routes.toString());
-
-            } catch (Exception e) {
-                Log.d("ParserTask",e.toString());
-                e.printStackTrace();
-            }
-            return routes;
-        }
-
-        // Executes in UI thread, after the parsing process
-        @Override
-        protected void onPostExecute(List<List<HashMap<String, String>>> result) {
-            ArrayList<LatLng> points;
-            PolylineOptions lineOptions = null;
-
-            // Traversing through all the routes
-            for (int i = 0; i < result.size(); i++) {
-                points = new ArrayList<>();
-                lineOptions = new PolylineOptions();
-
-                // Fetching i-th route
-                List<HashMap<String, String>> path = result.get(i);
-
-                // Fetching all the points in i-th route
-                for (int j = 0; j < path.size(); j++) {
-                    HashMap<String, String> point = path.get(j);
-
-                    double lat = Double.parseDouble(point.get("lat"));
-                    double lng = Double.parseDouble(point.get("lng"));
-                    LatLng position = new LatLng(lat, lng);
-
-                    points.add(position);
-                }
-
-                // Adding all the points in the route to LineOptions
-                lineOptions.addAll(points);
-                lineOptions.width(10);
-                lineOptions.color(Color.RED);
-
-                Log.d("onPostExecute","onPostExecute lineoptions decoded");
-
-            }
-
-            // Drawing polyline in the Google Map for the i-th route
-            if(lineOptions != null) {
-                mMap.addPolyline(lineOptions);
-            }
-            else {
-                Log.d("onPostExecute","without Polylines drawn");
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -623,12 +318,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .addApi(LocationServices.API)
                 .build();
         mGoogleApiClient.connect();
-
-
-
     }
-
-
     @Override
     public void onConnected(Bundle bundle) {
         mLocationRequest = new LocationRequest();
@@ -650,27 +340,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onLocationChanged(Location location) {
         mLastLocation = location;
-       /* Log.d("Current Location->",String.valueOf(mLastLocation.getLatitude()+mLastLocation.getLongitude()));*/
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
         }
         //Place current location marker
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        latLngMyLoc = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
+        markerOptions.position(latLngMyLoc);
         markerOptions.title("Your Location");
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_main_2_1));
+        markerOptions.icon(BitmapDescriptorFactory
+                .fromResource(R.drawable.ic_marker_main_2_1));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
         //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngMyLoc));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
         //stop location updates
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         }
     }
-
-
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -735,13 +423,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    private void initUi() {
-        mTxtvHeader = (TextView) findViewById(R.id.mainActivity);
-
-    }
-
     @Override
     public void onResume() {
+
+
+        if(isStatusChanged==true){
+
+            refresh();
+            isStatusChanged=false;
+        }
         // Hide everything until we are logged in
         findViewById(R.id.root).setVisibility(View.INVISIBLE);
         super.onResume();
@@ -796,9 +486,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
             //Handles refresh action
-            if (isNetworkAvailable()) {
+            if (CommanUtils.isNetworkAvailable(getBaseContext())) {
                 try {
-                    getDetailsofTask();
+                    //getDetailsofTask();
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -812,7 +502,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 SalesforceSDKManager.getInstance().logout(MainActivity.this);
                             }
                         })
-                        .setIcon(R.drawable.ic_alert_exclamation_mark)
+                        .setIcon(R.drawable.ic_no_network)
                         .show();
 
 
@@ -822,15 +512,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return true;
     }
 
-    public void backPressedCustom(View v) {
-    }
-
     /**
      * @throws Exception
      */
     public void getDetailsofTask() throws Exception {
         getDetailFromSalesforce("SELECT Id, Name, Due_Date__c, Description__c, Status__c," +
-                " External_id__c, Email_Id__c, Location__c,Phone_Number__c, Address__c " +
+                " Email_Id__c, Location__c,Phone_Number__c, Address__c " +
                 "FROM Task__c");
     }
 
@@ -915,7 +602,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             // Show everything
             findViewById(R.id.root).setVisibility(View.VISIBLE);
-            if (isNetworkAvailable()) {
+            if (CommanUtils.isNetworkAvailable(this)) {
                 Snackbar.make((View) findViewById(R.id.root), "You are Online",
                         Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
@@ -932,23 +619,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         })
-                        .setIcon(R.drawable.ic_alert_exclamation_mark)
+                        .setIcon(R.drawable.ic_no_network)
                         .show();
             }
         }
     }
 
-
-    /**
-     * @throws Exception
-     */
-    public void getUserNameofCurrentUser() throws Exception {
-        //Text Views to populate
-        mTxtvHeader.setText("APPLICATION");
-
-    }
-
-    /**
+  /**
      * @param soql
      * @throws Exception
      */
@@ -970,6 +647,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                    Log.d("Exception",String.valueOf(ex));
                 }
                 if (mProgressDialog != null && mProgressDialog.isShowing())
                     mProgressDialog.dismiss();
@@ -1018,19 +696,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     lattitueOfTasks = new ArrayList<Double>();
                     LongitudesOfTask = new ArrayList<Double>();
-
+                    LatLngOfTasks = new ArrayList<LatLng>();
 
                     for (Record r : res.getRecords()) {
                         Double Latitude = r.getLocation__c().getLatitude();
                         Double Longitude = r.getLocation__c().getLongitude();
                         LatLng markerTasks = new LatLng(Latitude, Longitude);
-
+                        LatLng inListElements = new LatLng(Latitude,Longitude);
 
                         lattitueOfTasks.add(Latitude);
                         LongitudesOfTask.add(Longitude);
+                        LatLngOfTasks.add(inListElements);
 
                         if (r.getDue_Date__c() != null) {
-                            if (!r.getDue_Date__c().trim().equalsIgnoreCase(CommanUtils.getTodaysDate()
+                            if (!r.getDue_Date__c().trim()
+                                    .equalsIgnoreCase(CommanUtils.getTodaysDate()
                                     .trim())) {
                                 mMap.addMarker(new
                                         MarkerOptions().position(markerTasks)
@@ -1048,9 +728,45 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         mMap.setBuildingsEnabled(true);
                         mMap.setTrafficEnabled(true);
 
+                        //ROUTE BUILDING
+
+                        //Adding LAT LONG 0f my device location
+                        MarkerPoints.add(latLngMyLoc);
+
+                        //pass the 1th param of LATLNG into the argument
+                        /*for (int i=0; i<res.getRecords().size();i++) {
+                            MarkerPoints.add(LatLngOfTasks.get(i));
+                        }*/
+                        MarkerPoints.add(LatLngOfTasks.get(0));
+                        // Creating MarkerOptions
+                        MarkerOptions options = new MarkerOptions();
+
+                        // Setting the position of the marker
+                        if(latLngMyLoc!=null)
+                        options.position(latLngMyLoc);
+
+                        // Checks, whether start and end locations are captured
+                        if (MarkerPoints.size() >= 2) {
+                            LatLng origin = MarkerPoints.get(0);
+                            LatLng dest = MarkerPoints.get(1);
+
+                            // Getting URL to the Google Directions API
+                            if(origin!=null && dest!= null) {
+                                String url = getRouteLatlngURL.getUrl(origin, dest);
+                                FetchUrl FetchUrl = new FetchUrl();
+
+                                // Start downloading json data from Google Directions API
+                                FetchUrl.execute(url);
+                                //move map camera
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                                mMap.getUiSettings().setZoomControlsEnabled(true);
+                                mMap.getUiSettings().setAllGesturesEnabled(true);
+                                mMap.setTrafficEnabled(true);
+                                mMap.setBuildingsEnabled(true);
+                            }
+                        }
                     }
-
-
                 }
             });
         } else {
@@ -1058,17 +774,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-
-
-
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new TodayTaskListFragment(), "Today's Task (" + CommanUtils
-                .getTodaysDateArray().get(2) + "/" + CommanUtils.getTodaysDateArray().get(1) + ")");
+        adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
         adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
         viewPager.setAdapter(adapter);
     }
-
 
     public void getTaskDetails(View view) {
 
@@ -1119,6 +830,5 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .setIcon(R.drawable.ic_alert_exclamation_mark)
                 .show();
     }
-
 
 }

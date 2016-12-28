@@ -15,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hitvardhan.project_app.Adapters.TaskAdapter;
 import com.hitvardhan.project_app.R;
@@ -34,7 +35,10 @@ public class MoreTaskListFragment extends Fragment{
 
     private TaskAdapter mTaskAdapter;
 
-    public List<Record> MoreTaskName = new ArrayList< Record >();
+    private TextView EmptyListMore;
+
+    public static List<Record> MoreTaskName = new ArrayList< Record >();
+
 
     public MoreTaskListFragment() {
         // Required empty public constructor
@@ -51,6 +55,8 @@ public class MoreTaskListFragment extends Fragment{
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_one, container, false);
+
+        EmptyListMore = (TextView) view.findViewById(R.id.more_task_empty_view);
 
 
         mRcvTaskListV = (RecyclerView)view.findViewById(R.id.rcv_list_v);
@@ -82,16 +88,31 @@ public class MoreTaskListFragment extends Fragment{
                                 .setTitle("Set Date")
                                 .setMessage("Seems like "+ record.getName()+
                                         " does not contain due" +
-                                        " date hence cannot be displayed please verify")
+                                        " date please verify")
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                     }
                                 })
                                 .setIcon(R.drawable.ic_alert_exclamation_mark)
                                 .show();
+                        MoreTaskName.add(record);
                     }
 
                 }
+
+
+
+
+
+
+                //If the list is empty
+                if(MoreTaskName.size() < 1){
+                    EmptyListMore.setVisibility(View.VISIBLE);
+                }
+
+
+
+
                 mTaskAdapter = new TaskAdapter(MoreTaskName);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
                 mRcvTaskListV.setLayoutManager(mLayoutManager);

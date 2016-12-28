@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:1-85:12
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:1-86:12
 	package
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:2:70-106
 	android:versionName
@@ -67,8 +67,13 @@ MERGED from [com.google.android.gms:play-services-maps:10.0.1] C:\Users\Hitvardh
 	android:name
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:16:19-73
 application
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:21:2-76:16
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:21:2-77:16
 MERGED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:23:5-103:19
+MERGED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:transition:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\AndroidManifest.xml:22:5-20
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\AndroidManifest.xml:9:5-20
+MERGED from [com.cs:googlemaproute:1.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.cs\googlemaproute\1.0.0\AndroidManifest.xml:11:5-15:19
 MERGED from [com.google.android.gms:play-services:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services\10.0.1\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:23:5-27:19
 MERGED from [com.google.android.gms:play-services-analytics:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\AndroidManifest.xml:26:5-19
@@ -111,25 +116,25 @@ MERGED from [com.google.android.gms:play-services-wearable:10.0.1] C:\Users\Hitv
 MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:18:5-20:19
 MERGED from [com.google.android.gms:play-services-tasks:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\AndroidManifest.xml:19:5-21:19
-MERGED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:cardview-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\AndroidManifest.xml:22:5-20
-MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:23:3-35
+	android:supportsRtl
+		ADDED from [com.cs:googlemaproute:1.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.cs\googlemaproute\1.0.0\AndroidManifest.xml:14:9-35
 	android:manageSpaceActivity
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:26:3-81
 	android:icon
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:22:3-55
+	android:allowBackup
+		ADDED from [com.cs:googlemaproute:1.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.cs\googlemaproute\1.0.0\AndroidManifest.xml:12:9-35
 	android:theme
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:25:3-34
 	android:name
@@ -171,25 +176,33 @@ ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\Android
 	android:name
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:62:15-61
 activity#com.hitvardhan.project_app.activity.TaskDetailsActivity
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:65:3-71:14
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:65:3-72:14
 	android:label
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:67:4-36
+	android:theme
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:68:4-47
 	android:name
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:66:4-48
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:73:3-75:60
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:74:3-76:60
 MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\AndroidManifest.xml:20:9-121
 	android:value
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:75:4-57
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:76:4-57
 	android:name
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:74:4-49
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:75:4-49
 uses-sdk
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:77:2-70
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:78:2-70
 MERGED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:7:5-9:41
 MERGED from [com.mikepenz:materialdrawer:5.8.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\materialdrawer\5.8.1\AndroidManifest.xml:8:5-10:41
 MERGED from [com.mikepenz:materialize:1.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\materialize\1.0.0\AndroidManifest.xml:8:5-10:41
 MERGED from [com.mikepenz:iconics-core:2.8.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\iconics-core\2.8.0\AndroidManifest.xml:8:5-10:41
 MERGED from [com.mikepenz:fastadapter:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.mikepenz\fastadapter\2.1.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:transition:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\AndroidManifest.xml:20:5-43
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.cs:googlemaproute:1.0.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.cs\googlemaproute\1.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services\10.0.1\AndroidManifest.xml:4:5-42
 MERGED from [com.google.android.gms:play-services-ads:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\10.0.1\AndroidManifest.xml:17:5-42
 MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\AndroidManifest.xml:22:5-42
@@ -241,36 +254,31 @@ MERGED from [com.google.android.gms:play-services-wearable:10.0.1] C:\Users\Hitv
 MERGED from [com.google.android.gms:play-services-base:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\AndroidManifest.xml:17:5-42
 MERGED from [com.google.android.gms:play-services-tasks:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\AndroidManifest.xml:3:5-42
 MERGED from [com.google.android.gms:play-services-basement:10.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\AndroidManifest.xml:17:5-42
-MERGED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:transition:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:cardview-v7:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\AndroidManifest.xml:20:5-43
-MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\AndroidManifest.xml:5:5-7:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.0.1] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:77:39-68
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:78:39-68
 	android:minSdkVersion
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:77:12-38
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:78:12-38
 permission#com.hitvardhan.project_app.C2D_MESSAGE
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:83:2-105
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:84:2-105
 	android:protectionLevel
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:83:68-103
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:84:68-103
 	android:name
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:83:14-67
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:84:14-67
 uses-permission#com.hitvardhan.project_app.C2D_MESSAGE
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:84:2-74
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:85:2-74
 	android:name
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:84:19-72
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:85:19-72
 uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
 ADDED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:12:5-80
 	android:name
