@@ -1134,6 +1134,7 @@
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
+    <dimen name="marginTop">10dp</dimen>
     <dimen name="material_drawer_account_header_compact">56dp</dimen>
     <dimen name="material_drawer_account_header_dropdown">22dp</dimen>
     <dimen name="material_drawer_account_header_dropdown_margin_bottom">14dp</dimen>
@@ -1262,6 +1263,8 @@
     <dimen name="sf__server_picker_margin_left">3dp</dimen>
     <dimen name="sf__server_picker_margin_right">3dp</dimen>
     <dimen name="sf__server_picker_margin_top">7dp</dimen>
+    <dimen name="textSIzeSubTitle">32sp</dimen>
+    <dimen name="titleTextSize">40sp</dimen>
     <dimen name="tool_bar_top_padding">0dp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
@@ -1328,6 +1331,8 @@
     <integer name="mr_controller_volume_group_list_fade_out_duration_ms">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="Email">Email</string>
+    <string name="Future_task_title">Future Task</string>
+    <string name="Logout_text">Want to Logout?</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -1361,11 +1366,14 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="accept">Accept</string>
     <string name="account_type">com.hitvardhan.project_app.login</string>
+    <string name="action">Action</string>
+    <string name="addressOfTask">addressOfTask</string>
     <string name="androidPushNotificationClientId"/>
     <string name="api_version">v36.0</string>
     <string name="app_name"><b>PROJECT APP</b></string>
     <string name="app_package">com.hitvardhan.project_app</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="are_you_sure_question">Are you sure?</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="cast_ad_label">Ad</string>
     <string name="cast_casting_to_device">Casting to %1$s</string>
@@ -1427,6 +1435,9 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="completed">Completed</string>
+    <string name="connectionSuspension">Connection temporarily suspended!</string>
+    <string name="contactInfoOftask">PhoneNumber</string>
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
     <string name="debug_menu_ad_information">Ad Information</string>
@@ -1438,9 +1449,12 @@
     <string name="define_fastadapter">year;owner</string>
     <string name="define_materialdrawer">year;owner</string>
     <string name="define_materialize">year;owner</string>
+    <string name="deny">CANCEL</string>
+    <string name="descOfTask">Descp_of_task</string>
+    <string name="dueDate">due_date</string>
     <string name="fetch_accounts_button">Fetch Accounts</string>
     <string name="fetch_contacts_button">Fetch Contacts</string>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBB4Ryb2PjvJZcOBfFebY1NNMh0EoSFgNY</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBB4Ryb2PjvJZcOBfFebY1NNMh0EoSFgNYHVS</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="library_AndroidIconics_author">Mike Penz</string>
     <string name="library_AndroidIconics_authorWebsite">http://mikepenz.com/</string>
@@ -1502,6 +1516,7 @@
     <string name="library_materialize_owner">Mike Penz</string>
     <string name="library_materialize_repositoryLink">https://github.com/mikepenz/Materialize</string>
     <string name="library_materialize_year">2016</string>
+    <string name="logout">LOGOUT</string>
     <string name="logout_button">Logout</string>
     <string name="material_drawer_close">Close</string>
     <string name="material_drawer_open">Open</string>
@@ -1521,15 +1536,27 @@
     <string name="mr_controller_stop">Stop casting</string>
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
+    <string name="nameOfTask">NAME_OF_USER</string>
     <string name="name_of_user">Name</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="no_network_desc">Seems like your device is offline</string>
+    <string name="no_network_title">No Network</string>
+    <string name="no_response">CANCEL</string>
+    <string name="no_tasks_for_future">No Tasks for future!</string>
+    <string name="no_tasks_for_today">No Tasks for today</string>
     <string name="oauthRedirectURI">sfdc://success</string>
     <string name="oauth_display_type">touch</string>
+    <string name="online">You are Online</string>
+    <string name="pending_task_title">Pending Task</string>
+    <string name="photoUrl">https://media.licdn.com/mpr/mpr/shrinknp_200_200/
+        AAEAAQAAAAAAAATDAAAAJGRiODBlMTE5LTA1NDAtNGE5MS04OTkyLWQwNjUwYjY2OWVkMw.jpg</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
-    <string name="remoteAccessConsumerKey">3MVG9ZL0ppGP5UrBJT2pAfJYaqusKpt11YHUbV_KyFcjzLR.rf5IceS3IrL9FdGL6HRg.lTypaCClDjb6IQ5d</string>
+    <string name="remoteAccessConsumerKey">3MVG9ZL0ppGP5UrBJT2pAfJYaqusKpt11YHUbV_KyFcjzLR
+        .rf5IceS3IrL9FdGL6HRg.lTypaCClDjb6IQ5d</string>
     <string name="search_menu_title">Search</string>
+    <string name="setDate">Please set the date!</string>
     <string name="sf__access_token_revoked">Your access token has been revoked by the administrator. You will now be logged out.</string>
     <string name="sf__add_new_account">Add New Account</string>
     <string name="sf__app_service_host_labels_description">Used to specify login host labels for the application.</string>
@@ -1588,16 +1615,31 @@
     <string name="sf__ssl_unknown_error">Unknown Error</string>
     <string name="sf__ssl_untrusted">Untrusted Certificate Authority</string>
     <string name="sf__switch_account">Switch Account</string>
+    <string name="soql_query">SELECT Id, Name, Due_Date__c, Description__c, Status__c, Email_Id__c,
+        Location__c,Phone_Number__c, Address__c  FROM Task__c</string>
+    <string name="statusField">Status__c</string>
+    <string name="statusOfTask">statusOfTask</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
+    <string name="suspendedConnection">Connection Denied</string>
     <string name="tagmanager_preview_dialog_button">Continue</string>
     <string name="tagmanager_preview_dialog_message">Preview mode updated.</string>
     <string name="tagmanager_preview_dialog_title">Preview</string>
+    <string name="taskID">taskID</string>
+    <string name="taskList">TaskList</string>
+    <string name="taskType">taskType</string>
+    <string name="task_location">" Task's Location"</string>
+    <string name="todays_task_title">Today\'s Task</string>
+    <string name="update">UPDATE</string>
+    <string name="updateMessage">"CHANGE STATUS TO COMPLETED OF \n TASK: "</string>
+    <string name="updateTitle">UPDATE</string>
+    <string name="updatedTitle">Already Updated!</string>
     <string name="user_id">User ID</string>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>
     <string name="welcome">Welcome %s</string>
     <string name="welcome_string">WELCOME</string>
+    <string name="yes_response">OK</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

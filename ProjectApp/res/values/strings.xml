@@ -17,4 +17,42 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_network_title">No Network</string>
+    <string name="no_network_desc">Seems like your device is offline</string>
+    <string name="yes_response">OK</string>
+    <string name="suspendedConnection">Connection Denied</string>
+    <string name="connectionSuspension">Connection temporarily suspended!</string>
+    <string name="are_you_sure_question">Are you sure?</string>
+    <string name="Logout_text">Want to Logout?</string>
+    <string name="logout">LOGOUT</string>
+    <string name="deny">CANCEL</string>
+    <string name="soql_query">SELECT Id, Name, Due_Date__c, Description__c, Status__c, Email_Id__c,
+        Location__c,Phone_Number__c, Address__c  FROM Task__c</string>
+    <string name="online">You are Online</string>
+    <string name="action">Action</string>
+    <string name="photoUrl">https://media.licdn.com/mpr/mpr/shrinknp_200_200/
+        AAEAAQAAAAAAAATDAAAAJGRiODBlMTE5LTA1NDAtNGE5MS04OTkyLWQwNjUwYjY2OWVkMw.jpg</string>
+    <string name="taskList">TaskList</string>
+    <string name="todays_task_title">Today\'s Task</string>
+    <string name="pending_task_title">Pending Task</string>
+    <string name="Future_task_title">Future Task</string>
+    <string name="task_location">" Task's Location"</string>
+    <string name="descOfTask">Descp_of_task</string>
+    <string name="dueDate">due_date</string>
+    <string name="addressOfTask">addressOfTask</string>
+    <string name="contactInfoOftask">PhoneNumber</string>
+    <string name="statusOfTask">statusOfTask</string>
+    <string name="taskID">taskID</string>
+    <string name="taskType">taskType</string>
+    <string name="nameOfTask">NAME_OF_USER</string>
+    <string name="completed">Completed</string>
+    <string name="updatedTitle">Already Updated!</string>
+    <string name="statusField">Status__c</string>
+    <string name="updateTitle">UPDATE</string>
+    <string name="updateMessage">"CHANGE STATUS TO COMPLETED OF \n TASK: "</string>
+    <string name="update">UPDATE</string>
+    <string name="no_response">CANCEL</string>
+    <string name="no_tasks_for_future">No Tasks for future!</string>
+    <string name="no_tasks_for_today">No Tasks for today</string>
+    <string name="setDate">Please set the date!</string>
 </resources>

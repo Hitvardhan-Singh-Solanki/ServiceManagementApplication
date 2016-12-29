@@ -4,13 +4,11 @@ package com.hitvardhan.project_app.utils;
  * Created by Hitvardhan on 23-12-2016.
  */
 
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.hitvardhan.project_app.DataParser;
 import com.hitvardhan.project_app.R;
 
 import org.json.JSONObject;
@@ -50,6 +48,7 @@ public class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<Str
         }
         return routes;
     }
+
     // Executes in UI thread, after the parsing process
     @Override
     protected void onPostExecute(List<List<HashMap<String, String>>> result) {
@@ -82,11 +81,10 @@ public class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<Str
         }
 
         // Drawing polyline in the Google Map for the i-th route
-        if(lineOptions != null) {
+        if (lineOptions != null) {
             mMap.addPolyline(lineOptions);
-        }
-        else {
-            Log.d("onPostExecute","without Polylines drawn");
+        } else {
+            Log.d("onPostExecute", "without Polylines drawn");
         }
     }
 }

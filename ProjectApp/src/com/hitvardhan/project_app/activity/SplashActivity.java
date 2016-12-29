@@ -2,7 +2,7 @@ package com.hitvardhan.project_app.activity;
 
 /**
  * Created by Hitvardhan on 08-12-2016.
- *
+ * <p>
  * Splash Activity: First Screen to come up on UI and last for 2 seconds
  */
 
@@ -18,7 +18,15 @@ import android.view.WindowManager;
 
 import com.hitvardhan.project_app.R;
 
+/**
+ * main class
+ */
 public class SplashActivity extends Activity {
+    /**
+     * Overridden method to create the Activity
+     * and set base parameters with a handler
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -26,9 +34,6 @@ public class SplashActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_activity);
         super.onCreate(savedInstanceState);
-
-
-
         //Handler to make the screen last for 2 sec
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -39,6 +44,4 @@ public class SplashActivity extends Activity {
             }
         }, 2000);
     }
-
-
 }

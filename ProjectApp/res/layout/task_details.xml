@@ -2,178 +2,189 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:orientation="vertical"
     tools:context=".activity.TaskDetailsActivity">
-        <android.support.design.widget.AppBarLayout
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarMain1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarMain1"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                android:titleTextColor="#fff"/>
-        </android.support.design.widget.AppBarLayout>
+            android:layout_height="?attr/actionBarSize"
+            android:background="#00ffffff"
+            android:titleTextColor="#fff"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
-     <LinearLayout
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
-            android:background="#FFF">
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:background="#FFF"
+            android:orientation="vertical">
+
             <TextView
-                android:text="TextView"
+                android:id="@+id/task_name_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/TaskIdDetails"
-                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-                android:textAllCaps="true"
-                android:padding="10dp"
-                android:onClick="OnChangeClicked"
-                android:gravity="center"
                 android:background="@color/colorPrimary"
-                android:textColor="#fff"/>
+                android:gravity="center"
+                android:onClick="OnChangeClicked"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                android:textColor="#fff" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginTop="10dp"
-            android:paddingStart="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:weightSum="10">
 
-            <ImageView
-                android:layout_width="5dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_calendar_main"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:padding="0dp"/>
+                <ImageView
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:padding="0dp"
+                    android:src="@drawable/ic_calendar_main" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Due Date: "
-            android:paddingRight="8dp"
-            android:id="@+id/DateOfTask"
-            android:textColor="@color/colorPrimary"
-            android:layout_weight="8"
-            android:paddingLeft="5dp"
-            android:layout_gravity="center_vertical"
-            android:fontFamily="sans-serif-condensed"
-            />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/TaskDescriptionDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:textColor="#A4A3A3"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                <TextView
+                    android:id="@+id/DateOfTask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="8"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="8dp"
+                    android:text="Due Date: "
+                    android:textColor="@color/colorPrimary" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/AddressOfTask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:padding="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-        <Space
-               android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:layout_weight="1"/>
-        <LinearLayout
+            <TextView
+                android:id="@+id/task_description_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:weightSum="2"
-                android:layout_gravity="center"
-                android:paddingBottom="20dp"
-            android:layout_marginBottom="30dp"
-                >
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#A4A3A3" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginTop="10dp"
-            android:paddingStart="20dp"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            >
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_status"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:padding="0dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/AddressOfTask"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Status: "
-                android:paddingRight="8dp"
-                android:layout_marginRight="10dp"
-                android:paddingStart="10dp"
-                android:id="@+id/Status"
-                android:textColor="#5E5E5E"
-                android:layout_weight="8"
-                android:layout_gravity="center_vertical"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed" />
-        </LinearLayout>
+                android:layout_margin="30dp"
+                android:padding="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="20dp"
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:layout_marginTop="10dp"
-                    android:paddingStart="20dp"
                     android:layout_gravity="bottom"
-                    android:layout_weight="1">
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="20dp"
+                    android:weightSum="10">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_contact"
-                        android:layout_weight="1"
                         android:layout_gravity="center"
-                        android:padding="0dp"/>
+                        android:layout_weight="1"
+                        android:padding="0dp"
+                        android:src="@drawable/ic_status" />
+
                     <TextView
+                        android:id="@+id/Status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:text="Contact Number: "
-                        android:paddingRight="8dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingStart="10dp"
-                        android:id="@+id/ContactInfoPhone"
-                        android:textColor="#5E5E5E"
-                        android:layout_weight="8"
                         android:layout_gravity="center_vertical"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif-condensed" />
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="8"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:paddingRight="8dp"
+                        android:paddingStart="10dp"
+                        android:text="Status: "
+                        android:textColor="#5E5E5E"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="20dp"
+                    android:weightSum="10">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:padding="0dp"
+                        android:src="@drawable/ic_contact" />
+
+                    <TextView
+                        android:id="@+id/ContactInfoPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="8"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:paddingRight="8dp"
+                        android:paddingStart="10dp"
+                        android:text="Contact Number: "
+                        android:textColor="#5E5E5E"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
-        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

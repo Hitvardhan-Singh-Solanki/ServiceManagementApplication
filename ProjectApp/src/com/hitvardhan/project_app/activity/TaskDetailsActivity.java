@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -37,25 +38,33 @@ import static com.hitvardhan.project_app.activity.MainActivity.client;
 
 /**
  * Created by Hitvardhan on 12-12-2016.
- * <p>
- * <p>
- * To show Task Details only no other requirement and change the status
+ * To show Task Details and change the status
  */
 public class TaskDetailsActivity extends ActionBarActivity {
 
-    public String Id_of_task, ObjectType;
-    public Map<String, Object> fields = new HashMap<String, Object>();
-    TextView getStatusOfTask;
-    Gson gson = new Gson();
-    Response res = new Response();
-    String UsersName;
-    String Status_of_task;
+    //variable declaration
+    private String idOfTask,
+            usersNameString,
+            statusOfTaskString,
+            descOfTaskString,
+            dueDateString,
+            contactNumberString,
+            addressOfTaskString,
+            idOfTaskString,
+            typeOfObjectString;
 
-    private TextView updatedStatus;
-    @Override public void onResume(){
-        MainActivity.isStatusChanged=false;
-        super.onResume();
-    }
+    private TextView getStatusOfTaskView,
+            updatedStatusView,
+            getNameView,
+            getDescView,
+            getDueDateView,
+            getContactNumberView,
+            getAddressView;
+
+    private Map<String, Object> fields;
+    private Gson gson;
+    private Response res;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,26 +72,52 @@ public class TaskDetailsActivity extends ActionBarActivity {
 
         setContentView(R.layout.task_details);
 
+        //Get the intent form the previous activity
         Intent getTheNameIntent = getIntent();
 
-        UsersName = getTheNameIntent.getExtras().getString("NAME_OF_USER");
-        String Desc = getTheNameIntent.getExtras().getString("Descp_of_task");
-        String Due_Date = getTheNameIntent.getExtras().getString("0");
-        String ContactNumber = getTheNameIntent.getExtras().getString("2");
-        String Address_Of_task = getTheNameIntent.getExtras().getString("1");
-        Status_of_task = getTheNameIntent.getExtras().getString("3");
-        Id_of_task = getTheNameIntent.getExtras().getString("4");
-        Id_of_task = Id_of_task.substring(0, Id_of_task.length() - 3);
-        ObjectType = getTheNameIntent.getExtras().getString("5");
+        //Initialization
+        fields = new HashMap<String, Object>();
+        gson = new Gson();
+        res = new Response();
 
 
-        TextView getNameSample = (TextView) findViewById(R.id.TaskIdDetails);
-        TextView getDescSample = (TextView) findViewById(R.id.TaskDescriptionDetails);
-        TextView getDue_Date = (TextView) findViewById(R.id.DateOfTask);
-        TextView getContactNumber = (TextView) findViewById(R.id.ContactInfoPhone);
-        TextView getAddressTask = (TextView) findViewById(R.id.AddressOfTask);
-        getStatusOfTask = (TextView) findViewById(R.id.Status);
-        updatedStatus = (TextView) findViewById(R.id.Status);
+        //get the data from the intent and store in local variable
+        usersNameString = getTheNameIntent.getExtras()
+                .getString(getString(R.string.nameOfTask));
+
+        descOfTaskString = getTheNameIntent.getExtras()
+                .getString(getString(R.string.descOfTask));
+
+        dueDateString = getTheNameIntent.getExtras()
+                .getString(getString(R.string.dueDate));
+
+        contactNumberString = getTheNameIntent.getExtras()
+                .getString(getString(R.string.contactInfoOftask));
+
+        addressOfTaskString = getTheNameIntent
+                .getExtras().getString(getString(R.string.addressOfTask));
+
+        statusOfTaskString = getTheNameIntent.getExtras()
+                .getString(getString(R.string.statusOfTask));
+
+        idOfTaskString = getTheNameIntent.getExtras()
+                .getString(getString(R.string.taskID));
+
+        typeOfObjectString = getTheNameIntent.getExtras()
+                .getString(getString(R.string.taskType));
+
+
+        //Remove the appended three characters form the id string
+        idOfTaskString = idOfTaskString.substring(0, idOfTaskString.length() - 3);
+
+        //setup the view
+        getNameView = (TextView) findViewById(R.id.task_name_detail);
+        getDescView = (TextView) findViewById(R.id.task_description_detail);
+        getDueDateView = (TextView) findViewById(R.id.DateOfTask);
+        getContactNumberView = (TextView) findViewById(R.id.ContactInfoPhone);
+        getAddressView = (TextView) findViewById(R.id.AddressOfTask);
+        getStatusOfTaskView = (TextView) findViewById(R.id.Status);
+        updatedStatusView = (TextView) findViewById(R.id.Status);
 
 
         // toolbar
@@ -90,30 +125,37 @@ public class TaskDetailsActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
 
         // add back arrow to toolbar
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-        if (UsersName != null) {
-            getNameSample.setText(UsersName);
+
+
+        //bind the data to the view
+        if (usersNameString != null) {
+            getNameView.setText(usersNameString);
         }
-        if (Desc != null) {
-            getDescSample.setText(Desc);
+        if (descOfTaskString != null) {
+            getDescView.setText(descOfTaskString);
         }
-        if (Due_Date != null) {
-            getDue_Date.append("" + Due_Date);
+        if (dueDateString != null) {
+            getDueDateView.append("" + dueDateString);
         }
-        if (ContactNumber != null) {
-            getContactNumber.append("\n" + ContactNumber);
+        if (contactNumberString != null) {
+            getContactNumberView.append("\n" + contactNumberString);
         }
-        if (Address_Of_task != null) {
-            getAddressTask.setText(Address_Of_task);
+        if (addressOfTaskString != null) {
+            getAddressView.setText(addressOfTaskString);
         }
-        if (Status_of_task != null) {
-            getStatusOfTask.append(" \n" + Status_of_task);
+        if (statusOfTaskString != null) {
+            getStatusOfTaskView.append(" \n" + statusOfTaskString);
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -126,20 +168,19 @@ public class TaskDetailsActivity extends ActionBarActivity {
     }
 
 
-    public void OnChangeClicked(View view){
+    public void OnChangeClicked(View view) {
 
-        String textOfStatus = Status_of_task;
-        if(!textOfStatus.equalsIgnoreCase("Completed")) {
+        String textOfStatusView = statusOfTaskString;
+        if (!textOfStatusView.equalsIgnoreCase(getString(R.string.completed))) {
             ChangeStatusCall();
-        }
-        else{
+        } else {
 
-            new android.support.v7.app.AlertDialog.Builder(this)
-                    .setTitle("Already Updated!")
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.updatedTitle)
                     .setMessage("")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            //UPDATE on POSITIVE RESPONSE
+                            //Just acknowledge
 
                         }
                     })
@@ -148,27 +189,23 @@ public class TaskDetailsActivity extends ActionBarActivity {
         }
     }
 
-
-
-
-
     public void ChangeStatusCall() {
-        fields.put("Status__c", "Completed");
+        fields.put(getString(R.string.statusField), getString(R.string.completed));
 
-        new android.support.v7.app.AlertDialog.Builder(this)
-                .setTitle("UPDATE")
-                .setMessage("CHANGE STATUS TO COMPLETED OF \n TASK: " + UsersName + "?")
-                .setPositiveButton("UPDATE", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.updateTitle)
+                .setMessage(getString(R.string.updateMessage) + usersNameString + "?")
+                .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //UPDATE on POSITIVE RESPONSE
                         try {
-                            saveData(Id_of_task, fields);
+                            saveData(idOfTask, fields);
 
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
                     }
-                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                }).setNegativeButton(R.string.no_response, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // do nothing
             }
@@ -197,15 +234,11 @@ public class TaskDetailsActivity extends ActionBarActivity {
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
                             public void run() {
-                                Log.d("UI thread", "I am the UI thread");
-                                updatedStatus.setText("Status: \nCompleted");
+                                updatedStatusView.setText("Status: \nCompleted");
                             }
                         });
 
-
-                        MainActivity.isStatusChanged=true;
                     }
-                    Toast.makeText(getApplicationContext(), "Your data has been updated succecssfully!", Toast.LENGTH_SHORT);
                     wait(1000);
                     TaskDetailsActivity.this.finish();
                 } catch (Exception e) {

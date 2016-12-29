@@ -8,6 +8,7 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +28,7 @@ import com.hitvardhan.project_app.utils.CommanUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoreTaskListFragment extends Fragment{
+public class MoreTaskListFragment extends Fragment {
 
     private Response res;
 
@@ -37,7 +38,9 @@ public class MoreTaskListFragment extends Fragment{
 
     private TextView EmptyListMore;
 
-    public static List<Record> MoreTaskName = new ArrayList< Record >();
+    private SwipeRefreshLayout mSwipeRefreshLayoutl;
+
+    public static List<Record> MoreTaskName = new ArrayList<Record>();
 
 
     public MoreTaskListFragment() {
@@ -58,67 +61,74 @@ public class MoreTaskListFragment extends Fragment{
 
         EmptyListMore = (TextView) view.findViewById(R.id.more_task_empty_view);
 
+        mRcvTaskListV = (RecyclerView) view.findViewById(R.id.rcv_list_v);
 
-        mRcvTaskListV = (RecyclerView)view.findViewById(R.id.rcv_list_v);
+        mSwipeRefreshLayoutl = (SwipeRefreshLayout) view.findViewById(R.id
+                .swipeRefreshLayoutMoreTaskOne);
 
         // Inflate the layout for this fragment
-        if(getArguments().getSerializable("TaskList") != null) {
-            res = (Response) getArguments().getSerializable("TaskList");
-            setListData();
-        }
-        return view;
+        mTaskAdapter = new TaskAdapter(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mRcvTaskListV.setLayoutManager(mLayoutManager);
+        mRcvTaskListV.setItemAnimator(new DefaultItemAnimator());
+        mRcvTaskListV.setAdapter(mTaskAdapter);
 
+
+
+        mSwipeRefreshLayoutl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ((MainActivity)getActivity()).refresh(getActivity());
+                mSwipeRefreshLayoutl.setRefreshing(false);
+            }
+        });
+        return view;
     }
 
+    @Override
+    public void onResume() {
+        if (getArguments().getSerializable("TaskList") != null) {
+            res = (Response) getArguments().getSerializable("TaskList");
+            setListData();
+//            mTaskAdapter.notifyDataSetChanged();
+        }
+        super.onResume();
+    }
 
-    public void setListData(){
+    public void setListData() {
         MoreTaskName.clear();
-            if(res.getRecords() != null){
-
-
-                for (Record record: res.getRecords()) {
-                    if(record.getDue_Date__c()!=null){
-                        if(!record.getDue_Date__c().trim().equalsIgnoreCase(CommanUtils
-                                .getTodaysDate().trim())){
-                            MoreTaskName.add(record);
-                        }
-                    }
-                    else{
-                        new AlertDialog.Builder(getActivity())
-                                .setTitle("Set Date")
-                                .setMessage("Seems like "+ record.getName()+
-                                        " does not contain due" +
-                                        " date please verify")
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                    }
-                                })
-                                .setIcon(R.drawable.ic_alert_exclamation_mark)
-                                .show();
+        if (res.getRecords() != null) {
+            for (Record record : res.getRecords()) {
+                if (record.getDue_Date__c() != null) {
+                    if (!record.getDue_Date__c().trim().equalsIgnoreCase(CommanUtils
+                            .getTodaysDate().trim())) {
                         MoreTaskName.add(record);
+
                     }
-
+                } else {
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("Set Date")
+                            .setMessage("Seems like " + record.getName() +
+                                    " does not contain due" +
+                                    " date please verify")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setIcon(R.drawable.ic_alert_exclamation_mark)
+                            .show();
+                    MoreTaskName.add(record);
                 }
+            }
 
-
-
-
-
-
-                //If the list is empty
-                if(MoreTaskName.size() < 1){
-                    EmptyListMore.setVisibility(View.VISIBLE);
-                }
-
-
-
-
-                mTaskAdapter = new TaskAdapter(MoreTaskName);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-                mRcvTaskListV.setLayoutManager(mLayoutManager);
-                mRcvTaskListV.setItemAnimator(new DefaultItemAnimator());
-                mRcvTaskListV.setAdapter(mTaskAdapter);
+            if (mTaskAdapter != null && res != null && res.getRecords() != null) {
+                mTaskAdapter.addItem(MoreTaskName);
+            }
+            //If the list is empty
+            if (MoreTaskName.size() < 1) {
+                EmptyListMore.setVisibility(View.VISIBLE);
             }
 
         }
+    }
 }

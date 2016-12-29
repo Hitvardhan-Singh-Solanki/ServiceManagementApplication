@@ -19,6 +19,9 @@ public class getRouteLatlngURL {
 
     /**
      * A method to download json data from url
+     * @param strUrl
+     * @return
+     * @throws IOException
      */
     public static String downloadUrl(String strUrl) throws IOException {
         String data = "";
@@ -59,9 +62,12 @@ public class getRouteLatlngURL {
     }
 
 
-
-
-
+    /**
+     * get the route URL
+     * @param origin
+     * @param dest
+     * @return
+     */
     public static String getUrl(LatLng origin, LatLng dest) {
 
         // Origin of route

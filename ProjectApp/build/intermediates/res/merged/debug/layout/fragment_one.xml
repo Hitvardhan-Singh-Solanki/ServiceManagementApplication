@@ -1,23 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/rcv_list_v"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.v7.widget.RecyclerView>
-
-    <TextView
+    <!--Scroll up to refresh-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutMoreTaskOne"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:id="@+id/todays_task_empty_view"
-        android:text="No Tasks for today"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:textColor="#918282"/>
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_list_v"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/todays_task_empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no_tasks_for_today"
+            android:textColor="#918282"
+            android:textSize="@dimen/titleTextSize"
+            android:visibility="gone" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>
