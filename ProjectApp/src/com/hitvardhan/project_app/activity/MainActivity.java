@@ -13,7 +13,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -76,12 +78,17 @@ import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
 import com.hitvardhan.project_app.utils.FetchUrl;
 import com.hitvardhan.project_app.utils.getRouteLatlngURL;
 
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 
 public class MainActivity extends AppCompatActivity
@@ -113,8 +120,8 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<LatLng> latLngOfTasks;
     private NavigationView navigationView;
     private DrawerLayout drawer;
-    private LinearLayout task_detail_layout_page;
-
+    private LinearLayout logoutButtonNavigation;
+    private ImageView reloadButtonOnNavHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +172,47 @@ public class MainActivity extends AppCompatActivity
         userNameView = (TextView) navHeader.findViewById(R.id.Client_name_from_request);
         userEmailId = (TextView) navHeader.findViewById(R.id.Client_email_id_from_request);
         imgProfile = (ImageView) navHeader.findViewById(R.id.imageView_profile);
+        reloadButtonOnNavHeader = (ImageView) navHeader.findViewById(R.id.reload_nav_header_image);
+
+
+        //adding reload functionality to the nav header
+        reloadButtonOnNavHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refresh(MainActivity.this);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        //Setup the navigation logout button.
+        logoutButtonNavigation = (LinearLayout) navigationView
+                .findViewById(R.id.navigation_logout_main);
+        logoutButtonNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Logout manager
+                //Show an alert dialog box before logging out
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Are you sure?")
+                        .setMessage("Want to Logout?")
+                        .setPositiveButton("LOGOUT", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Logout
+                                SalesforceSDKManager.getInstance().logout(MainActivity.this);
+                            }
+                        })
+                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(R.drawable.ic_alert_exclamation_mark)
+                        .show();
+                //close the drawer after click
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
 
         //Get tabs
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -189,56 +237,6 @@ public class MainActivity extends AppCompatActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-        task_detail_layout_page = (LinearLayout) findViewById(R.id.task_detail_layout_page);
-        task_detail_layout_page.setVisibility(View.GONE);
-
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-            //Handles the logout action
-            //Show an alert dialog box before logging out
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("Are you sure?")
-                    .setMessage("Want to Logout?")
-                    .setPositiveButton("LOGOUT", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //Logout
-                            SalesforceSDKManager.getInstance().logout(MainActivity.this);
-                        }
-                    })
-                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // do nothing
-                        }
-                    })
-                    .setIcon(R.drawable.ic_alert_exclamation_mark)
-                    .show();
-            return true;
-        } else if (id == R.id.action_refresh) {
-
-
-            //Handles refresh action
-            return refresh(MainActivity.this);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -289,7 +287,6 @@ public class MainActivity extends AppCompatActivity
                     .show();
         }
     }
-
 
 
     //Method to connect to the GOOGLE API for location and routes
@@ -545,7 +542,7 @@ public class MainActivity extends AppCompatActivity
      *
      * @param client
      */
-    private void onResumeClient(RestClient client) {
+    private void onResumeClient(final RestClient client) {
 
         // Keeping reference to rest client
         this.client = client;
@@ -560,13 +557,61 @@ public class MainActivity extends AppCompatActivity
             // Show everything
             findViewById(R.id.root).setVisibility(View.VISIBLE);
 
-
             if (CommanUtils.isNetworkAvailable(this)) {
                 Snackbar.make((View) findViewById(R.id.root), R.string.online,
                         Snackbar.LENGTH_SHORT)
                         .setAction(R.string.action, null).show();
-                Picasso.with(getBaseContext()).load(getString(R.string.photoUrl))
-                        .into(imgProfile);
+
+                /*Picasso.with(getBaseContext())
+                .load("https://media.licdn.com/mpr/mpr/shrinknp_200_200/
+                AAEAAQAAAAAAAATDAAAAJGRiODBlMTE5LTA1NDAtNGE5MS04OTkyLWQwNjUwYjY2OWVkMw.jpg")
+                        .into(imgProfile);*/
+
+                //An Async task to do in Backround thread
+                //Creates a HTTP Connection with the header as Authetication Token as Bearer
+                //and download the Image, saving it as a Bitmap
+                new AsyncTask<String, Void, Void>() {
+
+                    //Bitmap to hold the downloaded Image from Salesforce
+                    Bitmap myBitmap;
+
+                    //Background thread
+                    @Override
+                    protected Void doInBackground(String... params) {
+                        try {
+                            //URL to connect
+                            java.net.URL url = new java.net.URL(params[0]);
+                            //Connection Request
+                            HttpURLConnection connection =
+                                    (HttpURLConnection) url.openConnection();
+                            //set the Auth Token in header
+                            connection.setRequestProperty("Authorization",
+                                    "Bearer " + client.getAuthToken());
+                            connection.setDoInput(true);
+                            //make the final connection
+                            connection.connect();
+                            InputStream input = connection.getInputStream();
+                            //save the image
+                            myBitmap = BitmapFactory.decodeStream(input);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            return null;
+                        }
+                        return null;
+                    }
+
+
+                    //method to do onPost Exectuion i.e. to update changes on UI
+                    @Override
+                    protected void onPostExecute(Void aVoid) {
+                        super.onPostExecute(aVoid);
+                        //set the Image
+                        imgProfile.setImageBitmap(myBitmap);
+                        Log.i("sth", "" + (myBitmap == null));
+                    }
+                }.execute(client.getClientInfo().photoUrl);//execute supplies the Image URL
+
+
             } else {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle(R.string.no_network_title)
@@ -602,7 +647,6 @@ public class MainActivity extends AppCompatActivity
 
         //Show the progress dialog box when the data loads
         final ProgressDialog mProgressDialog;
-
 
 
         mProgressDialog = new ProgressDialog(MainActivity.this);
@@ -655,6 +699,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
     /**
      * method to update the fetched data on the UI
      */
@@ -770,7 +815,9 @@ public class MainActivity extends AppCompatActivity
                 }
             });
         } else {
-            setupViewPager(viewPager);
+            ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+            adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
+            adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
         }
     }
 
@@ -793,31 +840,29 @@ public class MainActivity extends AppCompatActivity
      * @param view
      */
     public void getTaskDetails(View view) {
-
-
-
-        task_detail_layout_page.setVisibility(View.VISIBLE);
-       /* TextView Name = (TextView) view.findViewById(R.id.title_name_task);
+        TextView Name = (TextView) view.findViewById(R.id.title_name_task);
         Name.getText();
         for (Record r : res.getRecords()) {
             if (r.getName().equalsIgnoreCase(Name.getText().toString())) {
                 Intent i = new Intent(getBaseContext(), TaskDetailsActivity.class);
-                if (i != null)
+                if (i != null) {
                     i.putExtra(getString(R.string.nameOfTask), r.getName());
-                i.putExtra(getString(R.string.descOfTask), r.getDescription__c());
-                i.putExtra(getString(R.string.dueDate), r.getDue_Date__c());
-                i.putExtra(getString(R.string.addressOfTask), r.getAddress__c());
-                i.putExtra(getString(R.string.contactInfoOftask), r.getPhone_Number__c());
-                i.putExtra(getString(R.string.statusOfTask), r.getStatus__c());
-                i.putExtra(getString(R.string.taskID), r.getId());
-                i.putExtra(getString(R.string.taskType), r.getAttributes().getType());
-                startActivity(i);
+                    i.putExtra(getString(R.string.descOfTask), r.getDescription__c());
+                    i.putExtra(getString(R.string.dueDate), r.getDue_Date__c());
+                    i.putExtra(getString(R.string.addressOfTask), r.getAddress__c());
+                    i.putExtra(getString(R.string.contactInfoOftask), r.getPhone_Number__c());
+                    i.putExtra(getString(R.string.statusOfTask), r.getStatus__c());
+                    i.putExtra(getString(R.string.taskID), r.getId());
+                    i.putExtra(getString(R.string.taskType), r.getAttributes().getType());
+                    i.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(i);
+                }
             }
-        }*/
+        }
     }
 
     /**
-     * refresh the task acticity
+     * refresh the task activity
      *
      * @param ctx
      * @return
@@ -846,8 +891,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    //method to close the detail layout
-    public void closeTheTaskDetails(View view) {
-        task_detail_layout_page.setVisibility(View.GONE);
-    }
 }

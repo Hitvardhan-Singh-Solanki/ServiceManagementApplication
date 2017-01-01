@@ -12,6 +12,10 @@
     <string-array name="oauthScopes">
         <item>api</item>
     </string-array>
+    <string-array name="status_array">
+        <item>Completed</item>
+        <item>Not Completed</item>
+    </string-array>
     <attr format="reference" name="MediaRouteControllerWindowBackground"/>
     <attr format="reference" name="castExpandedControllerToolbarStyle"/>
     <attr format="reference" name="drawerArrowStyle"/>
@@ -1454,7 +1458,7 @@
     <string name="dueDate">due_date</string>
     <string name="fetch_accounts_button">Fetch Accounts</string>
     <string name="fetch_contacts_button">Fetch Contacts</string>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBB4Ryb2PjvJZcOBfFebY1NNMh0EoSFgNYHVS</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBB4Ryb2PjvJZcOBfFebY1NNMh0EoSFgNY</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="library_AndroidIconics_author">Mike Penz</string>
     <string name="library_AndroidIconics_authorWebsite">http://mikepenz.com/</string>
@@ -1549,12 +1553,12 @@
     <string name="oauth_display_type">touch</string>
     <string name="online">You are Online</string>
     <string name="pending_task_title">Pending Task</string>
-    <string name="photoUrl">https://media.licdn.com/mpr/mpr/shrinknp_200_200/
-        AAEAAQAAAAAAAATDAAAAJGRiODBlMTE5LTA1NDAtNGE5MS04OTkyLWQwNjUwYjY2OWVkMw.jpg</string>
+    <string name="photoUrl">https://c.ap2.content.force.com/profilephoto/72928000000dITS/F</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
-    <string name="remoteAccessConsumerKey">3MVG9ZL0ppGP5UrBJT2pAfJYaqusKpt11YHUbV_KyFcjzLR
-        .rf5IceS3IrL9FdGL6HRg.lTypaCClDjb6IQ5d</string>
+    <string name="remoteAccessConsumerKey">
+        "3MVG9ZL0ppGP5UrBJT2pAfJYaqusKpt11YHUbV_KyFcjzLR.rf5IceS3IrL9FdGL6HRg.lTypaCClDjb6IQ5d"
+    </string>
     <string name="search_menu_title">Search</string>
     <string name="setDate">Please set the date!</string>
     <string name="sf__access_token_revoked">Your access token has been revoked by the administrator. You will now be logged out.</string>
@@ -1615,11 +1619,12 @@
     <string name="sf__ssl_unknown_error">Unknown Error</string>
     <string name="sf__ssl_untrusted">Untrusted Certificate Authority</string>
     <string name="sf__switch_account">Switch Account</string>
-    <string name="soql_query">SELECT Id, Name, Due_Date__c, Description__c, Status__c, Email_Id__c,
-        Location__c,Phone_Number__c, Address__c  FROM Task__c</string>
+    <string name="soql_query">
+        "SELECT Id, Name, Due_Date__c, Description__c, Status__c, Email_Id__c, Location__c, Phone_Number__c, Address__c  FROM Task__c"</string>
     <string name="statusField">Status__c</string>
     <string name="statusOfTask">statusOfTask</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stauts_promt">Status</string>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
     <string name="suspendedConnection">Connection Denied</string>
@@ -3875,5 +3880,10 @@
     <style name="Widget.MediaRouter.MediaRouteButton" parent="Widget.AppCompat.ActionButton">
         <item name="android:contentDescription">@string/mr_button_content_description</item>
         <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_dark</item>
+    </style>
+    <style name="noActionBarDialog" parent="Theme.AppCompat.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowMinWidthMajor">99%</item>
+        <item name="android:windowMinWidthMinor">99%</item>
     </style>
 </resources>

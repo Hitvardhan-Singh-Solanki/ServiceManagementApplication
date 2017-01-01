@@ -1,6 +1,7 @@
 package com.hitvardhan.project_app.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,17 +15,21 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hitvardhan.project_app.R;
+import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
@@ -40,10 +45,12 @@ import static com.hitvardhan.project_app.activity.MainActivity.client;
  * Created by Hitvardhan on 12-12-2016.
  * To show Task Details and change the status
  */
-public class TaskDetailsActivity extends ActionBarActivity {
+public class TaskDetailsActivity extends AppCompatActivity{
+
+
 
     //variable declaration
-    private String idOfTask,
+    private String
             usersNameString,
             statusOfTaskString,
             descOfTaskString,
@@ -64,6 +71,7 @@ public class TaskDetailsActivity extends ActionBarActivity {
     private Map<String, Object> fields;
     private Gson gson;
     private Response res;
+    private ImageView closeButton;
 
 
     @Override
@@ -118,18 +126,15 @@ public class TaskDetailsActivity extends ActionBarActivity {
         getAddressView = (TextView) findViewById(R.id.AddressOfTask);
         getStatusOfTaskView = (TextView) findViewById(R.id.Status);
         updatedStatusView = (TextView) findViewById(R.id.Status);
-
-
-        // toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMain1);
-        setSupportActionBar(toolbar);
-
-        // add back arrow to toolbar
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-
+        closeButton = (ImageView) findViewById(R.id.close_task_detail_cross);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils
+                        .loadAnimation(getBaseContext(), R.anim.cross_animation));
+                onBackPressed();
+            }
+        });
 
         //bind the data to the view
         if (usersNameString != null) {
@@ -190,7 +195,7 @@ public class TaskDetailsActivity extends ActionBarActivity {
     }
 
     public void ChangeStatusCall() {
-        fields.put(getString(R.string.statusField), getString(R.string.completed));
+        fields.put("Status__c", "Completed");
 
         new AlertDialog.Builder(this)
                 .setTitle(R.string.updateTitle)
@@ -199,7 +204,7 @@ public class TaskDetailsActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //UPDATE on POSITIVE RESPONSE
                         try {
-                            saveData(idOfTask, fields);
+                            saveData(idOfTaskString, fields);
 
                         } catch (Exception ex) {
                             ex.printStackTrace();

@@ -93,10 +93,7 @@
         <activity
             android:name="com.hitvardhan.project_app.activity.TaskDetailsActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            android:theme="@style/noActionBarDialog" >
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for

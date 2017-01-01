@@ -19,18 +19,20 @@ public final class R {
         public static final int abc_slide_in_top=0x7f040007;
         public static final int abc_slide_out_bottom=0x7f040008;
         public static final int abc_slide_out_top=0x7f040009;
-        public static final int design_appbar_state_list_animator=0x7f04000a;
-        public static final int design_bottom_sheet_slide_in=0x7f04000b;
-        public static final int design_bottom_sheet_slide_out=0x7f04000c;
-        public static final int design_fab_in=0x7f04000d;
-        public static final int design_fab_out=0x7f04000e;
-        public static final int design_snackbar_in=0x7f04000f;
-        public static final int design_snackbar_out=0x7f040010;
+        public static final int cross_animation=0x7f04000a;
+        public static final int design_appbar_state_list_animator=0x7f04000b;
+        public static final int design_bottom_sheet_slide_in=0x7f04000c;
+        public static final int design_bottom_sheet_slide_out=0x7f04000d;
+        public static final int design_fab_in=0x7f04000e;
+        public static final int design_fab_out=0x7f04000f;
+        public static final int design_snackbar_in=0x7f040010;
+        public static final int design_snackbar_out=0x7f040011;
     }
     public static final class array {
         public static final int cast_expanded_controller_default_control_buttons=0x7f0e0000;
         public static final int cast_mini_controller_default_control_buttons=0x7f0e0001;
         public static final int oauthScopes=0x7f0e0002;
+        public static final int status_array=0x7f0e0003;
     }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -4913,6 +4915,7 @@ containing a value of this type.
         public static final int classic=0x7f0f0099;
         public static final int clip_horizontal=0x7f0f0055;
         public static final int clip_vertical=0x7f0f0056;
+        public static final int close_task_detail_cross=0x7f0f0186;
         public static final int close_task_id=0x7f0f0109;
         public static final int collapseActionView=0x7f0f0073;
         public static final int contact=0x7f0f0068;
@@ -5196,7 +5199,7 @@ containing a value of this type.
         public static final int task_description_detail123=0x7f0f010b;
         public static final int task_detail_layout_page=0x7f0f0107;
         public static final int task_list_recycler_view=0x7f0f0106;
-        public static final int task_name_detail=0x7f0f0186;
+        public static final int task_name_detail=0x7f0f0185;
         public static final int task_name_detail123=0x7f0f0108;
         public static final int terrain=0x7f0f0071;
         public static final int test=0x7f0f008b;
@@ -5217,7 +5220,6 @@ containing a value of this type.
         public static final int todays_task_empty_view=0x7f0f0111;
         public static final int toolbar=0x7f0f00d4;
         public static final int toolbarMain=0x7f0f00d0;
-        public static final int toolbarMain1=0x7f0f0185;
         public static final int top=0x7f0f0052;
         public static final int topPanel=0x7f0f00ad;
         public static final int touch_outside=0x7f0f00f8;
@@ -5650,26 +5652,27 @@ containing a value of this type.
         public static final int statusField=0x7f080110;
         public static final int statusOfTask=0x7f080111;
         public static final int status_bar_notification_info_overflow=0x7f080066;
+        public static final int stauts_promt=0x7f080112;
         public static final int store_picture_message=0x7f080067;
         public static final int store_picture_title=0x7f080068;
-        public static final int suspendedConnection=0x7f080112;
-        public static final int tagmanager_preview_dialog_button=0x7f080113;
-        public static final int tagmanager_preview_dialog_message=0x7f080114;
-        public static final int tagmanager_preview_dialog_title=0x7f080115;
-        public static final int taskID=0x7f080116;
-        public static final int taskList=0x7f080117;
-        public static final int taskType=0x7f080118;
-        public static final int task_location=0x7f080119;
-        public static final int todays_task_title=0x7f08011a;
-        public static final int update=0x7f08011b;
-        public static final int updateMessage=0x7f08011c;
-        public static final int updateTitle=0x7f08011d;
-        public static final int updatedTitle=0x7f08011e;
-        public static final int user_id=0x7f08011f;
+        public static final int suspendedConnection=0x7f080113;
+        public static final int tagmanager_preview_dialog_button=0x7f080114;
+        public static final int tagmanager_preview_dialog_message=0x7f080115;
+        public static final int tagmanager_preview_dialog_title=0x7f080116;
+        public static final int taskID=0x7f080117;
+        public static final int taskList=0x7f080118;
+        public static final int taskType=0x7f080119;
+        public static final int task_location=0x7f08011a;
+        public static final int todays_task_title=0x7f08011b;
+        public static final int update=0x7f08011c;
+        public static final int updateMessage=0x7f08011d;
+        public static final int updateTitle=0x7f08011e;
+        public static final int updatedTitle=0x7f08011f;
+        public static final int user_id=0x7f080120;
         public static final int wallet_buy_button_place_holder=0x7f080069;
-        public static final int welcome=0x7f080120;
-        public static final int welcome_string=0x7f080121;
-        public static final int yes_response=0x7f080122;
+        public static final int welcome=0x7f080121;
+        public static final int welcome_string=0x7f080122;
+        public static final int yes_response=0x7f080123;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0a00b5;
@@ -6187,6 +6190,7 @@ containing a value of this type.
         public static final int Widget_MediaRouter_ControllerText_Title_Light=0x7f0a01eb;
         public static final int Widget_MediaRouter_Light_MediaRouteButton=0x7f0a01ec;
         public static final int Widget_MediaRouter_MediaRouteButton=0x7f0a01ed;
+        public static final int noActionBarDialog=0x7f0a01ee;
     }
     public static final class xml {
         public static final int app_restrictions=0x7f060000;

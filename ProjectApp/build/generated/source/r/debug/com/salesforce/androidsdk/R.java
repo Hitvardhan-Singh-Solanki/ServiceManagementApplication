@@ -18,13 +18,13 @@ public final class R {
 		public static final int abc_slide_in_top = 0x7f040007;
 		public static final int abc_slide_out_bottom = 0x7f040008;
 		public static final int abc_slide_out_top = 0x7f040009;
-		public static final int design_appbar_state_list_animator = 0x7f04000a;
-		public static final int design_bottom_sheet_slide_in = 0x7f04000b;
-		public static final int design_bottom_sheet_slide_out = 0x7f04000c;
-		public static final int design_fab_in = 0x7f04000d;
-		public static final int design_fab_out = 0x7f04000e;
-		public static final int design_snackbar_in = 0x7f04000f;
-		public static final int design_snackbar_out = 0x7f040010;
+		public static final int design_appbar_state_list_animator = 0x7f04000b;
+		public static final int design_bottom_sheet_slide_in = 0x7f04000c;
+		public static final int design_bottom_sheet_slide_out = 0x7f04000d;
+		public static final int design_fab_in = 0x7f04000e;
+		public static final int design_fab_out = 0x7f04000f;
+		public static final int design_snackbar_in = 0x7f040010;
+		public static final int design_snackbar_out = 0x7f040011;
 	}
 	public static final class array {
 		public static final int oauthScopes = 0x7f0e0002;
