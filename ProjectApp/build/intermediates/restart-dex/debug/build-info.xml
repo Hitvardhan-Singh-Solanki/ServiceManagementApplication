@@ -5,40 +5,33 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="433564135916606"
+    timestamp="494655365575905"
     token="2112899474766603816"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1217" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="22" />
+        duration="0" />
     <task
         name="verifier"
         duration="0" />
 
     <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
-        type="DEX" />
+        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="433470167107965"
-        verifier="MANIFEST_FILE_CHANGE" >
+        timestamp="494655365575905"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="433564135916606"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

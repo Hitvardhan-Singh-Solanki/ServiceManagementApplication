@@ -44,12 +44,12 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_logout_symbol.png",
-        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\ic_logout_symbol.png"
-    },
-    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_collapse.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\24.0.0\\res\\drawable\\ic_collapse.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_logout_symbol.png",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\ic_logout_symbol.png"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_alert_exclamation_mark.png",
@@ -64,12 +64,12 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_badge.xml"
     },
     {
-        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_on_light.xml",
-        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\24.0.0\\res\\drawable\\mr_ic_media_route_on_light.xml"
-    },
-    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_on_light.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\24.0.0\\res\\drawable\\mr_ic_media_route_on_light.xml"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_skip_prev.xml",
@@ -88,12 +88,12 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\ic_detail_calendar.png"
     },
     {
-        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
-        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.0.1\\res\\drawable\\common_google_signin_btn_text_light.xml"
-    },
-    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_shadow_bottom.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_shadow_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.0.1\\res\\drawable\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_shadow_right.9.png",

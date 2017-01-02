@@ -599,8 +599,6 @@ public class MainActivity extends AppCompatActivity
                         }
                         return null;
                     }
-
-
                     //method to do onPost Exectuion i.e. to update changes on UI
                     @Override
                     protected void onPostExecute(Void aVoid) {
@@ -610,8 +608,6 @@ public class MainActivity extends AppCompatActivity
                         Log.i("sth", "" + (myBitmap == null));
                     }
                 }.execute(client.getClientInfo().photoUrl);//execute supplies the Image URL
-
-
             } else {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle(R.string.no_network_title)
