@@ -22,6 +22,8 @@ import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -56,7 +58,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
 import com.hitvardhan.project_app.AlertDialogueUtils.AlertDialogPositiveCallback;
+import com.hitvardhan.project_app.UserFragment;
+import com.hitvardhan.project_app.fragment.ServiceEngineer;
 import com.hitvardhan.project_app.utils.LocationPermission;
+import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
 import com.salesforce.androidsdk.rest.ClientManager;
@@ -87,20 +92,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.internal.Utils;
 
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 
 public class MainActivity extends AppCompatActivity
-        implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        LocationListener,
+        implements
         NavigationView.OnNavigationItemSelectedListener {
 
 
     //Variable Declaration
-    public static RestClient client;
+    public RestClient client;
     private Gson gson = new Gson();
     public static Response res;
     private PasscodeManager passcodeManager;
@@ -122,6 +125,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private LinearLayout logoutButtonNavigation;
     private ImageView reloadButtonOnNavHeader;
+    private Fragment currentFragment;
+    private Activity thisActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,9 +135,10 @@ public class MainActivity extends AppCompatActivity
 
         //implemented butterKnife
         ButterKnife.bind(this);
-
+        thisActivity = this;
         // Setup view
         setContentView(R.layout.main_activity_with_navigation);
+
 
         //Setup Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMain);
@@ -179,7 +185,17 @@ public class MainActivity extends AppCompatActivity
         reloadButtonOnNavHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refresh(MainActivity.this);
+                CommanUtils.refresh(thisActivity, thisActivity.findViewById(R.id.main_root), client, new NetworkCallbackInterface() {
+                    @Override
+                    public void onSuccess(Response response) {
+                        ((ServiceEngineer)currentFragment).updateDataOnUi(response);
+                    }
+
+                    @Override
+                    public void onError() {
+                        //do nothing
+                    }
+                });
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -214,188 +230,19 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        //Get tabs
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        //Get the layout for each tab
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-
-
-        //Check for availability of playservices
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            LocationPermission.checkLocationPermission(MainActivity.this);
-        }
-
-
-        // Initializing
-        markerPoints = new ArrayList<>();
-
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
     }
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-
-        //Initialize Google Play Services
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
-            }
-        } else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
-
-
-        if (CommanUtils.isNetworkAvailable(getBaseContext())) {
-            try {
-                getDetailsofTask();
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        } else {
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle(R.string.no_network_title)
-                    .setMessage(R.string.no_network_desc)
-                    .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .setIcon(R.drawable.ic_no_network)
-                    .show();
-        }
-    }
-
-
-    //Method to connect to the GOOGLE API for location and routes
-    protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-        mGoogleApiClient.connect();
-    }
-
-    //Get the realtime location in the application
-    @Override
-    public void onConnected(Bundle bundle) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
-                    mLocationRequest, this);
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle(R.string.connectionSuspension)
-                .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setIcon(R.drawable.ic_alert_exclamation_mark)
-                .show();
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-        if (mCurrLocationMarker != null) {
-            mCurrLocationMarker.remove();
-        }
-        //Place current location marker
-        latLngMyLoc = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLngMyLoc);
-        markerOptions.title("Your Location");
-        markerOptions.icon(BitmapDescriptorFactory
-                .fromResource(R.drawable.ic_marker_main_2_1));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-        //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngMyLoc));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
-        //stop location updates
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        }
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle(R.string.suspendedConnection)
-                .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setIcon(R.drawable.ic_alert_exclamation_mark)
-                .show();
-    }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    // permission was granted. Do the
-                    // contacts-related task you need to do.
-                    if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION)
-                            == PackageManager.PERMISSION_GRANTED) {
-                        if (mGoogleApiClient == null) {
-                            buildGoogleApiClient();
-                        }
-                        mMap.setMyLocationEnabled(true);
-                    }
-                } else {
-                    // Permission denied, Disable
-                    // the functionality that depends
-                    // on this permission.
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
-                }
-                return;
-            }
-        }
+        currentFragment.onRequestPermissionsResult(requestCode,permissions, grantResults);
     }
 
     @Override
     public void onResume() {
 
         // Hide everything until we are logged in
-        findViewById(R.id.root).setVisibility(View.INVISIBLE);
+       // findViewById(R.id.root).setVisibility(View.INVISIBLE);
 
         super.onResume();
         passcodeChallenge();
@@ -450,7 +297,17 @@ public class MainActivity extends AppCompatActivity
             //Handles refresh action
             if (CommanUtils.isNetworkAvailable(getBaseContext())) {
                 try {
-                    getDetailsofTask();
+                    CommanUtils.getDetailsofTask(thisActivity, client, new NetworkCallbackInterface() {
+                        @Override
+                        public void onSuccess(Response response) {
+                            ((ServiceEngineer)currentFragment).updateDataOnUi(response);
+                        }
+
+                        @Override
+                        public void onError() {
+                            //do nothing
+                        }
+                    });
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -555,12 +412,30 @@ public class MainActivity extends AppCompatActivity
 
 
             // Show everything
-            findViewById(R.id.root).setVisibility(View.VISIBLE);
+           // findViewById(R.id.root).setVisibility(View.VISIBLE);
 
             if (CommanUtils.isNetworkAvailable(this)) {
-                Snackbar.make((View) findViewById(R.id.root), R.string.online,
+                Snackbar.make((View) findViewById(R.id.main_root), R.string.online,
                         Snackbar.LENGTH_SHORT)
                         .setAction(R.string.action, null).show();
+
+
+
+
+
+
+                if(client.getClientInfo().firstName.equalsIgnoreCase("Hitvardhan")) {
+                    //Imflate a fragment based on the user logged in
+                    ServiceEngineer mFragObj = new ServiceEngineer();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frm_container, mFragObj, "");
+                    transaction.commit();
+                    currentFragment = mFragObj;
+                }
+
+
+
+
 
                 /*Picasso.with(getBaseContext())
                 .load("https://media.licdn.com/mpr/mpr/shrinknp_200_200/
@@ -623,268 +498,10 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    /**
-     * method to call the connection from the salesforce
-     *
-     * @throws Exception
-     */
-    public void getDetailsofTask() throws Exception {
-        getDetailFromSalesforce(getString(R.string.soql_query));
-    }
-
-    /**
-     * Establish a main connection from the salesforce and fetch data from the server
-     * The real magic happes
-     *
-     * @param soql
-     * @throws Exception
-     */
-    public void getDetailFromSalesforce(String soql) throws Exception {
-
-        //Show the progress dialog box when the data loads
-        final ProgressDialog mProgressDialog;
-
-
-        mProgressDialog = new ProgressDialog(MainActivity.this);
-        mProgressDialog.setMessage("Fetching data...");
-        mProgressDialog.show();
-
-        //make a request for query to salesfoce
-        RestRequest restRequest = RestRequest.getRequestForQuery(ApiVersionStrings
-                .getVersionNumber(this), soql);
-
-        //call the async method
-        client.sendAsync(restRequest, new AsyncRequestCallback() {
-            @Override
-            public void onSuccess(RestRequest request, final RestResponse result) {
-                result.consumeQuietly(); // consume before going back to main thread
-                try {
-                    String record = result.asJSONObject().toString();
-                    res = gson.fromJson(record, Response.class);
-                    Log.e("RESPONSE FROM SERVER", record);
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    Log.d("Exception", String.valueOf(ex));
-                }
-                if (mProgressDialog != null && mProgressDialog.isShowing())
-                    mProgressDialog.dismiss();
-
-                //finally update the changes to the UI
-                updateDataOnUi();
-            }
-
-            @Override
-            public void onError(final Exception exception) {
-                if (mProgressDialog != null && mProgressDialog.isShowing())
-                    mProgressDialog.dismiss();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setTitle(R.string.no_network_title)
-                                .setMessage(R.string.no_network_desc)
-                                .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                    }
-                                })
-                                .setIcon(R.drawable.ic_no_network)
-                                .show();
-                    }
-                });
-            }
-        });
-    }
-
-    /**
-     * method to update the fetched data on the UI
-     */
-    private void updateDataOnUi() {
-        if (res != null) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-
-                    //creating a bundle
-                    Bundle bundle = new Bundle();
-                    //adding data to bundle
-                    bundle.putSerializable(getString(R.string.taskList), res);
-
-                    //Creating a new fragment of TodayTask
-                    TodayTaskListFragment mFragementToday = new TodayTaskListFragment();
-                    //Set the bundle data to the fragment
-                    mFragementToday.setArguments(bundle);
-
-                    //Creating the new fragment of MoreTask
-                    MoreTaskListFragment mFragementMore = new MoreTaskListFragment();
-                    //setting uo the bundle data of more task
-                    mFragementMore.setArguments(bundle);
-
-                    // setupViewPager(viewPager);
-                    ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-                    //adding the fragment for todays tasks
-                    adapter.addFragment(mFragementToday,
-                            getString(R.string.todays_task_title));
-
-                    //adding the fragment for pending tasks
-                    adapter.addFragment(mFragementMore, getString(R.string.pending_task_title));
-
-                    //finally setting the adapter
-                    viewPager.setAdapter(adapter);
-
-                    //Initialization of the location list
-                    lattitueOfTasks = new ArrayList<Double>();
-                    longitudesOfTasks = new ArrayList<Double>();
-                    latLngOfTasks = new ArrayList<LatLng>();
-
-                    for (Record r : res.getRecords()) {
-                        Double Latitude = r.getLocation__c().getLatitude();
-                        Double Longitude = r.getLocation__c().getLongitude();
-                        LatLng markerTasks = new LatLng(Latitude, Longitude);
-                        LatLng inListElements = new LatLng(Latitude, Longitude);
-
-                        lattitueOfTasks.add(Latitude);
-                        longitudesOfTasks.add(Longitude);
-                        latLngOfTasks.add(inListElements);
-
-                        if (r.getDue_Date__c() != null) {
-                            if (!r.getDue_Date__c().trim()
-                                    .equalsIgnoreCase(CommanUtils.getTodaysDate()
-                                            .trim())) {
-                                mMap.addMarker(new
-                                        MarkerOptions().position(markerTasks)
-                                        .title(r.getName() + getString(R.string.task_location))
-                                        .icon(BitmapDescriptorFactory
-                                                .fromResource(R.drawable.ic_marker_pending_1)));
-                            } else {
-                                mMap.addMarker(new
-                                        MarkerOptions().position(markerTasks)
-                                        .title(r.getName() + getString(R.string.task_location))
-                                        .icon(BitmapDescriptorFactory
-                                                .fromResource(R.drawable.ic_marker_today_1)));
-                            }
-                        }
-                        mMap.setBuildingsEnabled(true);
-                        mMap.setTrafficEnabled(true);
-
-                        //ROUTE BUILDING
-
-                        //Adding LAT LONG 0f my device location
-                        markerPoints.add(latLngMyLoc);
-
-
-                        //pass the 1th param of LATLNG into the argument
-                        //TODO: Make the shortest route between the given markers
-                        markerPoints.add(latLngOfTasks.get(0));
-
-
-                        // Creating MarkerOptions
-                        MarkerOptions options = new MarkerOptions();
-
-                        // Setting the position of the marker
-                        if (latLngMyLoc != null)
-                            options.position(latLngMyLoc);
-
-                        // Checks, whether start and end locations are captured
-                        if (markerPoints.size() >= 2) {
-                            LatLng origin = markerPoints.get(0);
-                            LatLng dest = markerPoints.get(1);
-
-                            // Getting URL to the Google Directions API
-                            if (origin != null && dest != null) {
-                                String url = getRouteLatlngURL.getUrl(origin, dest);
-                                FetchUrl FetchUrl = new FetchUrl();
-
-                                // Start downloading json data from Google Directions API
-                                FetchUrl.execute(url);
-                                //move map camera
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
-                                mMap.getUiSettings().setZoomControlsEnabled(true);
-                                mMap.getUiSettings().setAllGesturesEnabled(true);
-                                mMap.setTrafficEnabled(true);
-                                mMap.setBuildingsEnabled(true);
-                            }
-                        }
-                    }
-                }
-            });
-        } else {
-            ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-            adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
-            adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
-        }
-    }
-
-    /**
-     * setup the view pager to show the Recycler View
-     *
-     * @param viewPager
-     */
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
-        adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
-        viewPager.setAdapter(adapter);
+    public void updateUi(Response response) {
+        ((ServiceEngineer)currentFragment).updateDataOnUi(response);
     }
 
 
-    /**
-     * send details to task_details_activity
-     *
-     * @param view
-     */
-    public void getTaskDetails(View view) {
-        TextView Name = (TextView) view.findViewById(R.id.title_name_task);
-        Name.getText();
-        for (Record r : res.getRecords()) {
-            if (r.getName().equalsIgnoreCase(Name.getText().toString())) {
-                Intent i = new Intent(getBaseContext(), TaskDetailsActivity.class);
-                if (i != null) {
-                    i.putExtra(getString(R.string.nameOfTask), r.getName());
-                    i.putExtra(getString(R.string.descOfTask), r.getDescription__c());
-                    i.putExtra(getString(R.string.dueDate), r.getDue_Date__c());
-                    i.putExtra(getString(R.string.addressOfTask), r.getAddress__c());
-                    i.putExtra(getString(R.string.contactInfoOftask), r.getPhone_Number__c());
-                    i.putExtra(getString(R.string.statusOfTask), r.getStatus__c());
-                    i.putExtra(getString(R.string.taskID), r.getId());
-                    i.putExtra(getString(R.string.taskType), r.getAttributes().getType());
-                    i.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(i);
-                }
-            }
-        }
-    }
-
-    /**
-     * refresh the task activity
-     *
-     * @param ctx
-     * @return
-     */
-    public boolean refresh(Activity ctx) {
-        if (CommanUtils.isNetworkAvailable(ctx)) {
-            try {
-                Snackbar.make((View) ctx.findViewById(R.id.root), "You are Online",
-                        Snackbar.LENGTH_SHORT).show();
-                getDetailsofTask();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        } else {
-
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle(R.string.no_network_title)
-                    .setMessage(R.string.no_network_desc)
-                    .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .setIcon(R.drawable.ic_no_network)
-                    .show();
-        }
-        return true;
-    }
 
 }

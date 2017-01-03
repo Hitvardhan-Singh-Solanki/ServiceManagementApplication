@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.hitvardhan.project_app.R.id.toolbar;
-import static com.hitvardhan.project_app.activity.MainActivity.client;
+
 
 /**
  * Created by Hitvardhan on 12-12-2016.
@@ -204,7 +204,7 @@ public class TaskDetailsActivity extends AppCompatActivity{
                     public void onClick(DialogInterface dialog, int which) {
                         //UPDATE on POSITIVE RESPONSE
                         try {
-                            saveData(idOfTaskString, fields);
+                           /* saveData(idOfTaskString, fields);*/
 
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -220,7 +220,7 @@ public class TaskDetailsActivity extends AppCompatActivity{
     }
 
 
-    private void saveData(String id, Map<String, Object> fields) {
+   /* private void saveData(String id, Map<String, Object> fields) {
         RestRequest restRequest;
         try {
             restRequest = RestRequest.getRequestForUpdate(
@@ -257,6 +257,6 @@ public class TaskDetailsActivity extends AppCompatActivity{
             }
         });
     }
-
+*/
 
 }

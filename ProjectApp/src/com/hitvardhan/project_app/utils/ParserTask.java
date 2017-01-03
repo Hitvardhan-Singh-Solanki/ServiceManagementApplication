@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.hitvardhan.project_app.activity.MainActivity.mMap;
+import static com.hitvardhan.project_app.fragment.ServiceEngineer.mMap;
 
 /**
  * A class to parse the Google Places in JSON format

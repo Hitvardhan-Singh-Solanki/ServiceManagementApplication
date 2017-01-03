@@ -27,6 +27,7 @@ import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
+import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class TodayTaskListFragment extends Fragment {
     private TextView EmptyList;
 
     public static List<Record> todaysTaskName;
-
+    private View view;
     private SwipeRefreshLayout mSwipeRefreshLayoutlToday;
 
     public TodayTaskListFragment() {
@@ -57,9 +58,9 @@ public class TodayTaskListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_one, container, false);
+        view = inflater.inflate(R.layout.fragment_one, container, false);
         mRcvTaskListV = (RecyclerView) view.findViewById(R.id.rcv_list_v);
-        EmptyList = (TextView) view.findViewById(R.id.todays_task_empty_view);
+        //EmptyList = (TextView) view.findViewById(R.id.todays_task_empty_view);
         // Inflate the layout for this fragment
         mTaskAdapter = new TaskAdapter(getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -73,7 +74,17 @@ public class TodayTaskListFragment extends Fragment {
         mSwipeRefreshLayoutlToday.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ((MainActivity)getActivity()).refresh(getActivity());
+                CommanUtils.refresh(getActivity(), view, ((MainActivity) getActivity()).client, new NetworkCallbackInterface() {
+                    @Override
+                    public void onSuccess(Response response) {
+
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
                 mSwipeRefreshLayoutlToday.setRefreshing(false);
             }
         });
@@ -109,9 +120,10 @@ public class TodayTaskListFragment extends Fragment {
                     mTaskAdapter.addItem(todaysTaskName);
 
                 //If the list is empty
-                if (mTaskAdapter.getItemCount() < 1) {
+               /* if (mTaskAdapter.getItemCount() < 1) {
                     EmptyList.setVisibility(View.VISIBLE);
-                }
+
+                }*/
 
             }
 

@@ -1,6 +1,7 @@
 package com.hitvardhan.project_app.utils;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
@@ -16,9 +17,16 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.hitvardhan.project_app.AlertDialogueUtils.AlertDialogCallbacks;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
+import com.hitvardhan.project_app.fragment.ServiceEngineer;
+import com.hitvardhan.project_app.response_classes.Response;
+import com.salesforce.androidsdk.rest.ApiVersionStrings;
+import com.salesforce.androidsdk.rest.RestClient;
+import com.salesforce.androidsdk.rest.RestRequest;
+import com.salesforce.androidsdk.rest.RestResponse;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -146,5 +154,110 @@ public class CommanUtils extends Activity{
                 .setPositiveButton(positive, dialogClickListener)
                 .setNegativeButton(negative, dialogClickListener)
                 .show();
+    }
+
+
+    /**
+     * method to call the connection from the salesforce
+     *
+     * @throws Exception
+     */
+    public static void getDetailsofTask(Context context, RestClient client,NetworkCallbackInterface callbackInterface) throws Exception {
+        getDetailFromSalesforce(context,client, context.getString(R.string.soql_query), callbackInterface);
+    }
+
+    /**
+     * Establish a main connection from the salesforce and fetch data from the server
+     * The real magic happes
+     *
+     * @param soql
+     * @throws Exception
+     */
+    public static void getDetailFromSalesforce(final Context context, RestClient client, String soql, final NetworkCallbackInterface callbackInterface) throws Exception {
+
+        //Show the progress dialog box when the data loads
+        final ProgressDialog mProgressDialog;
+
+        mProgressDialog = new ProgressDialog(context);
+        mProgressDialog.setMessage("Fetching data...");
+        mProgressDialog.show();
+
+        //make a request for query to salesfoce
+        RestRequest restRequest = RestRequest.getRequestForQuery(ApiVersionStrings
+                .getVersionNumber(context), soql);
+
+        //call the async method
+        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+            @Override
+            public void onSuccess(RestRequest request, final RestResponse result) {
+                Response res = null;
+                result.consumeQuietly(); // consume before going back to main thread
+                try {
+                    String record = result.asJSONObject().toString();
+                    res = new Gson().fromJson(record, Response.class);
+                    Log.e("RESPONSE FROM SERVER", record);
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    Log.d("Exception", String.valueOf(ex));
+                }
+                if (mProgressDialog != null && mProgressDialog.isShowing())
+                    mProgressDialog.dismiss();
+
+                //finally update the changes to the UI
+                callbackInterface.onSuccess(res);
+            }
+
+            @Override
+            public void onError(final Exception exception) {
+                if (mProgressDialog != null && mProgressDialog.isShowing())
+                    mProgressDialog.dismiss();
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new AlertDialog.Builder(context)
+                                .setTitle(R.string.no_network_title)
+                                .setMessage(R.string.no_network_desc)
+                                .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                })
+                                .setIcon(R.drawable.ic_no_network)
+                                .show();
+                    }
+                });
+                callbackInterface.onError();
+            }
+        });
+    }
+
+    /**
+     * refresh the task activity
+     *
+     * @param ctx
+     * @return
+     */
+    public static boolean refresh(Context ctx,View rootView, RestClient client,NetworkCallbackInterface callbackInterface) {
+        if (CommanUtils.isNetworkAvailable(ctx)) {
+            try {
+                Snackbar.make(rootView, "You are Online",
+                        Snackbar.LENGTH_SHORT).show();
+                getDetailsofTask( ctx,  client, callbackInterface);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+
+            new AlertDialog.Builder(ctx)
+                    .setTitle(R.string.no_network_title)
+                    .setMessage(R.string.no_network_desc)
+                    .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .setIcon(R.drawable.ic_no_network)
+                    .show();
+        }
+        return true;
     }
 }

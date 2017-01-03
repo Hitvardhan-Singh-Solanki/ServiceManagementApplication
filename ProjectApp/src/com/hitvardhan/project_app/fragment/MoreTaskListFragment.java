@@ -24,6 +24,7 @@ import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
+import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class MoreTaskListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_one, container, false);
+        final View view = inflater.inflate(R.layout.fragment_one, container, false);
 
         EmptyListMore = (TextView) view.findViewById(R.id.more_task_empty_view);
 
@@ -78,7 +79,18 @@ public class MoreTaskListFragment extends Fragment {
         mSwipeRefreshLayoutl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ((MainActivity)getActivity()).refresh(getActivity());
+                CommanUtils.refresh(getActivity(), view, ((MainActivity) getActivity()).client, new NetworkCallbackInterface() {
+                    @Override
+                    public void onSuccess(Response response) {
+                        ((MainActivity)getActivity()).updateUi(response);
+                        //Todo:destroy this fragment
+                    }
+
+                    @Override
+                    public void onError() {
+                        //do nothing
+                    }
+                });
                 mSwipeRefreshLayoutl.setRefreshing(false);
             }
         });
