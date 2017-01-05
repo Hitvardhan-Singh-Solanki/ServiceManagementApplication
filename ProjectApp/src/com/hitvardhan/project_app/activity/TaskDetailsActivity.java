@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,85 +40,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.hitvardhan.project_app.R.id.toolbar;
-
+import static com.hitvardhan.project_app.fragment.ServiceEngineer.client;
 
 /**
  * Created by Hitvardhan on 12-12-2016.
  * To show Task Details and change the status
  */
-public class TaskDetailsActivity extends AppCompatActivity{
-
-
-
+public class TaskDetailsActivity extends AppCompatActivity {
     //variable declaration
-    private String
-            usersNameString,
-            statusOfTaskString,
-            descOfTaskString,
-            dueDateString,
-            contactNumberString,
-            addressOfTaskString,
-            idOfTaskString,
-            typeOfObjectString;
-
-    private TextView getStatusOfTaskView,
-            updatedStatusView,
+    private String idOfTaskString;
+    private TextView
+            getStatusOfTaskView,
             getNameView,
             getDescView,
             getDueDateView,
             getContactNumberView,
             getAddressView;
-
+    private Button changeStatusButton;
     private Map<String, Object> fields;
     private Gson gson;
     private Response res;
     private ImageView closeButton;
-
+    private Record getRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.task_details);
-
-        //Get the intent form the previous activity
-        Intent getTheNameIntent = getIntent();
-
         //Initialization
         fields = new HashMap<String, Object>();
         gson = new Gson();
-        res = new Response();
-
-
-        //get the data from the intent and store in local variable
-        usersNameString = getTheNameIntent.getExtras()
-                .getString(getString(R.string.nameOfTask));
-
-        descOfTaskString = getTheNameIntent.getExtras()
-                .getString(getString(R.string.descOfTask));
-
-        dueDateString = getTheNameIntent.getExtras()
-                .getString(getString(R.string.dueDate));
-
-        contactNumberString = getTheNameIntent.getExtras()
-                .getString(getString(R.string.contactInfoOftask));
-
-        addressOfTaskString = getTheNameIntent
-                .getExtras().getString(getString(R.string.addressOfTask));
-
-        statusOfTaskString = getTheNameIntent.getExtras()
-                .getString(getString(R.string.statusOfTask));
-
-        idOfTaskString = getTheNameIntent.getExtras()
-                .getString(getString(R.string.taskID));
-
-        typeOfObjectString = getTheNameIntent.getExtras()
-                .getString(getString(R.string.taskType));
-
-
+        //get the respsonse from intent
+        getRecord = (Record) getIntent().getParcelableExtra("RecordObject");
         //Remove the appended three characters form the id string
+        idOfTaskString = getRecord.getId();
         idOfTaskString = idOfTaskString.substring(0, idOfTaskString.length() - 3);
-
         //setup the view
         getNameView = (TextView) findViewById(R.id.task_name_detail);
         getDescView = (TextView) findViewById(R.id.task_description_detail);
@@ -125,36 +82,27 @@ public class TaskDetailsActivity extends AppCompatActivity{
         getContactNumberView = (TextView) findViewById(R.id.ContactInfoPhone);
         getAddressView = (TextView) findViewById(R.id.AddressOfTask);
         getStatusOfTaskView = (TextView) findViewById(R.id.Status);
-        updatedStatusView = (TextView) findViewById(R.id.Status);
         closeButton = (ImageView) findViewById(R.id.close_task_detail_cross);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(AnimationUtils
-                        .loadAnimation(getBaseContext(), R.anim.cross_animation));
-                onBackPressed();
+                finish();
             }
         });
-
-        //bind the data to the view
-        if (usersNameString != null) {
-            getNameView.setText(usersNameString);
-        }
-        if (descOfTaskString != null) {
-            getDescView.setText(descOfTaskString);
-        }
-        if (dueDateString != null) {
-            getDueDateView.append("" + dueDateString);
-        }
-        if (contactNumberString != null) {
-            getContactNumberView.append("\n" + contactNumberString);
-        }
-        if (addressOfTaskString != null) {
-            getAddressView.setText(addressOfTaskString);
-        }
-        if (statusOfTaskString != null) {
-            getStatusOfTaskView.append(" \n" + statusOfTaskString);
-        }
+        changeStatusButton = (Button) findViewById(R.id.Button_to_change_status);
+        //set the text from the parced object
+        getNameView.setText(getRecord.getName());
+        getDescView.setText(getRecord.getDescription__c());
+        getDueDateView.setText(getRecord.getDue_Date__c());
+        getContactNumberView.setText(getRecord.getPhone_Number__c());
+        getAddressView.setText(getRecord.getAddress__c());
+        getStatusOfTaskView.setText(getRecord.getStatus__c());
+        changeStatusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeStatusCall();
+            }
+        });
     }
 
     @Override
@@ -162,49 +110,16 @@ public class TaskDetailsActivity extends AppCompatActivity{
         super.onResume();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // handle arrow click here
-        if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to preview activity (if there is any)
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    public void OnChangeClicked(View view) {
-
-        String textOfStatusView = statusOfTaskString;
-        if (!textOfStatusView.equalsIgnoreCase(getString(R.string.completed))) {
-            ChangeStatusCall();
-        } else {
-
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.updatedTitle)
-                    .setMessage("")
-                    .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //Just acknowledge
-
-                        }
-                    })
-                    .setIcon(R.drawable.ic_alert_exclamation_mark)
-                    .show();
-        }
-    }
-
     public void ChangeStatusCall() {
         fields.put("Status__c", "Completed");
-
         new AlertDialog.Builder(this)
                 .setTitle(R.string.updateTitle)
-                .setMessage(getString(R.string.updateMessage) + usersNameString + "?")
+                .setMessage(getString(R.string.updateMessage) + getNameView.getText() + "?")
                 .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //UPDATE on POSITIVE RESPONSE
                         try {
-                           /* saveData(idOfTaskString, fields);*/
+                            saveData(idOfTaskString, fields);
 
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -219,8 +134,7 @@ public class TaskDetailsActivity extends AppCompatActivity{
                 .show();
     }
 
-
-   /* private void saveData(String id, Map<String, Object> fields) {
+    private void saveData(String id, Map<String, Object> fields) {
         RestRequest restRequest;
         try {
             restRequest = RestRequest.getRequestForUpdate(
@@ -230,7 +144,6 @@ public class TaskDetailsActivity extends AppCompatActivity{
             e.printStackTrace();
             return;
         }
-
         client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
             @Override
             public void onSuccess(RestRequest request, RestResponse result) {
@@ -239,10 +152,9 @@ public class TaskDetailsActivity extends AppCompatActivity{
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
                             public void run() {
-                                updatedStatusView.setText("Status: \nCompleted");
+                                getStatusOfTaskView.setText("Status: \nCompleted");
                             }
                         });
-
                     }
                     wait(1000);
                     TaskDetailsActivity.this.finish();
@@ -257,6 +169,4 @@ public class TaskDetailsActivity extends AppCompatActivity{
             }
         });
     }
-*/
-
 }

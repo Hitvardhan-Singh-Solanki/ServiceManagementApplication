@@ -1,12 +1,14 @@
 package com.hitvardhan.project_app.response_classes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
  * Created by Hitvardhan on 08-12-2016.
  */
-
-public class Record implements Serializable{
+public class Record implements Parcelable {
     private Attributes attributes;
     private String Name;
     private String Due_Date__c;
@@ -102,4 +104,51 @@ public class Record implements Serializable{
     public void setAddress__c(String address__c) {
         this.address__c = address__c;
     }
+
+    protected Record(Parcel in) {
+        attributes = (Attributes) in.readValue(Attributes.class.getClassLoader());
+        Name = in.readString();
+        Due_Date__c = in.readString();
+        Description__c = in.readString();
+        Status__c = in.readString();
+        Id = in.readString();
+        id = in.readString();
+        Email_Id__c = in.readString();
+        Location__c = (Location__c) in.readValue(Location__c.class.getClassLoader());
+        Phone_Number__c = in.readString();
+        address__c = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(attributes);
+        dest.writeString(Name);
+        dest.writeString(Due_Date__c);
+        dest.writeString(Description__c);
+        dest.writeString(Status__c);
+        dest.writeString(Id);
+        dest.writeString(id);
+        dest.writeString(Email_Id__c);
+        dest.writeValue(Location__c);
+        dest.writeString(Phone_Number__c);
+        dest.writeString(address__c);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Record> CREATOR = new Parcelable.Creator<Record>() {
+        @Override
+        public Record createFromParcel(Parcel in) {
+            return new Record(in);
+        }
+
+        @Override
+        public Record[] newArray(int size) {
+            return new Record[size];
+        }
+    };
 }

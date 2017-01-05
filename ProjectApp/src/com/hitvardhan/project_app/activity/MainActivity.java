@@ -5,85 +5,52 @@ package com.hitvardhan.project_app.activity;
  * Main Activity class to controll and show the Main screen UI with map and tab layout
  */
 
-import android.Manifest;
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.Location;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
-import com.hitvardhan.project_app.AlertDialogueUtils.AlertDialogPositiveCallback;
-import com.hitvardhan.project_app.UserFragment;
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
-import com.hitvardhan.project_app.utils.LocationPermission;
 import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
+import com.hitvardhan.project_app.utils.ReloadButtonHandler;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
-import com.salesforce.androidsdk.rest.ApiVersionStrings;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
-import com.salesforce.androidsdk.rest.RestClient.AsyncRequestCallback;
-import com.salesforce.androidsdk.rest.RestRequest;
-import com.salesforce.androidsdk.rest.RestResponse;
 import com.salesforce.androidsdk.security.PasscodeManager;
 import com.salesforce.androidsdk.util.EventsObservable;
 
 
 import com.hitvardhan.project_app.R;
-import com.hitvardhan.project_app.fragment.TodayTaskListFragment;
-import com.hitvardhan.project_app.fragment.MoreTaskListFragment;
-import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
-import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
-import com.hitvardhan.project_app.utils.FetchUrl;
-import com.hitvardhan.project_app.utils.getRouteLatlngURL;
-
-//import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,9 +59,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.internal.Utils;
 
-import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+import com.hitvardhan.project_app.fragment.AdminFragment;
 
 
 public class MainActivity extends AppCompatActivity
@@ -185,17 +151,9 @@ public class MainActivity extends AppCompatActivity
         reloadButtonOnNavHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommanUtils.refresh(thisActivity, thisActivity.findViewById(R.id.main_root), client, new NetworkCallbackInterface() {
-                    @Override
-                    public void onSuccess(Response response) {
-                        ((ServiceEngineer)currentFragment).updateDataOnUi(response);
-                    }
-
-                    @Override
-                    public void onError() {
-                        //do nothing
-                    }
-                });
+                if (currentFragment instanceof ReloadButtonHandler) {
+                    ((ReloadButtonHandler)currentFragment).onReload();
+                }
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -229,9 +187,7 @@ public class MainActivity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
-
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -240,10 +196,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onResume() {
-
         // Hide everything until we are logged in
-       // findViewById(R.id.root).setVisibility(View.INVISIBLE);
-
+        // findViewById(R.id.root).setVisibility(View.INVISIBLE);
         super.onResume();
         passcodeChallenge();
     }
@@ -412,35 +366,33 @@ public class MainActivity extends AppCompatActivity
 
 
             // Show everything
-           // findViewById(R.id.root).setVisibility(View.VISIBLE);
+            // findViewById(R.id.root).setVisibility(View.VISIBLE);
 
             if (CommanUtils.isNetworkAvailable(this)) {
                 Snackbar.make((View) findViewById(R.id.main_root), R.string.online,
                         Snackbar.LENGTH_SHORT)
                         .setAction(R.string.action, null).show();
-
-
-
-
-
-
                 if(client.getClientInfo().firstName.equalsIgnoreCase("Hitvardhan")) {
-                    //Imflate a fragment based on the user logged in
-                    ServiceEngineer mFragObj = new ServiceEngineer();
+                    //Inflate a fragment based on the service user logged in
+                    if(currentFragment == null) {
+                        currentFragment = new ServiceEngineer();
+                    }
+
+                    if(!currentFragment.isAdded()) {
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frm_container, currentFragment, "");
+                        transaction.commitAllowingStateLoss();
+                    }
+                }
+                else{
+                    //Inflate a fragment based on the ADMIN user logged in
+                    AdminFragment mFragObjAdmin = new AdminFragment();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frm_container, mFragObj, "");
+                    transaction.replace(R.id.frm_container, mFragObjAdmin, "");
                     transaction.commit();
-                    currentFragment = mFragObj;
+                    currentFragment = mFragObjAdmin;
                 }
 
-
-
-
-
-                /*Picasso.with(getBaseContext())
-                .load("https://media.licdn.com/mpr/mpr/shrinknp_200_200/
-                AAEAAQAAAAAAAATDAAAAJGRiODBlMTE5LTA1NDAtNGE5MS04OTkyLWQwNjUwYjY2OWVkMw.jpg")
-                        .into(imgProfile);*/
 
                 //An Async task to do in Backround thread
                 //Creates a HTTP Connection with the header as Authetication Token as Bearer
@@ -496,12 +448,10 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
-
-
-    public void updateUi(Response response) {
+    public void updateUi(Response response, Fragment fragment) {
+        if(fragment != null) {
+            ((AppCompatActivity)thisActivity).getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+        }
         ((ServiceEngineer)currentFragment).updateDataOnUi(response);
     }
-
-
-
 }

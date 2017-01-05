@@ -7,12 +7,19 @@ package com.hitvardhan.project_app.fragment;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.AnimRes;
+import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +38,13 @@ import java.util.List;
 
 public class MoreTaskListFragment extends Fragment {
 
-    private Response res;
-
     private RecyclerView mRcvTaskListV;
 
     private TaskAdapter mTaskAdapter;
 
-    private TextView EmptyListMore;
 
     private SwipeRefreshLayout mSwipeRefreshLayoutl;
+    private Fragment thisFragment;
 
     public static List<Record> MoreTaskName = new ArrayList<Record>();
 
@@ -48,10 +53,10 @@ public class MoreTaskListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
+   /* @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,9 +64,7 @@ public class MoreTaskListFragment extends Fragment {
         // Inflate the layout for this fragment
 
         final View view = inflater.inflate(R.layout.fragment_one, container, false);
-
-        EmptyListMore = (TextView) view.findViewById(R.id.more_task_empty_view);
-
+        thisFragment = this;
         mRcvTaskListV = (RecyclerView) view.findViewById(R.id.rcv_list_v);
 
         mSwipeRefreshLayoutl = (SwipeRefreshLayout) view.findViewById(R.id
@@ -73,7 +76,14 @@ public class MoreTaskListFragment extends Fragment {
         mRcvTaskListV.setLayoutManager(mLayoutManager);
         mRcvTaskListV.setItemAnimator(new DefaultItemAnimator());
         mRcvTaskListV.setAdapter(mTaskAdapter);
+        mTaskAdapter.notifyDataSetChanged();
+        //mRcvTaskListV.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
 
+        if (getArguments().getSerializable("TaskList") != null) {
+            Response res = (Response) getArguments().getSerializable("TaskList");
+            setListData(res);
+//            mTaskAdapter.notifyDataSetChanged();
+        }
 
 
         mSwipeRefreshLayoutl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -82,10 +92,8 @@ public class MoreTaskListFragment extends Fragment {
                 CommanUtils.refresh(getActivity(), view, ((MainActivity) getActivity()).client, new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
-                        ((MainActivity)getActivity()).updateUi(response);
-                        //Todo:destroy this fragment
+                        ((MainActivity)getActivity()).updateUi(response, thisFragment);
                     }
-
                     @Override
                     public void onError() {
                         //do nothing
@@ -97,20 +105,11 @@ public class MoreTaskListFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        if (getArguments().getSerializable("TaskList") != null) {
-            res = (Response) getArguments().getSerializable("TaskList");
-            setListData();
-//            mTaskAdapter.notifyDataSetChanged();
-        }
-        super.onResume();
-    }
 
-    public void setListData() {
+    public void setListData(Response rs) {
         MoreTaskName.clear();
-        if (res.getRecords() != null) {
-            for (Record record : res.getRecords()) {
+        if (rs.getRecords() != null) {
+            for (Record record : rs.getRecords()) {
                 if (record.getDue_Date__c() != null) {
                     if (!record.getDue_Date__c().trim().equalsIgnoreCase(CommanUtils
                             .getTodaysDate().trim())) {
@@ -133,13 +132,12 @@ public class MoreTaskListFragment extends Fragment {
                 }
             }
 
-            if (mTaskAdapter != null && res != null && res.getRecords() != null) {
+            if (mTaskAdapter != null && rs != null && rs.getRecords() != null) {
                 mTaskAdapter.addItem(MoreTaskName);
+                mRcvTaskListV.setAdapter(mTaskAdapter);
+                Log.i("excin","dssff");
             }
-            //If the list is empty
-            if (MoreTaskName.size() < 1) {
-                EmptyListMore.setVisibility(View.VISIBLE);
-            }
+
 
         }
     }

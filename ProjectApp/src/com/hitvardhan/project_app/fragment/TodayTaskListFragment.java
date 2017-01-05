@@ -36,16 +36,16 @@ import static com.hitvardhan.project_app.fragment.MoreTaskListFragment.MoreTaskN
 
 public class TodayTaskListFragment extends Fragment {
 
-    private Response res;
+
 
     private RecyclerView mRcvTaskListV;
 
     private TaskAdapter mTaskAdapter;
 
-    private TextView EmptyList;
-
     public static List<Record> todaysTaskName;
+
     private View view;
+
     private SwipeRefreshLayout mSwipeRefreshLayoutlToday;
 
     public TodayTaskListFragment() {
@@ -60,13 +60,13 @@ public class TodayTaskListFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_one, container, false);
         mRcvTaskListV = (RecyclerView) view.findViewById(R.id.rcv_list_v);
-        //EmptyList = (TextView) view.findViewById(R.id.todays_task_empty_view);
         // Inflate the layout for this fragment
         mTaskAdapter = new TaskAdapter(getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRcvTaskListV.setLayoutManager(mLayoutManager);
         mRcvTaskListV.setItemAnimator(new DefaultItemAnimator());
         mRcvTaskListV.setAdapter(mTaskAdapter);
+        mTaskAdapter.notifyDataSetChanged();
         mSwipeRefreshLayoutlToday = (SwipeRefreshLayout) view.findViewById(R.id
                 .swipeRefreshLayoutMoreTaskOne);
 
@@ -88,25 +88,22 @@ public class TodayTaskListFragment extends Fragment {
                 mSwipeRefreshLayoutlToday.setRefreshing(false);
             }
         });
-
-
         return view;
     }
     @Override
     public void onResume() {
         if(getArguments().getSerializable("TaskList") != null) {
-            res = (Response) getArguments().getSerializable("TaskList");
-            setListData();
+             Response res = (Response) getArguments().getSerializable("TaskList");
+            setListData(res);
         }
         super.onResume();
     }
-    private void setListData() {
-        if (getArguments().getSerializable("TaskList") != null) {
-            res = (Response) getArguments().getSerializable("TaskList");
-            if (res.getRecords() != null) {
+    public void setListData(Response rs) {
+        if (rs != null) {
+            if (rs.getRecords() != null) {
                 todaysTaskName = new ArrayList<>();
                 todaysTaskName.clear();
-                for (Record record : res.getRecords()) {
+                for (Record record : rs.getRecords()) {
                     if (record.getDue_Date__c() != null) {
                         if (record.getDue_Date__c().trim()
                                 .equalsIgnoreCase(CommanUtils.getTodaysDate().trim())) {
@@ -114,19 +111,9 @@ public class TodayTaskListFragment extends Fragment {
                         }
                     }
                 }
-
-
-                if(mTaskAdapter != null && res != null && res.getRecords() != null)
+                if(mTaskAdapter != null && rs != null && rs.getRecords() != null)
                     mTaskAdapter.addItem(todaysTaskName);
-
-                //If the list is empty
-               /* if (mTaskAdapter.getItemCount() < 1) {
-                    EmptyList.setVisibility(View.VISIBLE);
-
-                }*/
-
             }
-
         }
     }
 

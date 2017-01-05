@@ -16,6 +16,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +50,7 @@ import com.hitvardhan.project_app.utils.CommanUtils;
 import com.hitvardhan.project_app.utils.FetchUrl;
 import com.hitvardhan.project_app.utils.LocationPermission;
 import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
+import com.hitvardhan.project_app.utils.ReloadButtonHandler;
 import com.hitvardhan.project_app.utils.getRouteLatlngURL;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.security.PasscodeManager;
@@ -63,7 +66,7 @@ import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener{
+        LocationListener, ReloadButtonHandler{
 
 
     //Variable Declaration
@@ -82,11 +85,30 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
     private ArrayList<LatLng> markerPoints;
     private ArrayList<LatLng> latLngOfTasks;
     private View contentView;
+    private CardView mCardViewRowOfTask;
+    private TodayTaskListFragment mFragementToday;
+    private MoreTaskListFragment mFragementMore;
+    private ViewPagerAdapter adapter;
 
     public ServiceEngineer() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onReload() {
+        CommanUtils.refresh(getActivity(), getActivity().findViewById(R.id.main_root), client
+                , new NetworkCallbackInterface() {
+                    @Override
+                    public void onSuccess(Response response) {
+                        updateDataOnUi(response);
+                    }
+
+                    @Override
+                    public void onError() {
+                        //do nothing
+                    }
+                });
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,6 +118,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
 
         //Get tabs
         viewPager = (ViewPager) contentView.findViewById(R.id.viewpager);
+        Log.i("excv", ""+(viewPager == null));
 
         //Get the layout for each tab
 
@@ -114,11 +137,13 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-       /* SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager()
+       /* SupportMapFragment mapFragment = (SupportMapFragment) getActivity()
+       .getSupportFragmentManager()
                 .findFragmentById(R.id.map);*/
-        SupportMapFragment mapFragment = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map));
+        SupportMapFragment mapFragment = ((SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.map));
         mapFragment.getMapAsync(this);
-   //     updateDataOnUi();
+        //     updateDataOnUi();
         return contentView;
     }
 
@@ -300,28 +325,22 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                     //adding data to bundle
                     bundle.putSerializable(getString(R.string.taskList), res);
 
-                    //Creating a new fragment of TodayTask
-                    TodayTaskListFragment mFragementToday = new TodayTaskListFragment();
-                    //Set the bundle data to the fragment
-                    mFragementToday.setArguments(bundle);
+                    if( adapter == null) {
+                        adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
 
-                    //Creating the new fragment of MoreTask
-                    MoreTaskListFragment mFragementMore = new MoreTaskListFragment();
-                    //setting uo the bundle data of more task
-                    mFragementMore.setArguments(bundle);
+                        mFragementToday = new TodayTaskListFragment();
+                        mFragementToday.setArguments(bundle);
+                        adapter.addFragment(mFragementToday, getString(R.string.todays_task_title));
 
-                    // setupViewPager(viewPager);
-                    ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-
-                    //adding the fragment for todays tasks
-                    adapter.addFragment(mFragementToday,
-                            getString(R.string.todays_task_title));
-
-                    //adding the fragment for pending tasks
-                    adapter.addFragment(mFragementMore, getString(R.string.pending_task_title));
-
-                    //finally setting the adapter
-                    viewPager.setAdapter(adapter);
+                        mFragementMore = new MoreTaskListFragment();
+                        mFragementMore.setArguments(bundle);
+                        adapter.addFragment(mFragementMore, getString(R.string.pending_task_title));
+                        viewPager.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        mFragementToday.setListData(res);
+                        mFragementMore.setListData(res);
+                    }
 
                     //Initialization of the location list
                     lattitueOfTasks = new ArrayList<Double>();
@@ -360,7 +379,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
 
                         //ROUTE BUILDING
 
-                        //Adding LAT LONG 0f my device location
+                        //Adding LAT LONG of my device location
                         markerPoints.add(latLngMyLoc);
 
 
@@ -404,8 +423,12 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
             ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
             adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
             adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
+            viewPager.setAdapter(adapter);
+             adapter.notifyDataSetChanged();
         }
     }
+
+
 
     /**
      * setup the view pager to show the Recycler View
@@ -417,14 +440,16 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
         adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
         viewPager.setAdapter(adapter);
-    }
+        adapter.notifyDataSetChanged();
+        }
+
 
 
     /**
      * send details to task_details_activity
      *
      * @param view
-     */
+     *//*
     public void getTaskDetails(View view) {
         TextView Name = (TextView) view.findViewById(R.id.title_name_task);
         Name.getText();
@@ -444,7 +469,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                     startActivity(i);
                 }
             }
-        }
-    }
-
+        }*/
 }
+
+

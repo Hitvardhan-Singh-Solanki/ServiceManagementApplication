@@ -87,7 +87,7 @@ public class CommanUtils extends Activity{
 }
     /**
      * date in simple format
-     * @return
+     * @return string
      */
     public static String getTodaysDate(){
         Calendar calendar = Calendar.getInstance();
