@@ -39,22 +39,19 @@ public class TodayTaskListFragment extends Fragment {
 
 
     private RecyclerView mRcvTaskListV;
-
     private TaskAdapter mTaskAdapter;
-
     public static List<Record> todaysTaskName;
-
     private View view;
-
     private SwipeRefreshLayout mSwipeRefreshLayoutlToday;
-
     public TodayTaskListFragment() {
         // Required empty public constructor
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,7 +71,8 @@ public class TodayTaskListFragment extends Fragment {
         mSwipeRefreshLayoutlToday.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                CommanUtils.refresh(getActivity(), view, ((MainActivity) getActivity()).client, new NetworkCallbackInterface() {
+                CommanUtils.refresh(getActivity(), view, ((MainActivity) getActivity()).client,
+                        new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
 

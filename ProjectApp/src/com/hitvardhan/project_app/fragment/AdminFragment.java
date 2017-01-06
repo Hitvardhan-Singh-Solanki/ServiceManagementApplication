@@ -95,8 +95,6 @@ public class AdminFragment extends Fragment  implements OnMapReadyCallback,
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-       /* SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager()
-                .findFragmentById(R.id.map);*/
         SupportMapFragment mapFragmentAdmin = ((SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.mapAdminView));
         mapFragmentAdmin.getMapAsync(this);
@@ -135,7 +133,8 @@ public class AdminFragment extends Fragment  implements OnMapReadyCallback,
 
         if (CommanUtils.isNetworkAvailable(getActivity())) {
             try {
-                CommanUtils.getDetailsofTask(getActivity(), ((MainActivity) getActivity()).client, new NetworkCallbackInterface() {
+                CommanUtils.getDetailsofTask(getActivity(), ((MainActivity) getActivity()).client,
+                        new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
                         updateDataOnAdminUi(response);

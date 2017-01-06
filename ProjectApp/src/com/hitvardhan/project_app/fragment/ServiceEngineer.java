@@ -71,7 +71,6 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
 
     //Variable Declaration
     public static RestClient client;
-    private Gson gson = new Gson();
     public Response res;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -85,7 +84,6 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
     private ArrayList<LatLng> markerPoints;
     private ArrayList<LatLng> latLngOfTasks;
     private View contentView;
-    private CardView mCardViewRowOfTask;
     private TodayTaskListFragment mFragementToday;
     private MoreTaskListFragment mFragementMore;
     private ViewPagerAdapter adapter;
@@ -137,9 +135,6 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-       /* SupportMapFragment mapFragment = (SupportMapFragment) getActivity()
-       .getSupportFragmentManager()
-                .findFragmentById(R.id.map);*/
         SupportMapFragment mapFragment = ((SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map));
         mapFragment.getMapAsync(this);
@@ -178,7 +173,8 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
 
         if (CommanUtils.isNetworkAvailable(getActivity())) {
             try {
-                CommanUtils.getDetailsofTask(getActivity(), ((MainActivity) getActivity()).client, new NetworkCallbackInterface() {
+                CommanUtils.getDetailsofTask(getActivity(), ((MainActivity) getActivity()).client,
+                        new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
                         updateDataOnUi(response);
@@ -420,7 +416,8 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                 }
             });
         } else {
-            ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+            ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity()
+                    .getSupportFragmentManager());
             adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
             adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
             viewPager.setAdapter(adapter);
@@ -442,34 +439,6 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         viewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         }
-
-
-
-    /**
-     * send details to task_details_activity
-     *
-     * @param view
-     *//*
-    public void getTaskDetails(View view) {
-        TextView Name = (TextView) view.findViewById(R.id.title_name_task);
-        Name.getText();
-        for (Record r : res.getRecords()) {
-            if (r.getName().equalsIgnoreCase(Name.getText().toString())) {
-                Intent i = new Intent(getActivity(), TaskDetailsActivity.class);
-                if (i != null) {
-                    i.putExtra(getString(R.string.nameOfTask), r.getName());
-                    i.putExtra(getString(R.string.descOfTask), r.getDescription__c());
-                    i.putExtra(getString(R.string.dueDate), r.getDue_Date__c());
-                    i.putExtra(getString(R.string.addressOfTask), r.getAddress__c());
-                    i.putExtra(getString(R.string.contactInfoOftask), r.getPhone_Number__c());
-                    i.putExtra(getString(R.string.statusOfTask), r.getStatus__c());
-                    i.putExtra(getString(R.string.taskID), r.getId());
-                    i.putExtra(getString(R.string.taskType), r.getAttributes().getType());
-                    i.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(i);
-                }
-            }
-        }*/
 }
 
 

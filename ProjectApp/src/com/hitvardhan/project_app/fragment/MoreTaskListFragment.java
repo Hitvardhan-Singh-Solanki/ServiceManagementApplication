@@ -89,7 +89,8 @@ public class MoreTaskListFragment extends Fragment {
         mSwipeRefreshLayoutl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                CommanUtils.refresh(getActivity(), view, ((MainActivity) getActivity()).client, new NetworkCallbackInterface() {
+                CommanUtils.refresh(getActivity(), view, ((MainActivity) getActivity()).client,
+                        new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
                         ((MainActivity)getActivity()).updateUi(response, thisFragment);

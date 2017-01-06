@@ -251,7 +251,8 @@ public class MainActivity extends AppCompatActivity
             //Handles refresh action
             if (CommanUtils.isNetworkAvailable(getBaseContext())) {
                 try {
-                    CommanUtils.getDetailsofTask(thisActivity, client, new NetworkCallbackInterface() {
+                    CommanUtils.getDetailsofTask(thisActivity, client,
+                            new NetworkCallbackInterface() {
                         @Override
                         public void onSuccess(Response response) {
                             ((ServiceEngineer)currentFragment).updateDataOnUi(response);
@@ -379,7 +380,8 @@ public class MainActivity extends AppCompatActivity
                     }
 
                     if(!currentFragment.isAdded()) {
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        FragmentTransaction transaction =
+                                getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
                         transaction.commitAllowingStateLoss();
                     }
@@ -387,7 +389,8 @@ public class MainActivity extends AppCompatActivity
                 else{
                     //Inflate a fragment based on the ADMIN user logged in
                     AdminFragment mFragObjAdmin = new AdminFragment();
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    FragmentTransaction transaction =
+                            getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frm_container, mFragObjAdmin, "");
                     transaction.commit();
                     currentFragment = mFragObjAdmin;
@@ -450,7 +453,8 @@ public class MainActivity extends AppCompatActivity
     }
     public void updateUi(Response response, Fragment fragment) {
         if(fragment != null) {
-            ((AppCompatActivity)thisActivity).getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+            ((AppCompatActivity)thisActivity).getSupportFragmentManager()
+                    .beginTransaction().remove(fragment).commit();
         }
         ((ServiceEngineer)currentFragment).updateDataOnUi(response);
     }

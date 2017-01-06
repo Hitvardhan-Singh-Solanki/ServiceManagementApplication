@@ -46,7 +46,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             getDate,
             getDesc;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
+
+        //Variable declaration
         private TextView name;
         private TextView date;
         private TextView desc;
@@ -85,7 +88,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mLayoutInflater.inflate(R.layout.task_recycler_list_row_layout, parent, false);
+        View itemView = mLayoutInflater.inflate(R.layout.task_recycler_list_row_layout,
+                parent, false);
         return new MyViewHolder(itemView);
     }
 

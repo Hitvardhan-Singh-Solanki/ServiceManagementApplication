@@ -57,7 +57,8 @@ public class Location__c implements Serializable, Parcelable {
     }
 
     @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Location__c> CREATOR = new Parcelable.Creator<Location__c>() {
+    public static final Parcelable.Creator<Location__c> CREATOR =
+            new Parcelable.Creator<Location__c>() {
         @Override
         public Location__c createFromParcel(Parcel in) {
             return new Location__c(in);

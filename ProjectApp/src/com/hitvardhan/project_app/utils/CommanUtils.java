@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.hitvardhan.project_app.AlertDialogueUtils.AlertDialogCallbacks;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
+import com.hitvardhan.project_app.constants.SoqlQueries;
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
@@ -162,8 +163,12 @@ public class CommanUtils extends Activity{
      *
      * @throws Exception
      */
-    public static void getDetailsofTask(Context context, RestClient client,NetworkCallbackInterface callbackInterface) throws Exception {
-        getDetailFromSalesforce(context,client, context.getString(R.string.soql_query), callbackInterface);
+    public static void getDetailsofTask(Context context, RestClient client,
+                                        NetworkCallbackInterface callbackInterface)
+            throws Exception {
+        getDetailFromSalesforce(context,client,
+                SoqlQueries.soqlForTasks,
+                callbackInterface);
     }
 
     /**
@@ -173,7 +178,10 @@ public class CommanUtils extends Activity{
      * @param soql
      * @throws Exception
      */
-    public static void getDetailFromSalesforce(final Context context, RestClient client, String soql, final NetworkCallbackInterface callbackInterface) throws Exception {
+    public static void getDetailFromSalesforce(final Context context, RestClient client,
+                                               String soql,
+                                               final NetworkCallbackInterface callbackInterface)
+                throws Exception {
 
         //Show the progress dialog box when the data loads
         final ProgressDialog mProgressDialog;
@@ -237,7 +245,8 @@ public class CommanUtils extends Activity{
      * @param ctx
      * @return
      */
-    public static boolean refresh(Context ctx,View rootView, RestClient client,NetworkCallbackInterface callbackInterface) {
+    public static boolean refresh(Context ctx,View rootView, RestClient client,
+                                  NetworkCallbackInterface callbackInterface) {
         if (CommanUtils.isNetworkAvailable(ctx)) {
             try {
                 Snackbar.make(rootView, "You are Online",

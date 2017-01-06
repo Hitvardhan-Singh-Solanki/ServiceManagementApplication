@@ -43,7 +43,8 @@ public class Attributes implements Serializable, Parcelable {
     }
 
     @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Attributes> CREATOR = new Parcelable.Creator<Attributes>() {
+    public static final Parcelable.Creator<Attributes> CREATOR =
+            new Parcelable.Creator<Attributes>() {
         @Override
         public Attributes createFromParcel(Parcel in) {
             return new Attributes(in);

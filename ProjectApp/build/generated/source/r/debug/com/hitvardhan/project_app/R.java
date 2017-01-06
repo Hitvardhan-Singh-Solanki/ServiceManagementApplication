@@ -4828,16 +4828,17 @@ containing a value of this type.
     public static final class id {
         public static final int AddressOfTask=0x7f0f018e;
         public static final int AddressOfTask123=0x7f0f0113;
+        public static final int Button_to_change_status=0x7f0f018f;
         public static final int Client_email_id_from_request=0x7f0f0154;
         public static final int Client_name_from_request=0x7f0f0153;
         public static final int ContactInfoPhone=0x7f0f0115;
         public static final int DateOfTask=0x7f0f018c;
         public static final int DateOfTask123=0x7f0f0111;
-        public static final int MainLinearCardView=0x7f0f0191;
+        public static final int MainLinearCardView=0x7f0f0192;
         public static final int Navigation_logout_button=0x7f0f011d;
-        public static final int SerialNumber=0x7f0f018f;
+        public static final int SerialNumber=0x7f0f0190;
         public static final int Status=0x7f0f0114;
-        public static final int TaskDescriptionDetailsRecyclerView=0x7f0f0194;
+        public static final int TaskDescriptionDetailsRecyclerView=0x7f0f0195;
         public static final int action0=0x7f0f0158;
         public static final int action_bar=0x7f0f00c1;
         public static final int action_bar_activity_content=0x7f0f0000;
@@ -4850,13 +4851,13 @@ containing a value of this type.
         public static final int action_context_bar=0x7f0f00c2;
         public static final int action_divider=0x7f0f015c;
         public static final int action_image=0x7f0f0156;
-        public static final int action_logout=0x7f0f0199;
+        public static final int action_logout=0x7f0f019a;
         public static final int action_menu_divider=0x7f0f0002;
         public static final int action_menu_presenter=0x7f0f0003;
         public static final int action_mode_bar=0x7f0f00be;
         public static final int action_mode_bar_stub=0x7f0f00bd;
         public static final int action_mode_close_button=0x7f0f00a2;
-        public static final int action_refresh=0x7f0f019a;
+        public static final int action_refresh=0x7f0f019b;
         public static final int action_text=0x7f0f0157;
         public static final int actions=0x7f0f0165;
         public static final int activity_chooser_view_content=0x7f0f00a3;
@@ -4895,7 +4896,7 @@ containing a value of this type.
         public static final int buy_with=0x7f0f0091;
         public static final int buy_with_google=0x7f0f0092;
         public static final int cancel_action=0x7f0f0159;
-        public static final int cardview=0x7f0f0190;
+        public static final int cardview=0x7f0f0191;
         public static final int cast_button_type_closed_caption=0x7f0f0004;
         public static final int cast_button_type_custom=0x7f0f0005;
         public static final int cast_button_type_empty=0x7f0f0006;
@@ -4943,7 +4944,7 @@ containing a value of this type.
         public static final int donate_with=0x7f0f0093;
         public static final int donate_with_google=0x7f0f0094;
         public static final int drawer_layout=0x7f0f011a;
-        public static final int due_date_task=0x7f0f0196;
+        public static final int due_date_task=0x7f0f0197;
         public static final int edit_query=0x7f0f00c3;
         public static final int email=0x7f0f0069;
         public static final int end=0x7f0f004d;
@@ -5096,7 +5097,7 @@ containing a value of this type.
         public static final int notification_main_column_container=0x7f0f015d;
         public static final int omnibox_title_section=0x7f0f007f;
         public static final int omnibox_url_section=0x7f0f0080;
-        public static final int onLogoutClicked=0x7f0f0198;
+        public static final int onLogoutClicked=0x7f0f0199;
         public static final int parallax=0x7f0f0053;
         public static final int parentPanel=0x7f0f00ac;
         public static final int pin=0x7f0f0054;
@@ -5116,8 +5117,8 @@ containing a value of this type.
         public static final int radio=0x7f0f00ba;
         public static final int rcv_list_v=0x7f0f0117;
         public static final int rcv_list_v_future=0x7f0f0118;
-        public static final int redDot_status=0x7f0f0193;
-        public static final int refresh=0x7f0f0197;
+        public static final int redDot_status=0x7f0f0194;
+        public static final int refresh=0x7f0f0198;
         public static final int reload_nav_header_image=0x7f0f0151;
         public static final int rfc822=0x7f0f0079;
         public static final int right=0x7f0f0050;
@@ -5147,7 +5148,7 @@ containing a value of this type.
         public static final int seek_bar_controls=0x7f0f00df;
         public static final int select_dialog_listview=0x7f0f00cf;
         public static final int selectionDetails=0x7f0f008d;
-        public static final int setDateNull=0x7f0f0195;
+        public static final int setDateNull=0x7f0f0196;
         public static final int sf__accounts_group=0x7f0f0172;
         public static final int sf__add_account_button=0x7f0f0174;
         public static final int sf__apply_button=0x7f0f0178;
@@ -5157,10 +5158,10 @@ containing a value of this type.
         public static final int sf__fingerprint_icon=0x7f0f017c;
         public static final int sf__fingerprint_status=0x7f0f017d;
         public static final int sf__layout_root=0x7f0f0175;
-        public static final int sf__menu_clear_cookies=0x7f0f019d;
-        public static final int sf__menu_clear_custom_url=0x7f0f019b;
-        public static final int sf__menu_pick_server=0x7f0f019c;
-        public static final int sf__menu_reload=0x7f0f019e;
+        public static final int sf__menu_clear_cookies=0x7f0f019e;
+        public static final int sf__menu_clear_custom_url=0x7f0f019c;
+        public static final int sf__menu_pick_server=0x7f0f019d;
+        public static final int sf__menu_reload=0x7f0f019f;
         public static final int sf__oauth_webview=0x7f0f0180;
         public static final int sf__passcode_error=0x7f0f0185;
         public static final int sf__passcode_forgot=0x7f0f0184;
@@ -5221,7 +5222,7 @@ containing a value of this type.
         public static final int thing_proto=0x7f0f0067;
         public static final int time=0x7f0f0160;
         public static final int title=0x7f0f00a9;
-        public static final int title_name_task=0x7f0f0192;
+        public static final int title_name_task=0x7f0f0193;
         public static final int title_template=0x7f0f00ae;
         public static final int title_view=0x7f0f00ef;
         public static final int toolbar=0x7f0f00d6;
