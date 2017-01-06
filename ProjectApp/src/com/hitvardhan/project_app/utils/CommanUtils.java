@@ -4,25 +4,22 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
-import android.widget.ExpandableListView;
+import android.widget.ImageView;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.hitvardhan.project_app.AlertDialogueUtils.AlertDialogCallbacks;
 import com.hitvardhan.project_app.R;
-import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.constants.SoqlQueries;
-import com.hitvardhan.project_app.fragment.ServiceEngineer;
+import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -32,8 +29,6 @@ import com.salesforce.androidsdk.rest.RestResponse;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import static com.hitvardhan.project_app.R.id.map;
 
 /**
  * Created by Hitvardhan on 09-12-2016.
@@ -256,7 +251,6 @@ public class CommanUtils extends Activity{
                 ex.printStackTrace();
             }
         } else {
-
             new AlertDialog.Builder(ctx)
                     .setTitle(R.string.no_network_title)
                     .setMessage(R.string.no_network_desc)
@@ -268,5 +262,17 @@ public class CommanUtils extends Activity{
                     .show();
         }
         return true;
+    }
+
+
+    public static boolean hasImage(@NonNull ImageView view) {
+        Drawable drawable = view.getDrawable();
+        boolean hasImage = (drawable != null);
+
+        if (hasImage && (drawable instanceof BitmapDrawable)) {
+            hasImage = ((BitmapDrawable)drawable).getBitmap() != null;
+        }
+
+        return hasImage;
     }
 }

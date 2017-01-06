@@ -14,9 +14,6 @@
     <string name="welcome_string">WELCOME</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_network_title">No Network</string>
     <string name="no_network_desc">Seems like your device is offline</string>
     <string name="yes_response">OK</string>
@@ -26,11 +23,8 @@
     <string name="Logout_text">Want to Logout?</string>
     <string name="logout">LOGOUT</string>
     <string name="deny">CANCEL</string>
-    <string name="soql_query">
-        "SELECT Id, Name, Due_Date__c, Description__c, Status__c, Email_Id__c, Location__c, Phone_Number__c, Address__c  FROM Task__c"</string>
     <string name="online">You are Online</string>
     <string name="action">Action</string>
-    <string name="photoUrl">https://c.ap2.content.force.com/profilephoto/72928000000dITS/F</string>
     <string name="taskList">TaskList</string>
     <string name="todays_task_title">Today\'s Task</string>
     <string name="pending_task_title">Pending Task</string>
@@ -54,12 +48,4 @@
     <string name="no_tasks_for_future">No Tasks for future!</string>
     <string name="no_tasks_for_today">No Tasks for today</string>
     <string name="setDate">Please set the date!</string>
-
-    <string name="stauts_promt">Status</string>
-
-    <string-array name="status_array">
-        <item>Completed</item>
-        <item>Not Completed</item>
-    </string-array>
-
 </resources>

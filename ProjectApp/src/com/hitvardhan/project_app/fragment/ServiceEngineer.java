@@ -4,26 +4,19 @@ package com.hitvardhan.project_app.fragment;
 import android.Manifest;
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -39,26 +32,21 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
 import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
-import com.hitvardhan.project_app.activity.TaskDetailsActivity;
 import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 import com.hitvardhan.project_app.utils.FetchUrl;
 import com.hitvardhan.project_app.utils.LocationPermission;
-import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
-import com.hitvardhan.project_app.utils.ReloadButtonHandler;
+import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
+import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
 import com.hitvardhan.project_app.utils.getRouteLatlngURL;
 import com.salesforce.androidsdk.rest.RestClient;
-import com.salesforce.androidsdk.security.PasscodeManager;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,7 +75,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
     private TodayTaskListFragment mFragementToday;
     private MoreTaskListFragment mFragementMore;
     private ViewPagerAdapter adapter;
-
+    private Fragment thisFragment;
     public ServiceEngineer() {
         // Required empty public constructor
     }
@@ -98,7 +86,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                 , new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
-                        updateDataOnUi(response);
+                        ((MainActivity)getActivity()).updateUi(response);
                     }
 
                     @Override
@@ -114,9 +102,11 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         // Inflate the layout for this fragment
         contentView = inflater.inflate(R.layout.fragment_service_engineer, container, false);
 
+        //Get the fragment
+
+        thisFragment = this;
         //Get tabs
         viewPager = (ViewPager) contentView.findViewById(R.id.viewpager);
-        Log.i("excv", ""+(viewPager == null));
 
         //Get the layout for each tab
 

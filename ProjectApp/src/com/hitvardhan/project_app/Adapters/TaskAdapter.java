@@ -29,6 +29,7 @@ import com.hitvardhan.project_app.utils.CommanUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 import static com.hitvardhan.project_app.utils.CommanUtils.getDateformat;
 
 /**
@@ -141,6 +142,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(context, TaskDetailsActivity.class);
                 intent.putExtra("RecordObject", (Parcelable) mRecord);
+                intent.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 context.startActivity(intent);
             }
         });

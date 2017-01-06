@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -30,6 +31,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -39,8 +41,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
 
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
-import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
-import com.hitvardhan.project_app.utils.ReloadButtonHandler;
+import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
+import com.jakewharton.picasso.OkHttp3Downloader;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -52,6 +54,7 @@ import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -59,8 +62,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.internal.Utils;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 import com.hitvardhan.project_app.fragment.AdminFragment;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 
 public class MainActivity extends AppCompatActivity
@@ -69,7 +79,6 @@ public class MainActivity extends AppCompatActivity
 
 
     //Variable Declaration
-    public RestClient client;
     private Gson gson = new Gson();
     public static Response res;
     private PasscodeManager passcodeManager;
@@ -93,7 +102,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView reloadButtonOnNavHeader;
     private Fragment currentFragment;
     private Activity thisActivity;
-
+    public static RestClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -219,67 +228,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.onLogoutClicked) {
-
-            //Handles the logout action
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            //Show an alert dialog box before logging out
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle(R.string.are_you_sure_question)
-                    .setMessage(R.string.Logout_text)
-                    .setPositiveButton(R.string.logout, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            SalesforceSDKManager.getInstance().logout(MainActivity.this);
-                        }
-                    })
-                    .setNegativeButton(R.string.deny, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // do nothing
-                        }
-                    })
-                    .setIcon(R.drawable.ic_alert_exclamation_mark)
-                    .show();
-
-            return true;
-        } else if (id == R.id.refresh) {
-
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            //Handles refresh action
-            if (CommanUtils.isNetworkAvailable(getBaseContext())) {
-                try {
-                    CommanUtils.getDetailsofTask(thisActivity, client,
-                            new NetworkCallbackInterface() {
-                        @Override
-                        public void onSuccess(Response response) {
-                            ((ServiceEngineer)currentFragment).updateDataOnUi(response);
-                        }
-
-                        @Override
-                        public void onError() {
-                            //do nothing
-                        }
-                    });
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            } else {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(R.string.no_network_title)
-                        .setMessage(R.string.no_network_desc)
-                        .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        })
-                        .setIcon(R.drawable.ic_no_network)
-                        .show();
-                return true;
-            }
-        }
         return true;
     }
 
@@ -296,6 +245,10 @@ public class MainActivity extends AppCompatActivity
         super.onDestroy();
     }
 
+
+    /**
+     * passcode chanllenge to handle the login/logout function using salesforce SDK
+     */
     private void passcodeChallenge() {
         // Brings up the passcode screen if needed.
         if (passcodeManager.onResume(this)) {
@@ -308,7 +261,7 @@ public class MainActivity extends AppCompatActivity
                         SalesforceSDKManager.getInstance().getLoginOptions(),
                         SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked());
 
-                RestClient client = clientManager.peekRestClient();
+                client = clientManager.peekRestClient();
                 if (client != null) {
                     //onResumeClient(client);
                     //showTheAppSelectionDialog(client);
@@ -396,6 +349,21 @@ public class MainActivity extends AppCompatActivity
                     currentFragment = mFragObjAdmin;
                 }
 
+                HttpLoggingInterceptor ic = new HttpLoggingInterceptor();
+                ic.setLevel(HttpLoggingInterceptor.Level.BODY);
+                OkHttpClient newClientForOKHTTP = new OkHttpClient.Builder()
+                        .addInterceptor(new Interceptor() {
+                            @Override
+                            public okhttp3.Response intercept(Chain chain) throws IOException {
+                                Request newRequest = chain.request().newBuilder()
+                                        .addHeader("Authorization",
+                                                "Bearer " + client.getAuthToken())
+                                        .build();
+                                return  chain.proceed(newRequest);
+                            }
+                        })
+                        .addInterceptor(ic)
+                        .build();
 
                 //An Async task to do in Backround thread
                 //Creates a HTTP Connection with the header as Authetication Token as Bearer
@@ -449,13 +417,18 @@ public class MainActivity extends AppCompatActivity
                         .setIcon(R.drawable.ic_no_network)
                         .show();
             }
+             if(CommanUtils.hasImage(imgProfile)){
+                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_alert_exclamation_mark));
+            }
         }
     }
-    public void updateUi(Response response, Fragment fragment) {
-        if(fragment != null) {
-            ((AppCompatActivity)thisActivity).getSupportFragmentManager()
-                    .beginTransaction().remove(fragment).commit();
-        }
+
+    /**
+     * Update on UI on load of a fragment
+     * @param response
+     *
+     */
+    public void updateUi(Response response) {
         ((ServiceEngineer)currentFragment).updateDataOnUi(response);
     }
 }

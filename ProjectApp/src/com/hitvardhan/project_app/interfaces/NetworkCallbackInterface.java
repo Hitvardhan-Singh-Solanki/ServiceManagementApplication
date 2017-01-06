@@ -1,4 +1,4 @@
-package com.hitvardhan.project_app.utils;
+package com.hitvardhan.project_app.interfaces;
 
 import com.hitvardhan.project_app.response_classes.Response;
 

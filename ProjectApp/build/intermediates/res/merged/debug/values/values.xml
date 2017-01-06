@@ -12,10 +12,6 @@
     <string-array name="oauthScopes">
         <item>api</item>
     </string-array>
-    <string-array name="status_array">
-        <item>Completed</item>
-        <item>Not Completed</item>
-    </string-array>
     <attr format="reference" name="MediaRouteControllerWindowBackground"/>
     <attr format="reference" name="castExpandedControllerToolbarStyle"/>
     <attr format="reference" name="drawerArrowStyle"/>
@@ -1461,7 +1457,6 @@
     <string name="fetch_accounts_button">Fetch Accounts</string>
     <string name="fetch_contacts_button">Fetch Contacts</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBB4Ryb2PjvJZcOBfFebY1NNMh0EoSFgNY</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="library_AndroidIconics_author">Mike Penz</string>
     <string name="library_AndroidIconics_authorWebsite">http://mikepenz.com/</string>
     <string name="library_AndroidIconics_isOpenSource">true</string>
@@ -1555,7 +1550,6 @@
     <string name="oauth_display_type">touch</string>
     <string name="online">You are Online</string>
     <string name="pending_task_title">Pending Task</string>
-    <string name="photoUrl">https://c.ap2.content.force.com/profilephoto/72928000000dITS/F</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
     <string name="remoteAccessConsumerKey">
@@ -1621,12 +1615,9 @@
     <string name="sf__ssl_unknown_error">Unknown Error</string>
     <string name="sf__ssl_untrusted">Untrusted Certificate Authority</string>
     <string name="sf__switch_account">Switch Account</string>
-    <string name="soql_query">
-        "SELECT Id, Name, Due_Date__c, Description__c, Status__c, Email_Id__c, Location__c, Phone_Number__c, Address__c  FROM Task__c"</string>
     <string name="statusField">Status__c</string>
     <string name="statusOfTask">statusOfTask</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="stauts_promt">Status</string>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
     <string name="suspendedConnection">Connection Denied</string>

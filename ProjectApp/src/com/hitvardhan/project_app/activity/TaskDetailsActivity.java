@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.hitvardhan.project_app.R.id.toolbar;
-import static com.hitvardhan.project_app.fragment.ServiceEngineer.client;
+import static com.hitvardhan.project_app.activity.MainActivity.client;
 
 /**
  * Created by Hitvardhan on 12-12-2016.
@@ -74,7 +74,9 @@ public class TaskDetailsActivity extends AppCompatActivity {
         getRecord = (Record) getIntent().getParcelableExtra("RecordObject");
         //Remove the appended three characters form the id string
         idOfTaskString = getRecord.getId();
-        idOfTaskString = idOfTaskString.substring(0, idOfTaskString.length() - 3);
+        Log.d("ID of the task",idOfTaskString);
+        //idOfTaskString = idOfTaskString.substring(0, idOfTaskString.length() - 3);
+        Log.d("ID after sub",idOfTaskString);
         //setup the view
         getNameView = (TextView) findViewById(R.id.task_name_detail);
         getDescView = (TextView) findViewById(R.id.task_description_detail);
@@ -119,6 +121,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //UPDATE on POSITIVE RESPONSE
                         try {
+
                             saveData(idOfTaskString, fields);
 
                         } catch (Exception ex) {
@@ -148,6 +151,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
             @Override
             public void onSuccess(RestRequest request, RestResponse result) {
                 try {
+                    Log.d("STATUS CODE", String.valueOf(result.getStatusCode()));
                     if (result.getStatusCode() == 204) {
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override

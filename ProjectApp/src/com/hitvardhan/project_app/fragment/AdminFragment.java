@@ -34,13 +34,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
-import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
-import com.hitvardhan.project_app.utils.FetchUrl;
 import com.hitvardhan.project_app.utils.LocationPermission;
-import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
-import com.hitvardhan.project_app.utils.getRouteLatlngURL;
+import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
 
 import java.util.ArrayList;
 

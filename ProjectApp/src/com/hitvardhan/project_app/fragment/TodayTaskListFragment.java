@@ -4,22 +4,15 @@ package com.hitvardhan.project_app.fragment;
  * Created by Hitvardhan on 13-12-2016.
  */
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.hitvardhan.project_app.Adapters.TaskAdapter;
 import com.hitvardhan.project_app.R;
@@ -27,12 +20,10 @@ import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
-import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
+import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.hitvardhan.project_app.fragment.MoreTaskListFragment.MoreTaskName;
 
 public class TodayTaskListFragment extends Fragment {
 
@@ -43,6 +34,7 @@ public class TodayTaskListFragment extends Fragment {
     public static List<Record> todaysTaskName;
     private View view;
     private SwipeRefreshLayout mSwipeRefreshLayoutlToday;
+    private Fragment thisFragment;
     public TodayTaskListFragment() {
         // Required empty public constructor
     }
@@ -75,7 +67,7 @@ public class TodayTaskListFragment extends Fragment {
                         new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
-
+                        ((MainActivity)getActivity()).updateUi(response);
                     }
 
                     @Override

@@ -35,7 +35,10 @@ public class nearestPointUtil {
         return OriginDestDiff;
     }
 
-
+    /**
+     * get the sorted array in ascending order of the locations nearest
+     * @return
+     */
     public ArrayList<ArrayList<Double>> getTheSortedArrayofLatLng() {
 
 

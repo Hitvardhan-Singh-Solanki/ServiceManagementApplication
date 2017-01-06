@@ -4,16 +4,9 @@ package com.hitvardhan.project_app.fragment;
  * Created by Hitvardhan on 13-12-2016.
  */
 
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.AnimRes;
-import android.support.annotation.IdRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -23,7 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hitvardhan.project_app.Adapters.TaskAdapter;
 import com.hitvardhan.project_app.R;
@@ -31,7 +24,7 @@ import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
-import com.hitvardhan.project_app.utils.NetworkCallbackInterface;
+import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,11 +86,13 @@ public class MoreTaskListFragment extends Fragment {
                         new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
-                        ((MainActivity)getActivity()).updateUi(response, thisFragment);
+                        Log.i("RESPONSE",response.toString());
+                        ((MainActivity)getActivity()).updateUi(response);
+
                     }
                     @Override
                     public void onError() {
-                        //do nothing
+
                     }
                 });
                 mSwipeRefreshLayoutl.setRefreshing(false);

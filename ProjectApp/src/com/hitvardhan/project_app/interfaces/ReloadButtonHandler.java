@@ -1,4 +1,4 @@
-package com.hitvardhan.project_app.utils;
+package com.hitvardhan.project_app.interfaces;
 
 /**
  * Created by Hitvardhan on 03-01-2017.
