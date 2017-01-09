@@ -5,57 +5,44 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1114016706254189"
+    timestamp="1121927366933442"
     token="2112899474766603816"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1375" />
+        duration="1492" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="54" />
+        duration="34" />
     <task
         name="verifier"
-        duration="14" />
+        duration="10" />
 
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-        type="DEX" />
     <artifact
         location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
         type="DEX" />
 
     <build
-        timestamp="1112125774117518"
+        timestamp="1120662160338330"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="1113339504598150"
+        timestamp="1120778758988915"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
             type="DEX" />
     </build>
     <build
-        timestamp="1113403501185229"
+        timestamp="1121927366933442"
         verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="1114016706254189"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-            type="DEX" />
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
             type="DEX" />

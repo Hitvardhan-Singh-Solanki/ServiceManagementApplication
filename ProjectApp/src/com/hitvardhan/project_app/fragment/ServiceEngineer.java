@@ -238,6 +238,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         }
         //Place current location marker
         latLngMyLoc = new LatLng(location.getLatitude(), location.getLongitude());
+        Log.d("MY LOCATION",latLngMyLoc.toString());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLngMyLoc);
         markerOptions.title("Your Location");
@@ -382,10 +383,6 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                         //Adding LAT LONG of my device location
                         markerPoints.add(latLngMyLoc);
 
-
-
-
-
                         // Creating MarkerOptions
                         MarkerOptions options = new MarkerOptions();
 
@@ -423,7 +420,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
             adapter.addFragment(new TodayTaskListFragment(), "Today's Task");
             adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
             viewPager.setAdapter(adapter);
-             adapter.notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
         }
     }
 

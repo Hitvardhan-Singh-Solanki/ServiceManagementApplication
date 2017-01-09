@@ -5,45 +5,32 @@ package com.hitvardhan.project_app.activity;
  * Main Activity class to controll and show the Main screen UI with map and tab layout
  */
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
 
-import com.hitvardhan.project_app.eightJanSeventeen.ImageLoader;
+import com.hitvardhan.project_app.ImageCache.ImageLoader;
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
 import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
-import com.jakewharton.picasso.OkHttp3Downloader;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -55,23 +42,9 @@ import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.ButterKnife;
-import butterknife.internal.Utils;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.logging.HttpLoggingInterceptor;
 
 import com.hitvardhan.project_app.fragment.AdminFragment;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 
 public class MainActivity extends AppCompatActivity

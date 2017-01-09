@@ -3,6 +3,8 @@ package com.hitvardhan.project_app.fragment;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -13,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,36 +34,33 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
+import com.hitvardhan.project_app.constants.SoqlQueries;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 import com.hitvardhan.project_app.utils.LocationPermission;
 import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
+import com.salesforce.androidsdk.rest.ApiVersionStrings;
+import com.salesforce.androidsdk.rest.RestClient;
+import com.salesforce.androidsdk.rest.RestRequest;
+import com.salesforce.androidsdk.rest.RestResponse;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdminFragment extends Fragment  implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+public class AdminFragment extends Fragment  implements OnMapReadyCallback{
     //Global Variable Declaration
     private ArrayList<LatLng> markerPoints;
     private View contentViewAdmin;
     private GoogleMap mMapAdminView;
-    private GoogleApiClient mGoogleApiClientAdmin;
-    private LocationRequest mLocationRequestAdmin;
-    private Marker mCurrLocationMarkerAdmin;
-    private LatLng latLngAdminLoc;
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private ViewPager viewPagerAdmin;
     private TabLayout tabLayoutAdmin;
     public Response resForAdmin;
-    private ViewPagerAdapter adapterAdmin;
     public AdminFragment() {
         // Required empty public constructor
     }
@@ -96,6 +96,11 @@ public class AdminFragment extends Fragment  implements OnMapReadyCallback,
                 .findFragmentById(R.id.mapAdminView));
         mapFragmentAdmin.getMapAsync(this);
 
+
+
+        /*//Get Details form salesforce
+        getDetailsofTask(this);*/
+
         //finally return the view
         return contentViewAdmin;
     }
@@ -119,22 +124,25 @@ public class AdminFragment extends Fragment  implements OnMapReadyCallback,
             if (ContextCompat.checkSelfPermission(getActivity(),
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
-                buildGoogleApiClient();
-                mMapAdminView.setMyLocationEnabled(true);
+               // buildGoogleApiClient();
+               // mMapAdminView.setMyLocationEnabled(true);
             }
         } else {
-            buildGoogleApiClient();
-            mMapAdminView.setMyLocationEnabled(true);
+          //  buildGoogleApiClient();
+           // mMapAdminView.setMyLocationEnabled(true);
         }
 
 
         if (CommanUtils.isNetworkAvailable(getActivity())) {
             try {
-                CommanUtils.getDetailsofTask(getActivity(), ((MainActivity) getActivity()).client,
+                getDetailsOfTask(getActivity(), ((MainActivity) getActivity()).client,
                         new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
-                        updateDataOnAdminUi(response);
+
+
+                        //SHOW THE DETAILS FORM THE SERVER ON THE UI
+
                     }
 
                     @Override
@@ -158,135 +166,92 @@ public class AdminFragment extends Fragment  implements OnMapReadyCallback,
                     .show();
         }
     }
-    //Method to connect to the GOOGLE API for location and routes
-    protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClientAdmin = new GoogleApiClient.Builder(getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-        mGoogleApiClientAdmin.connect();
-    }
 
-    //Get the realtime location in the application
-    @Override
-    public void onConnected(Bundle bundle) {
-        mLocationRequestAdmin = new LocationRequest();
-        mLocationRequestAdmin.setInterval(1000);
-        mLocationRequestAdmin.setFastestInterval(1000);
-        mLocationRequestAdmin.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        Activity mActivity = getActivity();
-        if (ContextCompat.checkSelfPermission(mActivity,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClientAdmin,
-                    mLocationRequestAdmin, this);
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.connectionSuspension)
-                .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setIcon(R.drawable.ic_alert_exclamation_mark)
-                .show();
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-        if (mCurrLocationMarkerAdmin != null) {
-            mCurrLocationMarkerAdmin.remove();
-        }
-        //Place current location marker
-        latLngAdminLoc = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLngAdminLoc);
-        markerOptions.title("Admin\'s Location");
-        markerOptions.icon(BitmapDescriptorFactory
-                .fromResource(R.drawable.ic_marker_main_2_1));
-        mCurrLocationMarkerAdmin = mMapAdminView.addMarker(markerOptions);
-        //move map camera
-        mMapAdminView.moveCamera(CameraUpdateFactory.newLatLng(latLngAdminLoc));
-        mMapAdminView.animateCamera(CameraUpdateFactory.zoomTo(10));
-        //stop location updates
-        if (mGoogleApiClientAdmin != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClientAdmin, this);
-        }
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.suspendedConnection)
-                .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setIcon(R.drawable.ic_alert_exclamation_mark)
-                .show();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    // permission was granted. Do the
-                    // contacts-related task you need to do.
-                    if (ContextCompat.checkSelfPermission(getActivity(),
-                            Manifest.permission.ACCESS_FINE_LOCATION)
-                            == PackageManager.PERMISSION_GRANTED) {
-                        if (mGoogleApiClientAdmin == null) {
-                            buildGoogleApiClient();
-                        }
-                        mMapAdminView.setMyLocationEnabled(true);
-                        mMapAdminView.moveCamera(CameraUpdateFactory.newLatLng(latLngAdminLoc));
-                        mMapAdminView.animateCamera(CameraUpdateFactory.zoomTo(10));
-                        mMapAdminView.getUiSettings().setZoomControlsEnabled(true);
-                        mMapAdminView.getUiSettings().setAllGesturesEnabled(true);
-                        mMapAdminView.setTrafficEnabled(true);
-                        mMapAdminView.setBuildingsEnabled(true);
-
-
-                    }
-                } else {
-                    // Permission denied, Disable
-                    // the functionality that depends
-                    // on this permission.
-                    Toast.makeText(getActivity(), "permission denied", Toast.LENGTH_LONG).show();
-                }
-                return;
-            }
-        }
-    }
 
 
 //Public methods
 
-
-    public void updateDataOnAdminUi(Response rs){
-        resForAdmin = rs;
-        if(resForAdmin != null){
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    //creating a bundle
-                    Bundle dataAboutServiceEngg = new Bundle();
-                    dataAboutServiceEngg.putSerializable("EnggList",resForAdmin);
-                    adapterAdmin = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-                }
-
-            });
-        }
+    /**
+     * get Details ffrom the server
+     * @param context
+     * @param client
+     * @param callbackInterface
+     * @throws Exception
+     */
+    public static void getDetailsOfTask(Context context, RestClient client,
+                                        NetworkCallbackInterface callbackInterface)
+            throws Exception {
+        getDetailFromSalesforceAdmin(context,client,
+                SoqlQueries.soqlForEngineers,
+                callbackInterface);
     }
 
+    /**
+     * Establish a main connection from the salesforce and fetch data from the server
+     * The real magic happens
+     *
+     * @param soql
+     * @throws Exception
+     */
+    public static void getDetailFromSalesforceAdmin(final Context context, RestClient client,
+                                               String soql,
+                                               final NetworkCallbackInterface callbackInterface)
+            throws Exception {
+
+        //Show the progress dialog box when the data loads
+        final ProgressDialog mProgressDialog;
+
+        mProgressDialog = new ProgressDialog(context);
+        mProgressDialog.setMessage("Fetching data...");
+        mProgressDialog.show();
+
+        //make a request for query to salesfoce
+        RestRequest restRequest = RestRequest.getRequestForQuery(ApiVersionStrings
+                .getVersionNumber(context), soql);
+
+        //call the async method
+        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+            @Override
+            public void onSuccess(RestRequest request, final RestResponse result) {
+                Response res = null;
+                result.consumeQuietly(); // consume before going back to main thread
+                try {
+                    String record = result.asJSONObject().toString();
+                    res = new Gson().fromJson(record, Response.class);
+                    Log.e("RESPONSE SERVER ADMIN", record);
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    Log.d("Exception", String.valueOf(ex));
+                }
+                if (mProgressDialog != null && mProgressDialog.isShowing())
+                    mProgressDialog.dismiss();
+
+                //finally update the changes to the UI
+                callbackInterface.onSuccess(res);
+            }
+
+            @Override
+            public void onError(final Exception exception) {
+                if (mProgressDialog != null && mProgressDialog.isShowing())
+                    mProgressDialog.dismiss();
+                ((Activity)context).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new AlertDialog.Builder(context)
+                                .setTitle(R.string.no_network_title)
+                                .setMessage(R.string.no_network_desc)
+                                .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                })
+                                .setIcon(R.drawable.ic_no_network)
+                                .show();
+                    }
+                });
+                callbackInterface.onError();
+            }
+        });
+    }
 
 }
