@@ -1370,6 +1370,7 @@
     <string name="account_type">com.hitvardhan.project_app.login</string>
     <string name="action">Action</string>
     <string name="addressOfTask">addressOfTask</string>
+    <string name="adminUserId">005280000067vlGAAQ</string>
     <string name="androidPushNotificationClientId"/>
     <string name="api_version">v36.0</string>
     <string name="app_name"><b>PROJECT APP</b></string>

@@ -40,6 +40,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
 
+import com.hitvardhan.project_app.eightJanSeventeen.ImageLoader;
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
 import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
 import com.jakewharton.picasso.OkHttp3Downloader;
@@ -82,27 +83,20 @@ public class MainActivity extends AppCompatActivity
     private Gson gson = new Gson();
     public static Response res;
     private PasscodeManager passcodeManager;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    public static GoogleMap mMap;
-    private GoogleApiClient mGoogleApiClient;
-    private Marker mCurrLocationMarker;
-    public static LocationRequest mLocationRequest;
     public TextView userNameView;
     public TextView userEmailId;
     public ImageView imgProfile;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-    public List<Double> lattitueOfTasks, longitudesOfTasks;
     public static LatLng latLngMyLoc;
-    private ArrayList<LatLng> markerPoints;
-    private ArrayList<LatLng> latLngOfTasks;
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private LinearLayout logoutButtonNavigation;
     private ImageView reloadButtonOnNavHeader;
     private Fragment currentFragment;
-    private Activity thisActivity;
     public static RestClient client;
+    private String salesForceImageUrl;
+    private ImageLoader imgLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -110,7 +104,6 @@ public class MainActivity extends AppCompatActivity
 
         //implemented butterKnife
         ButterKnife.bind(this);
-        thisActivity = this;
         // Setup view
         setContentView(R.layout.main_activity_with_navigation);
 
@@ -292,7 +285,8 @@ public class MainActivity extends AppCompatActivity
 
                             onResumeClient(client);
 
-                            // showTheAppSelectionDialog(client);
+
+
                             // Lets observers know that rendition is complete.
                             EventsObservable.get().notifyEvent(EventsObservable
                                     .EventType.RenditionComplete);
@@ -317,6 +311,12 @@ public class MainActivity extends AppCompatActivity
             String userEmail = client.getClientInfo().email;
             userNameView.setText(userName);
             userEmailId.setText(userEmail);
+            salesForceImageUrl = client.getClientInfo().photoUrl;
+
+
+            //caching of the image
+            imgLoader = new ImageLoader(this);
+            imgLoader.DisplayImage(salesForceImageUrl, imgProfile, this);
 
 
             // Show everything
@@ -326,7 +326,21 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make((View) findViewById(R.id.main_root), R.string.online,
                         Snackbar.LENGTH_SHORT)
                         .setAction(R.string.action, null).show();
-                if(client.getClientInfo().firstName.equalsIgnoreCase("Hitvardhan")) {
+              //  Log.d("ABOUT THE CLIENT",client.toString());
+                if(client.getClientInfo().userId.equalsIgnoreCase(getString(R.string.adminUserId))) {
+                    //Inflate a fragment based on the ADMIN user logged in
+                    if(currentFragment == null) {
+                        currentFragment = new AdminFragment();
+                    }
+                    if(!currentFragment.isAdded()) {
+                        FragmentTransaction transaction =
+                                getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frm_container, currentFragment, "");
+                        transaction.commitAllowingStateLoss();
+                        //currentFragment = mFragObjAdmin;
+                    }
+                }
+                else{
                     //Inflate a fragment based on the service user logged in
                     if(currentFragment == null) {
                         currentFragment = new ServiceEngineer();
@@ -339,86 +353,7 @@ public class MainActivity extends AppCompatActivity
                         transaction.commitAllowingStateLoss();
                     }
                 }
-                else{
-                    //Inflate a fragment based on the ADMIN user logged in
-                    AdminFragment mFragObjAdmin = new AdminFragment();
-                    FragmentTransaction transaction =
-                            getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frm_container, mFragObjAdmin, "");
-                    transaction.commit();
-                    currentFragment = mFragObjAdmin;
-                }
 
-                HttpLoggingInterceptor ic = new HttpLoggingInterceptor();
-                ic.setLevel(HttpLoggingInterceptor.Level.BODY);
-                OkHttpClient newClientForOKHTTP = new OkHttpClient.Builder()
-                        .addInterceptor(new Interceptor() {
-                            @Override
-                            public okhttp3.Response intercept(Chain chain) throws IOException {
-                                Request newRequest = chain.request().newBuilder()
-                                        .addHeader("Authorization",
-                                                "Bearer " + client.getAuthToken())
-                                        .build();
-                                return  chain.proceed(newRequest);
-                            }
-                        })
-                        .addInterceptor(ic)
-                        .build();
-
-                //An Async task to do in Backround thread
-                //Creates a HTTP Connection with the header as Authetication Token as Bearer
-                //and download the Image, saving it as a Bitmap
-                new AsyncTask<String, Void, Void>() {
-
-                    //Bitmap to hold the downloaded Image from Salesforce
-                    Bitmap myBitmap;
-
-                    //Background thread
-                    @Override
-                    protected Void doInBackground(String... params) {
-                        try {
-                            //URL to connect
-                            java.net.URL url = new java.net.URL(params[0]);
-                            //Connection Request
-                            HttpURLConnection connection =
-                                    (HttpURLConnection) url.openConnection();
-                            //set the Auth Token in header
-                            connection.setRequestProperty("Authorization",
-                                    "Bearer " + client.getAuthToken());
-                            connection.setDoInput(true);
-                            //make the final connection
-                            connection.connect();
-                            InputStream input = connection.getInputStream();
-                            //save the image
-                            myBitmap = BitmapFactory.decodeStream(input);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            return null;
-                        }
-                        return null;
-                    }
-                    //method to do onPost Exectuion i.e. to update changes on UI
-                    @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
-                        //set the Image
-                        imgProfile.setImageBitmap(myBitmap);
-                        Log.i("sth", "" + (myBitmap == null));
-                    }
-                }.execute(client.getClientInfo().photoUrl);//execute supplies the Image URL
-            } else {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(R.string.no_network_title)
-                        .setMessage(R.string.no_network_desc)
-                        .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        })
-                        .setIcon(R.drawable.ic_no_network)
-                        .show();
-            }
-             if(CommanUtils.hasImage(imgProfile)){
-                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_alert_exclamation_mark));
             }
         }
     }

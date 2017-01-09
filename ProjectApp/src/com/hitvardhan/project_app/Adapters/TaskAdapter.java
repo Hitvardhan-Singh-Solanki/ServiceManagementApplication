@@ -130,11 +130,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             }
 
             holder.SerialNumber1.setText("" + (position + 1));
-
-            if (mRecord.getStatus__c().equalsIgnoreCase("Completed")) {
-                holder.redDotStatus.setVisibility(View.GONE);
+            if (mRecord.getStatus__c() != null) {
+                if (mRecord.getStatus__c().equalsIgnoreCase("Completed")) {
+                    holder.redDotStatus.setVisibility(View.GONE);
+                }
             }
-
 
         }
         mCardViewTask.setOnClickListener(new View.OnClickListener() {

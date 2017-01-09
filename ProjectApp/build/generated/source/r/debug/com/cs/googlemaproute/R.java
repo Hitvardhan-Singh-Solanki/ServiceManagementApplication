@@ -865,7 +865,7 @@ public final class R {
 		public static final int abc_shareactionprovider_share_with_application = 0x7f080011;
 		public static final int abc_toolbar_collapse_description = 0x7f080012;
 		public static final int accept = 0x7f080013;
-		public static final int app_name = 0x7f08007e;
+		public static final int app_name = 0x7f08007f;
 		public static final int cast_notification_connected_message = 0x7f080024;
 		public static final int cast_notification_connecting_message = 0x7f080025;
 		public static final int cast_notification_disconnect = 0x7f080026;
@@ -895,9 +895,9 @@ public final class R {
 		public static final int status_bar_notification_info_overflow = 0x7f080066;
 		public static final int store_picture_message = 0x7f080067;
 		public static final int store_picture_title = 0x7f080068;
-		public static final int tagmanager_preview_dialog_button = 0x7f080110;
-		public static final int tagmanager_preview_dialog_message = 0x7f080111;
-		public static final int tagmanager_preview_dialog_title = 0x7f080112;
+		public static final int tagmanager_preview_dialog_button = 0x7f080111;
+		public static final int tagmanager_preview_dialog_message = 0x7f080112;
+		public static final int tagmanager_preview_dialog_title = 0x7f080113;
 		public static final int wallet_buy_button_place_holder = 0x7f080069;
 	}
 	public static final class style {

@@ -161,8 +161,9 @@ public class CommanUtils extends Activity{
     public static void getDetailsofTask(Context context, RestClient client,
                                         NetworkCallbackInterface callbackInterface)
             throws Exception {
+        Log.e("SOQL_query",SoqlQueries.soqlForTasks+client.getClientInfo().username+"'");
         getDetailFromSalesforce(context,client,
-                SoqlQueries.soqlForTasks,
+                SoqlQueries.soqlForTasks+client.getClientInfo().username+"'",
                 callbackInterface);
     }
 

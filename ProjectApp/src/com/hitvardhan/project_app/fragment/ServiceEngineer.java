@@ -332,16 +332,30 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                     lattitueOfTasks = new ArrayList<Double>();
                     longitudesOfTasks = new ArrayList<Double>();
                     latLngOfTasks = new ArrayList<LatLng>();
-
+                    Double Latitude,Longitude;
+                    LatLng markerTasks;
+                    LatLng inListElements;
                     for (Record r : res.getRecords()) {
-                        Double Latitude = r.getLocation__c().getLatitude();
-                        Double Longitude = r.getLocation__c().getLongitude();
-                        LatLng markerTasks = new LatLng(Latitude, Longitude);
-                        LatLng inListElements = new LatLng(Latitude, Longitude);
+                        Latitude = null;
+                        Longitude = null;
+                        markerTasks = null;
 
-                        lattitueOfTasks.add(Latitude);
-                        longitudesOfTasks.add(Longitude);
-                        latLngOfTasks.add(inListElements);
+                        if(r.getLocation__c()!= null) {
+                            Latitude = r.getLocation__c().getLatitude();
+                            Longitude = r.getLocation__c().getLongitude();
+                            markerTasks = new LatLng(Latitude, Longitude);
+                            lattitueOfTasks.add(Latitude);
+                            longitudesOfTasks.add(Longitude);
+                            inListElements = new LatLng(Latitude, Longitude);
+                            latLngOfTasks.add(inListElements);
+
+                            //pass the 1th param of LATLNG into the argument
+                            //TODO: Make the shortest route between the given markers
+                            markerPoints.add(latLngOfTasks.get(0));
+                        }
+
+
+
 
                         if (r.getDue_Date__c() != null) {
                             if (!r.getDue_Date__c().trim()
@@ -369,9 +383,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                         markerPoints.add(latLngMyLoc);
 
 
-                        //pass the 1th param of LATLNG into the argument
-                        //TODO: Make the shortest route between the given markers
-                        markerPoints.add(latLngOfTasks.get(0));
+
 
 
                         // Creating MarkerOptions

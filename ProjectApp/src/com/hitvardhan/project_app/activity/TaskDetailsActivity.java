@@ -23,8 +23,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +39,9 @@ import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.hitvardhan.project_app.R.id.toolbar;
@@ -46,7 +51,7 @@ import static com.hitvardhan.project_app.activity.MainActivity.client;
  * Created by Hitvardhan on 12-12-2016.
  * To show Task Details and change the status
  */
-public class TaskDetailsActivity extends AppCompatActivity {
+public class TaskDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //variable declaration
     private String idOfTaskString;
     private TextView
@@ -62,7 +67,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
     private Response res;
     private ImageView closeButton;
     private Record getRecord;
-
+    private Spinner statusSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +90,9 @@ public class TaskDetailsActivity extends AppCompatActivity {
         getAddressView = (TextView) findViewById(R.id.AddressOfTask);
         getStatusOfTaskView = (TextView) findViewById(R.id.Status);
         closeButton = (ImageView) findViewById(R.id.close_task_detail_cross);
+        statusSpinner = (Spinner) findViewById(R.id.spinner_status_change);
+        statusSpinner.setOnItemSelectedListener(this);
+        statusSpinner.setPrompt("Choose");
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,15 +104,36 @@ public class TaskDetailsActivity extends AppCompatActivity {
         getNameView.setText(getRecord.getName());
         getDescView.setText(getRecord.getDescription__c());
         getDueDateView.setText(getRecord.getDue_Date__c());
-        getContactNumberView.setText(getRecord.getPhone_Number__c());
+        getContactNumberView.append("\n"+getRecord.getPhone_Number__c());
         getAddressView.setText(getRecord.getAddress__c());
-        getStatusOfTaskView.setText(getRecord.getStatus__c());
+        getStatusOfTaskView.append("\n"+getRecord.getStatus__c());
+
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("En route");
+        categories.add("Not Completed");
+        categories.add("Completed");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // attaching data adapter to spinner
+        statusSpinner.setAdapter(dataAdapter);
+
+
         changeStatusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChangeStatusCall();
             }
         });
+
+
+
+
     }
 
     @Override
@@ -172,5 +201,19 @@ public class TaskDetailsActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
+    }
+
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 }
