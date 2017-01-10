@@ -3,20 +3,29 @@ package com.hitvardhan.project_app.fragment;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -35,6 +44,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
+import com.hitvardhan.project_app.activity.TaskDetailsActivity;
 import com.hitvardhan.project_app.response_classes.Record;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
@@ -46,15 +56,18 @@ import com.hitvardhan.project_app.utils.getRouteLatlngURL;
 import com.salesforce.androidsdk.rest.RestClient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
+public class ServiceEngineer extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener, ReloadButtonHandler{
+        LocationListener, ReloadButtonHandler {
 
 
     //Variable Declaration
@@ -76,6 +89,9 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
     private MoreTaskListFragment mFragementMore;
     private ViewPagerAdapter adapter;
     private Fragment thisFragment;
+    private Activity thisActivity;
+    private HashMap<String, Record> NameToRecordMap;
+
     public ServiceEngineer() {
         // Required empty public constructor
     }
@@ -86,7 +102,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                 , new NetworkCallbackInterface() {
                     @Override
                     public void onSuccess(Response response) {
-                        ((MainActivity)getActivity()).updateUi(response);
+                        ((MainActivity) getActivity()).updateUi(response);
                     }
 
                     @Override
@@ -103,7 +119,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         contentView = inflater.inflate(R.layout.fragment_service_engineer, container, false);
 
         //Get the fragment
-
+        thisActivity = getActivity();
         thisFragment = this;
         //Get tabs
         viewPager = (ViewPager) contentView.findViewById(R.id.viewpager);
@@ -165,16 +181,16 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
             try {
                 CommanUtils.getDetailsofTask(getActivity(), ((MainActivity) getActivity()).client,
                         new NetworkCallbackInterface() {
-                    @Override
-                    public void onSuccess(Response response) {
-                        updateDataOnUi(response);
-                    }
+                            @Override
+                            public void onSuccess(Response response) {
+                                updateDataOnUi(response);
+                            }
 
-                    @Override
-                    public void onError() {
-                        //do nothing
-                    }
-                });
+                            @Override
+                            public void onError() {
+                                //do nothing
+                            }
+                        });
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -238,7 +254,6 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         }
         //Place current location marker
         latLngMyLoc = new LatLng(location.getLatitude(), location.getLongitude());
-        Log.d("MY LOCATION",latLngMyLoc.toString());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLngMyLoc);
         markerOptions.title("Your Location");
@@ -312,7 +327,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                     //adding data to bundle
                     bundle.putSerializable(getString(R.string.taskList), res);
 
-                    if( adapter == null) {
+                    if (adapter == null) {
                         adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
 
                         mFragementToday = new TodayTaskListFragment();
@@ -333,55 +348,56 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                     lattitueOfTasks = new ArrayList<Double>();
                     longitudesOfTasks = new ArrayList<Double>();
                     latLngOfTasks = new ArrayList<LatLng>();
-                    Double Latitude,Longitude;
+                    Double Latitude, Longitude;
                     LatLng markerTasks;
                     LatLng inListElements;
+                    NameToRecordMap = new HashMap<String, Record>();
+                    markerPoints.add(latLngMyLoc);
                     for (Record r : res.getRecords()) {
-                        Latitude = null;
-                        Longitude = null;
-                        markerTasks = null;
+                        if (r.getLocation__c() != null) {
+                            Log.d("STATUS OF TASK", r.getStatus__c());
+                            if (r.getDue_Date__c() != null && !r.getStatus__c()
+                                    .equalsIgnoreCase("Completed")) {
 
-                        if(r.getLocation__c()!= null) {
-                            Latitude = r.getLocation__c().getLatitude();
-                            Longitude = r.getLocation__c().getLongitude();
-                            markerTasks = new LatLng(Latitude, Longitude);
-                            lattitueOfTasks.add(Latitude);
-                            longitudesOfTasks.add(Longitude);
-                            inListElements = new LatLng(Latitude, Longitude);
-                            latLngOfTasks.add(inListElements);
-
-                            //pass the 1th param of LATLNG into the argument
-                            //TODO: Make the shortest route between the given markers
-                            markerPoints.add(latLngOfTasks.get(0));
-                        }
+                                Latitude = r.getLocation__c().getLatitude();
+                                Longitude = r.getLocation__c().getLongitude();
+                                markerTasks = new LatLng(Latitude, Longitude);
+                                lattitueOfTasks.add(Latitude);
+                                longitudesOfTasks.add(Longitude);
 
 
+                                if (!r.getDue_Date__c().trim()
+                                        .equalsIgnoreCase(CommanUtils.getTodaysDate()
+                                                .trim())) {
+                                    mMap.addMarker(new
+                                            MarkerOptions().position(markerTasks)
+                                            .title(r.getName() + getString(R.string.task_location))
+                                            .icon(BitmapDescriptorFactory
+                                                    .fromResource(R.drawable.ic_marker_pending_1)));
+                                    NameToRecordMap.put(r.getName() +
+                                            getString(R.string.task_location), r);
+                                } else {
+                                    mMap.addMarker(new
+                                            MarkerOptions().position(markerTasks)
+                                            .title(r.getName() + getString(R.string.task_location))
+                                            .icon(BitmapDescriptorFactory
+                                                    .fromResource(R.drawable.ic_marker_today_1)));
+                                }
+                                inListElements = new LatLng(Latitude, Longitude);
+                                latLngOfTasks.add(inListElements);
+
+                                //pass the 1th param of LATLNG into the argument
+                                //TODO: Make the shortest route between the given markers
+                                markerPoints.add(latLngOfTasks.get(0));
+                                Log.d("SIZE", String.valueOf(markerPoints.size()));
 
 
-                        if (r.getDue_Date__c() != null) {
-                            if (!r.getDue_Date__c().trim()
-                                    .equalsIgnoreCase(CommanUtils.getTodaysDate()
-                                            .trim())) {
-                                mMap.addMarker(new
-                                        MarkerOptions().position(markerTasks)
-                                        .title(r.getName() + getString(R.string.task_location))
-                                        .icon(BitmapDescriptorFactory
-                                                .fromResource(R.drawable.ic_marker_pending_1)));
-                            } else {
-                                mMap.addMarker(new
-                                        MarkerOptions().position(markerTasks)
-                                        .title(r.getName() + getString(R.string.task_location))
-                                        .icon(BitmapDescriptorFactory
-                                                .fromResource(R.drawable.ic_marker_today_1)));
                             }
                         }
                         mMap.setBuildingsEnabled(true);
                         mMap.setTrafficEnabled(true);
 
                         //ROUTE BUILDING
-
-                        //Adding LAT LONG of my device location
-                        markerPoints.add(latLngMyLoc);
 
                         // Creating MarkerOptions
                         MarkerOptions options = new MarkerOptions();
@@ -391,12 +407,21 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                             options.position(latLngMyLoc);
 
                         // Checks, whether start and end locations are captured
+                        Log.d("SIZE", String.valueOf(markerPoints.size()));
                         if (markerPoints.size() >= 2) {
                             LatLng origin = markerPoints.get(0);
                             LatLng dest = markerPoints.get(1);
 
                             // Getting URL to the Google Directions API
                             if (origin != null && dest != null) {
+
+                                //Show the progress dialog box when the data loads
+                                final ProgressDialog mProgressDialog;
+
+                                mProgressDialog = new ProgressDialog(getContext());
+                                mProgressDialog.setMessage("Fetching data...");
+                                mProgressDialog.show();
+
                                 String url = getRouteLatlngURL.getUrl(origin, dest);
                                 FetchUrl FetchUrl = new FetchUrl();
 
@@ -404,7 +429,7 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                                 FetchUrl.execute(url);
                                 //move map camera
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(8));
                                 mMap.getUiSettings().setZoomControlsEnabled(true);
                                 mMap.getUiSettings().setAllGesturesEnabled(true);
                                 mMap.setTrafficEnabled(true);
@@ -412,6 +437,21 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
                             }
                         }
                     }
+
+
+                    mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                        @Override
+                        public boolean onMarkerClick(Marker marker) {
+                            Intent intent = new Intent(thisActivity, TaskDetailsActivity.class);
+                            Record lRecord = NameToRecordMap.get(marker.getTitle());
+                            if (lRecord != null) {
+                                intent.putExtra("RecordObject", (Parcelable) lRecord);
+                                intent.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                thisActivity.startActivity(intent);
+                            }
+                            return true;
+                        }
+                    });
                 }
             });
         } else {
@@ -425,7 +465,6 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
     }
 
 
-
     /**
      * setup the view pager to show the Recycler View
      *
@@ -437,7 +476,9 @@ public class ServiceEngineer extends Fragment  implements OnMapReadyCallback,
         adapter.addFragment(new MoreTaskListFragment(), "Pending Task");
         viewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        }
+    }
+
+
 }
 
 

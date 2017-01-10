@@ -119,19 +119,6 @@ public class MainActivity extends AppCompatActivity
         userNameView = (TextView) navHeader.findViewById(R.id.Client_name_from_request);
         userEmailId = (TextView) navHeader.findViewById(R.id.Client_email_id_from_request);
         imgProfile = (ImageView) navHeader.findViewById(R.id.imageView_profile);
-        reloadButtonOnNavHeader = (ImageView) navHeader.findViewById(R.id.reload_nav_header_image);
-
-
-        //adding reload functionality to the nav header
-        reloadButtonOnNavHeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentFragment instanceof ReloadButtonHandler) {
-                    ((ReloadButtonHandler)currentFragment).onReload();
-                }
-                drawer.closeDrawer(GravityCompat.START);
-            }
-        });
 
         //Setup the navigation logout button.
         logoutButtonNavigation = (LinearLayout) navigationView
@@ -163,10 +150,11 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
-        currentFragment.onRequestPermissionsResult(requestCode,permissions, grantResults);
+        currentFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
@@ -259,7 +247,6 @@ public class MainActivity extends AppCompatActivity
                             onResumeClient(client);
 
 
-
                             // Lets observers know that rendition is complete.
                             EventsObservable.get().notifyEvent(EventsObservable
                                     .EventType.RenditionComplete);
@@ -299,27 +286,26 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make((View) findViewById(R.id.main_root), R.string.online,
                         Snackbar.LENGTH_SHORT)
                         .setAction(R.string.action, null).show();
-              //  Log.d("ABOUT THE CLIENT",client.toString());
-                if(client.getClientInfo().userId.equalsIgnoreCase(getString(R.string.adminUserId))) {
+                //  Log.d("ABOUT THE CLIENT",client.toString());
+                if (client.getClientInfo().userId.equalsIgnoreCase(getString(R.string.adminUserId))) {
                     //Inflate a fragment based on the ADMIN user logged in
-                    if(currentFragment == null) {
+                    if (currentFragment == null) {
                         currentFragment = new AdminFragment();
                     }
-                    if(!currentFragment.isAdded()) {
+                    if (!currentFragment.isAdded()) {
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
                         transaction.commitAllowingStateLoss();
                         //currentFragment = mFragObjAdmin;
                     }
-                }
-                else{
+                } else {
                     //Inflate a fragment based on the service user logged in
-                    if(currentFragment == null) {
+                    if (currentFragment == null) {
                         currentFragment = new ServiceEngineer();
                     }
 
-                    if(!currentFragment.isAdded()) {
+                    if (!currentFragment.isAdded()) {
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
@@ -333,10 +319,10 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * Update on UI on load of a fragment
-     * @param response
      *
+     * @param response
      */
     public void updateUi(Response response) {
-        ((ServiceEngineer)currentFragment).updateDataOnUi(response);
+        ((ServiceEngineer) currentFragment).updateDataOnUi(response);
     }
 }

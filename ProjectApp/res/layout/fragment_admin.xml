@@ -8,48 +8,11 @@
     android:background="#fffdfd"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
-        <!--TODO: need to be replaced by dynamic frg-->
-        <fragment
-            android:id="@+id/mapAdminView"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            app:layout_scrollFlags="scroll|enterAlways" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:orientation="vertical">
-            <!--TAB LAYOUT-->
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabsAdminView"
-                style="@style/AppTabTextAppearance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpagerAdminView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/md_grey_200"
-                android:scrollbars="horizontal"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/task_list_recycler_view_admin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:scrollbars="vertical" />
+   <ListView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/listtOfUsers"/>
 
 
-            </android.support.v4.view.ViewPager>
-            <!--END-->
-        </LinearLayout>
-    </LinearLayout>
 </FrameLayout>

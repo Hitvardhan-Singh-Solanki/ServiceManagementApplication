@@ -89,21 +89,28 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change status to"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/md_grey_700"/>
     <Spinner
         android:id="@+id/spinner_status_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
         android:layout_gravity="center"
-        />
-
-    <Button
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:text="Change Status"
-        android:layout_gravity="center"
-        android:id="@+id/Button_to_change_status"/>
-
+        android:gravity="center"
+        android:popupBackground="@color/colorPrimary"
+        style="@android:style/Widget.Holo.Spinner"
+        android:dropDownVerticalOffset="2dp"
+        android:dropDownHorizontalOffset="3dp"
+        android:popupElevation="10dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -5,45 +5,53 @@
     android:layout_height="200dp"
     android:background="#00f5f3f3"
     android:gravity="center"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_refersh"
-        android:layout_gravity="end"
-        android:id="@+id/reload_nav_header_image"/>
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <!-- <ImageView
+         android:layout_width="30dp"
+         android:layout_height="30dp"
+         android:src="@drawable/ic_refersh"
+         android:layout_gravity="end"
+         android:id="@+id/reload_nav_header_image"/>-->
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imageView_profile"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        app:civ_border_width="1dp"
-        app:civ_border_color="@color/colorPrimaryDark"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textColor="#fffefe"
-        android:text="Android Studio"
-        android:textStyle="bold"
-        android:id="@+id/Client_name_from_request"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_gravity="start"
+        app:civ_border_color="@color/colorPrimaryDark"
+        app:civ_border_width="1dp" />
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/Client_email_id_from_request"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#e7dfdf"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:text="android.studio@android.com" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
 
+        <TextView
+            android:id="@+id/Client_name_from_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Android Studio"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#fffefe"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Client_email_id_from_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="android.studio@android.com"
+            android:textColor="#e7dfdf"
+            android:textStyle="bold" />
+    </LinearLayout>
 </LinearLayout>
