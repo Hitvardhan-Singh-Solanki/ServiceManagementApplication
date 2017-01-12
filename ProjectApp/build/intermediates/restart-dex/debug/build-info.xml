@@ -5,7 +5,7 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1373584741639596"
+    timestamp="1399905125670871"
     token="2112899474766603816"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -22,15 +22,23 @@
         name="verifier"
         duration="0" />
 
+    <artifact
+        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
+
     <build
-        timestamp="1373181609550679"
-        verifier="FULL_BUILD_REQUESTED" >
+        timestamp="1399807486057857"
+        verifier="BINARY_MANIFEST_FILE_CHANGE" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="1373584741639596"
-        verifier="COLD_SWAP_REQUESTED" />
+        timestamp="1399905125670871"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
+    </build>
 
 </instant-run>

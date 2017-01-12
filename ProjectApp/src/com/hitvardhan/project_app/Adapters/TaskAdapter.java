@@ -43,9 +43,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     private LayoutInflater mLayoutInflater;
     private Context context;
     private CardView mCardViewTask;
-    private String getName,
-            getDate,
-            getDesc;
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
@@ -74,6 +72,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
         }
     }
 
+    /**
+     * called in the moreTaskListFragment
+     * and TodaysTaskListFragment
+     *
+     * @param context
+     */
     public TaskAdapter(Context context) {
         this.context = context;
         mLayoutInflater = (LayoutInflater) context
@@ -81,6 +85,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
         mRcordList = new ArrayList<>();
     }
 
+    /**
+     * called in the moreTaskListFragment
+     * and TodaysTaskListFragment
+     *
+     * @param item
+     */
     public void addItem(List<Record> item) {
         clear();
         mRcordList.addAll(item);
@@ -103,7 +113,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
                 String upperString = mRecord.getName().substring(0, 1).toUpperCase()
                         + mRecord.getName().substring(1);
                 holder.name.setText(upperString);
-                getName = holder.name.getText().toString();
+
             } else {
                 System.out.print("Name NOT FOUND");
                 holder.name.setText("");
@@ -111,7 +121,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             //Due Date
             if (mRecord.getDue_Date__c() != null) {
                 holder.date.setText(mRecord.getDue_Date__c());
-                getDate = holder.date.getText().toString();
 
             } else {
                 System.out.print("Due Date NOT FOUND");
@@ -123,7 +132,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
                 String upperString1 = mRecord.getDescription__c().substring(0, 1).toUpperCase()
                         + mRecord.getDescription__c().substring(1);
                 holder.desc.setText(upperString1);
-                getDesc = holder.desc.getText().toString();
             } else {
                 System.out.print("description NOT FOUND");
                 holder.desc.setVisibility(View.GONE);
@@ -157,7 +165,5 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
         mRcordList.clear();
         notifyDataSetChanged();
     }
-
-
 }
 

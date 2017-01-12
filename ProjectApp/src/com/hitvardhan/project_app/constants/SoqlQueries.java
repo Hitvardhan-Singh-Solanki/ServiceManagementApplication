@@ -11,12 +11,14 @@ public class SoqlQueries {
      */
     public static String soqlForTasks =
             "SELECT Id, Name, Due_Date__c, Description__c, Status__c," +
-                    " Email_Id__c, Location__c, Phone_Number__c, Address__c  FROM Task__c " +
-                    "WHERE Assign_to_User__r.Username = '";
+                    " Email_Id__c, Location__c, Phone_Number__c" +
+                    ", Address__c,Assign_to_User__r.Name" +
+                    "  FROM Task__c ";
 
     public static String soqlForEngineers =
             "SELECT Id, Name, fullphotoURL, UserRole.Name, MobilePhone," +
                     "Location__C, " +
                     "Email " +
                     "FROM User WHERE UserRole.name= 'Service Engineer'";
+
 }

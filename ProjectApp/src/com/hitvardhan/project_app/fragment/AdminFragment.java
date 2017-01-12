@@ -190,7 +190,8 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
 
         }
         for (i = 0; i < responseForAdmin.getRecords().size(); i++) {
-            LatLng anyLoc = new LatLng(responseForAdmin.getRecords().get(i).getLocationC().getLatitude(),
+            LatLng anyLoc = new LatLng(responseForAdmin.getRecords().get(i)
+                    .getLocationC().getLatitude(),
                     responseForAdmin.getRecords().get(i).getLocationC().getLongitude());
             Bitmap imageBitForMarker = null;
 

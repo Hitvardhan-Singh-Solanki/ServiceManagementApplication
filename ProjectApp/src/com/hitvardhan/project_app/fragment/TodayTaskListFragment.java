@@ -34,7 +34,6 @@ public class TodayTaskListFragment extends Fragment {
     public static List<Record> todaysTaskName;
     private View view;
     private SwipeRefreshLayout mSwipeRefreshLayoutlToday;
-    private Fragment thisFragment;
     public TodayTaskListFragment() {
         // Required empty public constructor
     }
@@ -88,6 +87,8 @@ public class TodayTaskListFragment extends Fragment {
         }
         super.onResume();
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
     public void setListData(Response rs) {
         if (rs != null) {
             if (rs.getRecords() != null) {

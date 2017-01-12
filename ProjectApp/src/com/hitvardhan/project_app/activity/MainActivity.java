@@ -221,10 +221,10 @@ public class MainActivity extends AppCompatActivity
         } else {
 
             //Move to home screen instead of the previous activity
-           /* Intent startMain = new Intent(Intent.ACTION_MAIN);
+            Intent startMain = new Intent(Intent.ACTION_MAIN);
             startMain.addCategory(Intent.CATEGORY_HOME);
             startMain.setFlags(FLAG_ACTIVITY_NEW_TASK);
-            startActivity(startMain);*/
+            startActivity(startMain);
         }
 
     }

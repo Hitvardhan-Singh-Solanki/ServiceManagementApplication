@@ -339,6 +339,7 @@ public class ServiceEngineer extends Fragment implements OnMapReadyCallback,
                         adapter.addFragment(mFragementMore, getString(R.string.pending_task_title));
                         viewPager.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
+
                     } else {
                         mFragementToday.setListData(res);
                         mFragementMore.setListData(res);
