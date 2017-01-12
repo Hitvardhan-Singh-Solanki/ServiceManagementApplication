@@ -1458,6 +1458,7 @@
     <string name="fetch_accounts_button">Fetch Accounts</string>
     <string name="fetch_contacts_button">Fetch Contacts</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBB4Ryb2PjvJZcOBfFebY1NNMh0EoSFgNY</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="library_AndroidIconics_author">Mike Penz</string>
     <string name="library_AndroidIconics_authorWebsite">http://mikepenz.com/</string>
     <string name="library_AndroidIconics_isOpenSource">true</string>
@@ -1629,6 +1630,7 @@
     <string name="taskList">TaskList</string>
     <string name="taskType">taskType</string>
     <string name="task_location">" Task's Location"</string>
+    <string name="title_activity_maps">Map</string>
     <string name="todays_task_title">Today\'s Task</string>
     <string name="update">UPDATE</string>
     <string name="updateMessage">"CHANGE STATUS TO COMPLETED OF \n TASK: "</string>

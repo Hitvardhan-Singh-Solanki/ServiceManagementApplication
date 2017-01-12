@@ -46,11 +46,6 @@ public class MoreTaskListFragment extends Fragment {
         // Required empty public constructor
     }
 
-   /* @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }*/
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,7 +65,6 @@ public class MoreTaskListFragment extends Fragment {
         mRcvTaskListV.setItemAnimator(new DefaultItemAnimator());
         mRcvTaskListV.setAdapter(mTaskAdapter);
         mTaskAdapter.notifyDataSetChanged();
-        //mRcvTaskListV.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
 
         if (getArguments().getSerializable("TaskList") != null) {
             Response res = (Response) getArguments().getSerializable("TaskList");
@@ -131,7 +125,6 @@ public class MoreTaskListFragment extends Fragment {
             if (mTaskAdapter != null && rs != null && rs.getRecords() != null) {
                 mTaskAdapter.addItem(MoreTaskName);
                 mRcvTaskListV.setAdapter(mTaskAdapter);
-                Log.i("excin","dssff");
             }
 
 

@@ -49,4 +49,8 @@
     <string name="no_tasks_for_today">No Tasks for today</string>
     <string name="setDate">Please set the date!</string>
     <string name="adminUserId">005280000067vlGAAQ</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

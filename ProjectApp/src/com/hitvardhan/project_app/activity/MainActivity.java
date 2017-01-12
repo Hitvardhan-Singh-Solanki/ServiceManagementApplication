@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -30,7 +32,9 @@ import com.google.gson.Gson;
 
 import com.hitvardhan.project_app.ImageCache.ImageLoader;
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
+import com.hitvardhan.project_app.fragment.TaskAdminFragment;
 import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
+import com.hitvardhan.project_app.response_classes.ResponseForAdmin;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -45,6 +49,8 @@ import com.hitvardhan.project_app.utils.CommanUtils;
 import butterknife.ButterKnife;
 
 import com.hitvardhan.project_app.fragment.AdminFragment;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 
 public class MainActivity extends AppCompatActivity
@@ -63,12 +69,15 @@ public class MainActivity extends AppCompatActivity
     public static LatLng latLngMyLoc;
     private NavigationView navigationView;
     private DrawerLayout drawer;
-    private LinearLayout logoutButtonNavigation;
+    private LinearLayout logoutButtonNavigation, secondButtonNavigation, thirdButtonNavigation;
     private ImageView reloadButtonOnNavHeader;
     private Fragment currentFragment;
     public static RestClient client;
     private String salesForceImageUrl;
     private ImageLoader imgLoader;
+    private View navHeader;
+    private ResponseForAdmin mResponseForAdmin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +118,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Get the navigation header
-        View navHeader = navigationView.getHeaderView(0);
+        navHeader = navigationView.getHeaderView(0);
 
 
         // Gets an instance of the passcode manager.
@@ -120,6 +129,42 @@ public class MainActivity extends AppCompatActivity
         userEmailId = (TextView) navHeader.findViewById(R.id.Client_email_id_from_request);
         imgProfile = (ImageView) navHeader.findViewById(R.id.imageView_profile);
 
+
+        secondButtonNavigation = (LinearLayout) navigationView
+                .findViewById(R.id.navigation_tasks_admin);
+        thirdButtonNavigation = (LinearLayout) navigationView
+                .findViewById(R.id.navigation_users_button);
+
+        secondButtonNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     if (currentFragment.getClass() != TaskAdminFragment.class) {
+                         currentFragment = new TaskAdminFragment();
+                         FragmentTransaction transaction =
+                                 getSupportFragmentManager().beginTransaction();
+                         transaction.replace(R.id.frm_container, currentFragment, "");
+                         //transaction.addToBackStack("");
+                         transaction.commitAllowingStateLoss();
+                     }
+                     drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+
+        thirdButtonNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentFragment.getClass() != AdminFragment.class) {
+                currentFragment = new AdminFragment();
+                FragmentTransaction transaction =
+                            getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frm_container, currentFragment, "");
+                    //transaction.addToBackStack("");
+                    transaction.commitAllowingStateLoss();
+                }
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
         //Setup the navigation logout button.
         logoutButtonNavigation = (LinearLayout) navigationView
                 .findViewById(R.id.navigation_logout_main);
@@ -167,17 +212,21 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
+
         //Close the navigation slider
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+
             //Move to home screen instead of the previous activity
-            Intent startMain = new Intent(Intent.ACTION_MAIN);
+           /* Intent startMain = new Intent(Intent.ACTION_MAIN);
             startMain.addCategory(Intent.CATEGORY_HOME);
-            startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(startMain);
+            startMain.setFlags(FLAG_ACTIVITY_NEW_TASK);
+            startActivity(startMain);*/
         }
+
     }
 
     @Override
@@ -276,7 +325,7 @@ public class MainActivity extends AppCompatActivity
 
             //caching of the image
             imgLoader = new ImageLoader(this);
-            imgLoader.DisplayImage(salesForceImageUrl, imgProfile, this);
+            imgLoader.DisplayImage(salesForceImageUrl, imgProfile,null,this,null);
 
 
             // Show everything
@@ -288,6 +337,8 @@ public class MainActivity extends AppCompatActivity
                         .setAction(R.string.action, null).show();
                 //  Log.d("ABOUT THE CLIENT",client.toString());
                 if (client.getClientInfo().userId.equalsIgnoreCase(getString(R.string.adminUserId))) {
+                    secondButtonNavigation.setVisibility(View.VISIBLE);
+                    thirdButtonNavigation.setVisibility(View.VISIBLE);
                     //Inflate a fragment based on the ADMIN user logged in
                     if (currentFragment == null) {
                         currentFragment = new AdminFragment();
@@ -296,8 +347,8 @@ public class MainActivity extends AppCompatActivity
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
+                        transaction.addToBackStack("");
                         transaction.commitAllowingStateLoss();
-                        //currentFragment = mFragObjAdmin;
                     }
                 } else {
                     //Inflate a fragment based on the service user logged in
@@ -309,6 +360,7 @@ public class MainActivity extends AppCompatActivity
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
+                        transaction.addToBackStack("");
                         transaction.commitAllowingStateLoss();
                     }
                 }
@@ -324,5 +376,46 @@ public class MainActivity extends AppCompatActivity
      */
     public void updateUi(Response response) {
         ((ServiceEngineer) currentFragment).updateDataOnUi(response);
+    }
+
+
+    /**
+     * Initializing collapsing toolbar
+     * Will show and hide the toolbar title on scroll
+     */
+    private void initCollapsingToolbar() {
+        final CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle("PROJECT APP");
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        appBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded & collapsed
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbar.setTitle(getString(R.string.app_name));
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbar.setTitle(" ");
+                    isShow = false;
+                }
+            }
+        });
+    }
+
+    public ResponseForAdmin getmResponseForAdmin() {
+        return mResponseForAdmin;
+    }
+
+    public void setmResponseForAdmin(ResponseForAdmin mResponseForAdmin) {
+        this.mResponseForAdmin = mResponseForAdmin;
     }
 }

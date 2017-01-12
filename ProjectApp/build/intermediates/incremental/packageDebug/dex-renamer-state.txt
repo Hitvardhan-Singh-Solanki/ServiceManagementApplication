@@ -1,4 +1,4 @@
-#Tue Jan 10 19:26:37 IST 2017
+#Thu Jan 12 15:19:29 IST 2017
 base.0=C\:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_cc6344daf628b700d63630990f5f93f72b260288
 renamed.1=classes2.dex
 renamed.0=classes.dex
