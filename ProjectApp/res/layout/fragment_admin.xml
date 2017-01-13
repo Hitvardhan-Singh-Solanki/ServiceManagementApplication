@@ -16,12 +16,6 @@
         android:orientation="vertical"
         android:weightSum="10">
 
-        <!--<FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:id="@+id/mapForAdminFragment"></FrameLayout>-->
-
         <fragment
             android:id="@+id/mapForAdminFragmentFrag"
             class="com.google.android.gms.maps.SupportMapFragment"
@@ -34,7 +28,7 @@
             android:layout_width="fill_parent"
             android:layout_height="45dp"
             android:background="@color/colorPrimary"
-            android:text="Users"
+            android:text="Service Engineers"
             android:gravity="center"
             android:textSize="15sp"
             android:textColor="@color/white"

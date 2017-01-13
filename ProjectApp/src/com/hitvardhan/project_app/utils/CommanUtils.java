@@ -161,13 +161,27 @@ public class CommanUtils extends Activity{
     public static void getDetailsofTask(Context context, RestClient client,
                                         NetworkCallbackInterface callbackInterface)
             throws Exception {
-
         getDetailFromSalesforce(context,client,
                 SoqlQueries.soqlForTasks+
                         "WHERE Assign_to_User__r.Username ='"+client.getClientInfo().username+"'",
                 callbackInterface);
     }
 
+    /**
+     * method to call the connection by the admin
+     * @param context
+     * @param client
+     * @param callbackInterface
+     * @throws Exception
+     */
+    public static void getDetailsofTaskForAdmin(Context context, RestClient client,
+                                        NetworkCallbackInterface callbackInterface)
+            throws Exception {
+
+        getDetailFromSalesforce(context,client,
+                SoqlQueries.soqlForTasks,
+                callbackInterface);
+    }
     /**
      * Establish a main connection from the salesforce and fetch data from the server
      * The real magic happes

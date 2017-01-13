@@ -5,28 +5,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.hitvardhan.project_app.fragment.TaskAdminFragment">
-
-
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_for_task_fragment_admin"
         style="@style/AppTabTextAppearance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pager_for_admin"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/task_list_recycler_view_admin"
+
+        <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/pager_for_admin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marginTop"
-            android:scrollbars="vertical" />
-
-    </android.support.v4.view.ViewPager>
+            android:layout_height="match_parent">
 
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/task_list_recycler_view_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTop"
+                android:scrollbars="vertical" />
+
+        </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_avatar_nav"
+            android:id="@+id/add_task_admin"/>
+    </FrameLayout>
 </LinearLayout>

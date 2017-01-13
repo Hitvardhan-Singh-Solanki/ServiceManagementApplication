@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hitvardhan.project_app.Adapters.AdminTaskAdapter;
@@ -48,8 +50,53 @@ public class AssignedTaskFragment extends Fragment {
     private RecyclerView mRcycerViewForTask;
     private AdminTaskAdapter mTaskAdminAdapter;
     public static List<Record> AssignedTaskName = new ArrayList<Record>();
-    private Response response123;
-    private ViewPagerAdapter adapter;
+    private SwipeRefreshLayout mSwipeToRefeshLayoutInAdminAssigned;
+
+
+    public AssignedTaskFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        assignedTaskListFragmentView = inflater.inflate(R.layout.fragment_assigned_task,
+                container, false);
+        mRcycerViewForTask = (RecyclerView) assignedTaskListFragmentView
+                .findViewById(R.id.rcv_list_v_admin_task);
+        mSwipeToRefeshLayoutInAdminAssigned = (SwipeRefreshLayout) assignedTaskListFragmentView
+                .findViewById(R.id.swipeToRefreshLayoutAdminTask);
+        mSwipeToRefeshLayoutInAdminAssigned
+                .setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        if (getArguments().getSerializable("TaskListss") != null) {
+                            mTaskAdminAdapter.clear();
+                            TaskAdminFragment newTask = new TaskAdminFragment();
+                            newTask.getTheDetailsForAdmin();
+                            Response res = (Response) getArguments().getSerializable("TaskListss");
+                            setListDataAdmin(res);
+                        }
+                        mSwipeToRefeshLayoutInAdminAssigned.setRefreshing(false);
+                    }
+
+                });
+
+        mSwipeToRefeshLayoutInAdminAssigned.setColorSchemeResources(
+                R.color.refresh_progress_1,
+                R.color.refresh_progress_2,
+                R.color.refresh_progress_3);
+
+        mTaskAdminAdapter = new AdminTaskAdapter(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mRcycerViewForTask.setLayoutManager(mLayoutManager);
+        mRcycerViewForTask.setAdapter(mTaskAdminAdapter);
+        mRcycerViewForTask.setItemAnimator(new DefaultItemAnimator());
+        mTaskAdminAdapter.notifyDataSetChanged();
+        return assignedTaskListFragmentView;
+    }
 
     @Override
     public void onResume() {
@@ -61,58 +108,20 @@ public class AssignedTaskFragment extends Fragment {
 
     }
 
-    public AssignedTaskFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        assignedTaskListFragmentView =  inflater.inflate(R.layout.fragment_assigned_task, container, false);
-        mRcycerViewForTask = (RecyclerView) assignedTaskListFragmentView.findViewById(R.id.rcv_list_v_admin_task);
-        mTaskAdminAdapter = new AdminTaskAdapter(getActivity());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        mRcycerViewForTask.setLayoutManager(mLayoutManager);
-        mRcycerViewForTask.setAdapter(mTaskAdminAdapter);
-        mRcycerViewForTask.setItemAnimator(new DefaultItemAnimator());
-        mTaskAdminAdapter.notifyDataSetChanged();
-        return assignedTaskListFragmentView;
-    }
-
-
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * set the data of the recycler view
+     *
      * @param rs
      */
     public void setListDataAdmin(Response rs) {
         AssignedTaskName.clear();
         if (rs.getRecords() != null) {
             for (Record record : rs.getRecords()) {
-                if (record.getDue_Date__c() != null) {
-                    if (!record.getDue_Date__c().trim().equalsIgnoreCase(CommanUtils
-                            .getTodaysDate().trim())) {
-                        AssignedTaskName.add(record);
-
-                    }
-                } else {
-                    new AlertDialog.Builder(getActivity())
-                            .setTitle("Set Date")
-                            .setMessage("Seems like " + record.getName() +
-                                    " does not contain due" +
-                                    " date please verify")
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            })
-                            .setIcon(R.drawable.ic_alert_exclamation_mark)
-                            .show();
+                if (record.getAssign_to_User__r() != null) {
                     AssignedTaskName.add(record);
+                    mTaskAdminAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -124,7 +133,4 @@ public class AssignedTaskFragment extends Fragment {
 
         }
     }
-
-
-
 }

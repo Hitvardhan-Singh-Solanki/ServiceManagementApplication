@@ -26,7 +26,7 @@ public class Record implements Serializable, Parcelable
     private Location__c Location__c;
     private String Phone_Number__c;
     private String Address__c;
-    private Assign_to_User__c Assign_to_User__c;
+    private Assign_to_User__c Assign_to_User__r;
     public final static Parcelable.Creator<Record> CREATOR = new Creator<Record>() {
 
 
@@ -45,7 +45,7 @@ public class Record implements Serializable, Parcelable
             instance.Location__c = ((Location__c) in.readValue((Location__c.class.getClassLoader())));
             instance.Phone_Number__c = ((String) in.readValue((String.class.getClassLoader())));
             instance.Address__c = ((String) in.readValue((String.class.getClassLoader())));
-            instance.Assign_to_User__c = ((Assign_to_User__c) in.readValue((Assign_to_User__c.class.getClassLoader())));
+            instance.Assign_to_User__r = ((Assign_to_User__c) in.readValue((Assign_to_User__c.class.getClassLoader())));
             return instance;
         }
 
@@ -137,12 +137,12 @@ public class Record implements Serializable, Parcelable
         this.Address__c = Address__c;
     }
 
-    public Assign_to_User__c getAssign_to_User__c() {
-        return Assign_to_User__c;
+    public Assign_to_User__c getAssign_to_User__r() {
+        return Assign_to_User__r;
     }
 
-    public void setAssign_to_User__c(Assign_to_User__c Assign_to_User__c) {
-        this.Assign_to_User__c = Assign_to_User__c;
+    public void setAssign_to_User__r(Assign_to_User__c Assign_to_User__r) {
+        this.Assign_to_User__r = Assign_to_User__r;
     }
 
     public void writeToParcel(Parcel dest, int flags) {
@@ -156,7 +156,7 @@ public class Record implements Serializable, Parcelable
         dest.writeValue(Location__c);
         dest.writeValue(Phone_Number__c);
         dest.writeValue(Address__c);
-        dest.writeValue(Assign_to_User__c);
+        dest.writeValue(Assign_to_User__r);
     }
 
     public int describeContents() {
