@@ -59,11 +59,9 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
     private RecyclerView mRcvUserListV;
     private UserAdapter mUserAdapter;
     private GoogleMap mAdminUserPositionsMap;
-    private ArrayList<LatLng> listOfPositionOfUsers;
-    private Canvas canvasForProfilePicture;
-    private SupportMapFragment mMapFragment;
-    private Bitmap imageForCanvas;
 
+    //Show the progress dialog box when the data loads
+    private ProgressDialog mProgressDialog = null;
 
     public AdminFragment() {
         // Required empty public constructor
@@ -82,7 +80,8 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
         //Recycler View
         mRcvUserListV = (RecyclerView) contentViewAdmin.findViewById(R.id.recycler_view_for_users);
         mUserAdapter = new UserAdapter(getActivity());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.HORIZONTAL,false);
         mRcvUserListV.setLayoutManager(mLayoutManager);
         mRcvUserListV.setItemAnimator(new DefaultItemAnimator());
 
@@ -124,6 +123,10 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
             }
 
         });
+        mSwipeRefreshLayout2.setColorSchemeResources(
+                R.color.refresh_progress_1,
+                R.color.refresh_progress_2,
+                R.color.refresh_progress_3);
 
 
         return contentViewAdmin;
@@ -143,20 +146,30 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mAdminUserPositionsMap = googleMap;
 
-        if(((MainActivity)getActivity()).getmResponseForAdmin() != null) {
-            setListData(((MainActivity)getActivity()).getmResponseForAdmin());
+        if (((MainActivity) getActivity()).getmResponseForAdmin() != null) {
+            setListData(((MainActivity) getActivity()).getmResponseForAdmin());
         } else {
+
+            mProgressDialog = new ProgressDialog(getContext());
+            mProgressDialog.setMessage("Fetching Users...");
+            mProgressDialog.show();
+
             try {
                 getDetailsofEngineers(getContext(), ((MainActivity) getActivity()).client,
                         new NetworkCallbackForAdmin() {
                             @Override
                             public void onSuccess(ResponseForAdmin responseAdmin) {
                                 upDataOnAdminUi(getActivity(), responseAdmin);
+                                if (mProgressDialog.isShowing() != false) {
+                                    mProgressDialog.dismiss();
+                                }
                             }
 
                             @Override
                             public void onError() {
-                                getActivity().finish();
+                                if (mProgressDialog.isShowing() != false) {
+                                    getActivity().finish();
+                                }
                             }
                         });
             } catch (Exception ex) {
@@ -185,7 +198,7 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
 
             ImageLoader imgLoadrer = new ImageLoader(getActivity());
             imgLoadrer.DisplayImage(responseForAdmin.getRecords().get(i)
-                    .getFullPhotoUrl(),null,mAdminUserPositionsMap,getActivity(),anyLoc);
+                    .getFullPhotoUrl(), null, mAdminUserPositionsMap, getActivity(), anyLoc);
 
             newMrker = mAdminUserPositionsMap.addMarker(new MarkerOptions().position(anyLoc)
                     .title(responseForAdmin.getRecords().get(i).getName()));
@@ -223,12 +236,7 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
                                                           final NetworkCallbackForAdmin
                                                                   callbackInterface)
             throws Exception {
-        //Show the progress dialog box when the data loads
-        final ProgressDialog mProgressDialog;
 
-        mProgressDialog = new ProgressDialog(context);
-        mProgressDialog.setMessage("Fetching Users...");
-        mProgressDialog.show();
 
         //make a request for query to salesfoce
         RestRequest restRequest = RestRequest.getRequestForQuery(ApiVersionStrings
@@ -249,8 +257,8 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
                     ex.printStackTrace();
                     Log.d("Exception", String.valueOf(ex));
                 }
-                if (mProgressDialog != null && mProgressDialog.isShowing())
-                    mProgressDialog.dismiss();
+               /* if (mProgressDialog != null && mProgressDialog.isShowing())
+                    mProgressDialog.dismiss();*/
 
                 //finally update the changes to the UI
                 callbackInterface.onSuccess(resAdmin);
@@ -258,8 +266,8 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
 
             @Override
             public void onError(final Exception exception) {
-                if (mProgressDialog != null && mProgressDialog.isShowing())
-                    mProgressDialog.dismiss();
+                /*if (mProgressDialog != null && mProgressDialog.isShowing())
+                    mProgressDialog.dismiss();*/
                 ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -285,7 +293,7 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void run() {
                 if (rFa != null) {
-                    ((MainActivity)getActivity()).setmResponseForAdmin(rFa);
+                    ((MainActivity) getActivity()).setmResponseForAdmin(rFa);
                     setListData(rFa);
                 }
             }

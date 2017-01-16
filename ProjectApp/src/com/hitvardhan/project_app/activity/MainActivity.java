@@ -8,7 +8,10 @@ package com.hitvardhan.project_app.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
@@ -35,6 +38,7 @@ import com.hitvardhan.project_app.fragment.ServiceEngineer;
 import com.hitvardhan.project_app.fragment.TaskAdminFragment;
 import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
 import com.hitvardhan.project_app.response_classes.ResponseForAdmin;
+import com.jakewharton.picasso.OkHttp3Downloader;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -47,10 +51,24 @@ import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 
 import butterknife.ButterKnife;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 
 import com.hitvardhan.project_app.fragment.AdminFragment;
+import com.squareup.picasso.OkHttpDownloader;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.sql.Date;
+
+import static android.R.attr.handle;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static com.hitvardhan.project_app.activity.MainActivity.client;
 
 
 public class MainActivity extends AppCompatActivity
@@ -324,8 +342,26 @@ public class MainActivity extends AppCompatActivity
 
 
             //caching of the image
-            imgLoader = new ImageLoader(this);
-            imgLoader.DisplayImage(salesForceImageUrl, imgProfile,null,this,null);
+            /*imgLoader = new ImageLoader(this);
+            imgLoader.DisplayImage(salesForceImageUrl, imgProfile,null,this,null);*/
+
+            OkHttpClient clientForImage = new OkHttpClient.Builder()
+                    .addInterceptor(new Interceptor() {
+                        @Override
+                        public okhttp3.Response intercept(Chain chain) throws IOException {
+                            Request newRequest = chain.request().newBuilder()
+                                    .addHeader("Authorization", "Bearer " + client.getAuthToken())
+                                    .build();
+                            return chain.proceed(newRequest);
+                        }
+                    })
+                    .build();
+
+            Picasso picasso = new Picasso.Builder(getBaseContext())
+                    .downloader(new OkHttp3Downloader(clientForImage))
+                    .build();
+            picasso.load(salesForceImageUrl).into(imgProfile);
+
 
 
             // Show everything
@@ -335,7 +371,6 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make((View) findViewById(R.id.main_root), R.string.online,
                         Snackbar.LENGTH_SHORT)
                         .setAction(R.string.action, null).show();
-                //  Log.d("ABOUT THE CLIENT",client.toString());
                 if (client.getClientInfo().userId.equalsIgnoreCase(getString(R.string.adminUserId))) {
                     secondButtonNavigation.setVisibility(View.VISIBLE);
                     thirdButtonNavigation.setVisibility(View.VISIBLE);

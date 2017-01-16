@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="22"
+    api-level="23"
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1453074632174660"
+    timestamp="49241545495571"
     token="2112899474766603816"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1703" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="82" />
+        duration="0" />
     <task
         name="verifier"
-        duration="8" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-        type="DEX" />
+        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="1452454612696522"
-        verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
-            type="MAIN" />
-    </build>
-    <build
-        timestamp="1453074632174660"
+        timestamp="185277641556953"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-            type="DEX" />
+            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

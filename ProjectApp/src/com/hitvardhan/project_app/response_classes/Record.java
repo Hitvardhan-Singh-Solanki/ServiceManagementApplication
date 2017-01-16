@@ -42,10 +42,12 @@ public class Record implements Serializable, Parcelable
             instance.Description__c = ((String) in.readValue((String.class.getClassLoader())));
             instance.Status__c = ((String) in.readValue((String.class.getClassLoader())));
             instance.Email_Id__c = ((String) in.readValue((String.class.getClassLoader())));
-            instance.Location__c = ((Location__c) in.readValue((Location__c.class.getClassLoader())));
+            instance.Location__c = ((Location__c) in.readValue((Location__c.class
+                    .getClassLoader())));
             instance.Phone_Number__c = ((String) in.readValue((String.class.getClassLoader())));
             instance.Address__c = ((String) in.readValue((String.class.getClassLoader())));
-            instance.Assign_to_User__r = ((Assign_to_User__c) in.readValue((Assign_to_User__c.class.getClassLoader())));
+            instance.Assign_to_User__r = ((Assign_to_User__c) in.readValue((Assign_to_User__c.class
+                    .getClassLoader())));
             return instance;
         }
 

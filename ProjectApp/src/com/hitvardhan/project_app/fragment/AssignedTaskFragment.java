@@ -102,6 +102,8 @@ public class AssignedTaskFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (getArguments().getSerializable("TaskListss") != null) {
+            mTaskAdminAdapter.clear();
+            AssignedTaskName.clear();
             Response res = (Response) getArguments().getSerializable("TaskListss");
             setListDataAdmin(res);
         }

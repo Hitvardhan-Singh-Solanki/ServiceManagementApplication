@@ -12,23 +12,26 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hitvardhan.project_app.Adapters.ViewPagerAdapter;
+import com.hitvardhan.project_app.ImageCache.ImageLoader;
 import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
+import com.hitvardhan.project_app.activity.MakeNewTaskActivity;
 import com.hitvardhan.project_app.activity.TaskDetailsActivity;
 import com.hitvardhan.project_app.constants.SoqlQueries;
 import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 
-import hitAndTrial.Tab2;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +40,7 @@ public class TaskAdminFragment extends Fragment {
 
 
     private View fragmentTaskAdminView;
-    private FloatingActionButton addTaskFloatingButton;
+    private CardView addTaskFloatingButton;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     public TaskAdminFragment() {
@@ -65,14 +68,13 @@ public class TaskAdminFragment extends Fragment {
         }
 
         addTaskFloatingButton =
-                (FloatingActionButton) fragmentTaskAdminView.findViewById(R.id.add_task_admin);
+                (CardView) fragmentTaskAdminView.findViewById(R.id.add_task_admin);
         tabLayout.setupWithViewPager(viewPager);
         addTaskFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent createANewTaskActivity = new Intent(getActivity(), TaskDetailsActivity.class);
-                startActivity(createANewTaskActivity);*/
-                Toast.makeText(getContext(), "Create a new task!", Toast.LENGTH_SHORT).show();
+                Intent createANewTaskActivity = new Intent(getActivity(), MakeNewTaskActivity.class);
+                startActivity(createANewTaskActivity);
             }
         });
         return fragmentTaskAdminView;

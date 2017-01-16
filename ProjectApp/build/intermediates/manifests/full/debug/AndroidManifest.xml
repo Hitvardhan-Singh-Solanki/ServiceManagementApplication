@@ -102,6 +102,10 @@
             android:name="com.hitvardhan.project_app.activity.UserDetailActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.hitvardhan.project_app.activity.MakeNewTaskActivity"
+            android:label="@string/app_name"
+            android:theme="@style/noActionBarDialog" />
 
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for

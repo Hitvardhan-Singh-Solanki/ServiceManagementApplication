@@ -91,21 +91,28 @@ public class NotAssignedTaskFragment extends Fragment {
 
         mNotAssignedTaskAdminAdapter.notifyDataSetChanged();
 
+        if (getArguments().getSerializable("TaskListss") != null) {
+            Response res = (Response) getArguments().getSerializable("TaskListss");
+            setListDataAdmin(res);
+        }
+
         return notAssignedTaskListFragmentView;
     }
+
+
 
 
     @Override
     public void onResume() {
         super.onResume();
         if (getArguments().getSerializable("TaskListss") != null) {
+            notAssignedTaskName.clear();
+            mNotAssignedTaskAdminAdapter.clear();
             Response res = (Response) getArguments().getSerializable("TaskListss");
             setListDataAdmin(res);
         }
 
     }
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
