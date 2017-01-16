@@ -9,6 +9,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -59,7 +63,6 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
     private RecyclerView mRcvUserListV;
     private UserAdapter mUserAdapter;
     private GoogleMap mAdminUserPositionsMap;
-
     //Show the progress dialog box when the data loads
     private ProgressDialog mProgressDialog = null;
 
@@ -75,7 +78,6 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
         // Inflate the layout for this fragment
         contentViewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
-        //initCollapsingToolbar(contentViewAdmin);
 
         //Recycler View
         mRcvUserListV = (RecyclerView) contentViewAdmin.findViewById(R.id.recycler_view_for_users);

@@ -61,7 +61,6 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
             getDueDateView,
             getContactNumberView,
             getAddressView;
-    private Button changeStatusButton;
     private Map<String, Object> fields;
     private Gson gson;
     private Response res;
