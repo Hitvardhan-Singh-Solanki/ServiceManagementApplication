@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:onClick="OnChangeClicked"
             android:padding="10dp"
             android:text="TextView"
             android:textAllCaps="true"

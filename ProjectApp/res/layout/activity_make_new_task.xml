@@ -2,155 +2,232 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#FFF"
-android:orientation="vertical">
-
-<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical">
+    android:layout_height="match_parent"
+    android:background="#545454"
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/new_task_name_title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/accent"
-        android:focusable="true"
-        android:gravity="center_vertical|center"
-        android:hint="Enter task name(20 chars)..."
-        android:inputType="textCapCharacters|text|textMultiLine"
-        android:maxLength="20"
-        android:maxLines="2"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        android:layout_gravity="center_vertical">
 
-        android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/new_task_name_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/accent"
+            android:focusable="true"
+            android:gravity="center_vertical|center"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="Make a new task"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+            android:textColor="#fff"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
 
-    <ImageView
-        android:id="@+id/close_task_making_cross"
-        android:layout_width="55dp"
-        android:layout_height="51dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_cross_close" />
+        <ImageView
+            android:id="@+id/close_task_making_cross"
+            android:layout_width="55dp"
+            android:layout_height="51dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_cross_close" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollIndicators="left"
+        android:scrollbarFadeDuration="20"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/custom_scroll_style"
+        android:scrollbars="vertical">
 
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_task_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
-    android:text="Enter Date"
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/md_black_1000"
-        android:text="Enter date"
-        android:layout_weight="0.4"/>
+                <EditText
+                    android:id="@+id/input_task_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_name"
+                    android:singleLine="true"
+                    android:textColorHint="#808080" />
+            </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/cardview_dark_background"
-        android:hint="Enter the date (yyyy/mm/dd)"
-        android:layout_weight="0.6" />
-</LinearLayout>
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/new_task_due_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/md_black_1000"
-        android:layout_margin="10dp"
-        android:text="Enter Description" />
+                <EditText
+                    android:id="@+id/input_due_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_date"
+                    android:inputType="date"
+                    android:singleLine="true"
+                    android:textColorHint="#808080" />
+            </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/cardview_dark_background"
-        android:hint="Enter the description" />
-</LinearLayout>
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
-    <TextView
-        android:textColor="@color/md_black_1000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="status" />
+                <EditText
+                    android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#808080" />
+            </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/cardview_dark_background"
-        android:hint="Enter Status" />
-</LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/description_new_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:hint="@string/hint_description"
+                    android:inputType="textMultiLine"
+                    android:textColorHint="#808080" />
+            </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:textColor="@color/md_black_1000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Enter Lat" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/cardview_dark_background"
-        android:hint="Enter Lat" />
-</LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:textColor="@color/md_black_1000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter Long"
-        android:layout_margin="10dp"/>
-    <EditText
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Enter long"
-        android:background="@color/cardview_dark_background"/>
-</LinearLayout>
+                <EditText
+                    android:id="@+id/address_new_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:hint="@string/hint_address"
+                    android:inputType="textMultiLine"
+                    android:textColorHint="#808080" />
+            </android.support.design.widget.TextInputLayout>
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/et_search"
-    android:text="Enter Address"
-    android:background = "@color/accent"/>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="MAke a task"
-    android:id="@+id/make_a_task_button"/>
+                <EditText
+                    android:id="@+id/phone_new_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:hint="@string/hint_phone"
+                    android:inputType="phone"
+                    android:textColorHint="#808080" />
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Change status to"
+                    android:textColor="@color/white" />
+
+                <Spinner
+                    android:id="@+id/spinner_status_change_new_task"
+                    style="@android:style/Widget.Holo.Spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:dropDownHorizontalOffset="3dp"
+                    android:dropDownVerticalOffset="2dp"
+                    android:gravity="center"
+                    android:popupBackground="@color/colorPrimary"
+                    android:popupElevation="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Assign task to"
+                    android:textColor="@color/white" />
+
+                <Spinner
+                    android:id="@+id/spinner_assign_user_new_task"
+                    style="@android:style/Widget.Holo.Spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:dropDownHorizontalOffset="3dp"
+                    android:dropDownVerticalOffset="2dp"
+                    android:gravity="center"
+                    android:popupBackground="@color/colorPrimary"
+                    android:popupElevation="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/make_a_task_button"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Make a task"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
