@@ -1,119 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
+
     <TextView
+        android:id="@+id/SerialNumber"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:text="1"
-        android:id="@+id/SerialNumber"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="#fff"
         android:layout_marginTop="10dp"
         android:background="@drawable/circle"
-        android:elevation="3dp" />
+        android:elevation="3dp"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="#fff"
+        android:textSize="20sp" />
 
-    <android.support.v7.widget.CardView android:id="@+id/cardview"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="fill_parent"
         android:layout_height="125dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:elevation="5dp"
-        card_view:cardBackgroundColor="@android:color/white"
-        card_view:cardCornerRadius="2dp"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_marginTop="25dp"
         android:clickable="true"
-        android:layout_marginTop="25dp">
+        android:elevation="5dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardCornerRadius="2dp">
 
         <LinearLayout
+            android:id="@+id/MainLinearCardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#f3f3f3"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
             android:paddingBottom="10dp"
-            android:paddingRight="20dp"
-            android:id="@+id/MainLinearCardView">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-         <TextView
-            android:id="@+id/title_name_task"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17dp"
-            android:fontFamily="sans-serif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dp"
-            android:layout_marginTop="15dp"
-             android:layout_weight="1"/>
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
-         <ImageView
-             android:layout_marginTop="10dp"
-            android:layout_width="6dp"
-            android:layout_height="6dp"
-             android:gravity="center"
-             android:layout_gravity="center_vertical"
-             android:background="@drawable/bg_circle_red"
-             android:id="@+id/redDot_status">
-
-         </ImageView>
-        </LinearLayout>
-            <TextView
-                android:id="@+id/TaskDescriptionDetailsRecyclerView"
-                android:textColor="#000000"
-                android:textSize="14dp"
-                android:layout_alignParentTop="true"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="3"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"/>
-        </LinearLayout>
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:src="@drawable/ic_calendar_main"
-                android:layout_gravity="center"
-                android:id="@+id/setDateNull"/>
+                    <TextView
+                        android:id="@+id/title_name_task"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="17dp" />
 
-            <TextView
-                android:id="@+id/due_date_task"
-                android:textColor="#24A6D8"
-                android:textSize="10dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/redDot_status"
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_circle_red"
+                        android:gravity="center">
+
+                    </ImageView>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/TaskDescriptionDetailsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:maxLines="3"
+                    android:textColor="#000000"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_gravity="center"
-                android:gravity="center_vertical"
-                android:text="Sample Text" />
+                android:gravity="left"
+                android:orientation="horizontal">
 
-    </LinearLayout>
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/setDateNull"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_calendar_main" />
+
+                <TextView
+                    android:id="@+id/due_date_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Sample Text"
+                    android:textColor="#24A6D8"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/delete_card"
+        android:layout_width="fill_parent"
+        android:layout_height="125dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:visibility="gone"
+        card_view:cardBackgroundColor="#9b7d7d7d"
+        card_view:cardCornerRadius="2dp">
+
+        <ImageView
+            android:id="@+id/ic_delete_cross"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#acffffff"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:background="@drawable/circle"
+            android:padding="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_delete_bin" />
+    </android.support.v7.widget.CardView>
 </FrameLayout>

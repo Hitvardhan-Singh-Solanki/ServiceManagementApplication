@@ -399,6 +399,16 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
 
+            }else{
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.no_network_title)
+                        .setMessage(R.string.no_network_desc)
+                        .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .setIcon(R.drawable.ic_no_network)
+                        .show();
             }
         }
     }

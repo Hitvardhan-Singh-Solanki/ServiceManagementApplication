@@ -14,6 +14,7 @@ public class Assign_to_User__c  implements Serializable, Parcelable
 
     private Attributes_Ex attributes;
     private String Name;
+    private String Id;
     public final static Parcelable.Creator<Assign_to_User__c> CREATOR
             = new Creator<Assign_to_User__c>() {
 
@@ -25,6 +26,7 @@ public class Assign_to_User__c  implements Serializable, Parcelable
             Assign_to_User__c instance = new Assign_to_User__c();
             instance.attributes = ((Attributes_Ex) in.readValue((Attributes_Ex.class.getClassLoader())));
             instance.Name = ((String) in.readValue((String.class.getClassLoader())));
+            instance.Id = ((String)in.readValue((String.class.getClassLoader())));
             return instance;
         }
 
@@ -52,9 +54,14 @@ public class Assign_to_User__c  implements Serializable, Parcelable
         this.Name = Name;
     }
 
+    public String getId(){ return Id; }
+
+    public void serId(String Id){ this.Id = Id; }
+
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(attributes);
         dest.writeValue(Name);
+        dest.writeValue(Id);
     }
 
     public int describeContents() {

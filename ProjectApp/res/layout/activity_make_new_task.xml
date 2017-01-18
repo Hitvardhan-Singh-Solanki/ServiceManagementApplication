@@ -4,7 +4,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#545454"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -21,10 +21,9 @@
             android:gravity="center_vertical|center"
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
-            android:text="Make a new task"
+            android:text="Make/Update a task"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
             android:textColor="#fff"
-            android:textColorHint="@color/white"
             android:textSize="20sp" />
 
         <ImageView
@@ -62,8 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_name"
-                    android:singleLine="true"
-                    android:textColorHint="#808080" />
+                    android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -80,8 +78,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_date"
                     android:inputType="date"
-                    android:singleLine="true"
-                    android:textColorHint="#808080" />
+                    android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -163,8 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="Change status to"
-                    android:textColor="@color/white" />
+                    android:text="Change status to" />
 
                 <Spinner
                     android:id="@+id/spinner_status_change_new_task"
@@ -189,8 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="Assign task to"
-                    android:textColor="@color/white" />
+                    android:text="Assign task to"/>
 
                 <Spinner
                     android:id="@+id/spinner_assign_user_new_task"

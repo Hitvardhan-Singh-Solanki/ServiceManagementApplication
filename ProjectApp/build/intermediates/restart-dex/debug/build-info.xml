@@ -5,39 +5,54 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="159225666414085"
+    timestamp="240941853811342"
     token="2112899474766603816"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="1595" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="75" />
     <task
         name="verifier"
-        duration="0" />
+        duration="23" />
+
+    <artifact
+        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="157838651951322"
+        timestamp="237232587788476"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="159191869830207"
+        timestamp="238598471035704"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="240668543144802"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
             type="DEX" />
     </build>
     <build
-        timestamp="159225666414085"
-        verifier="COLD_SWAP_REQUESTED" />
+        timestamp="240941853811342"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
+            type="DEX" />
+    </build>
 
 </instant-run>

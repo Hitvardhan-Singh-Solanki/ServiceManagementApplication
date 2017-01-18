@@ -7,13 +7,10 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,8 +23,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -40,22 +35,16 @@ import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
-import java.io.EOFException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 import static com.hitvardhan.project_app.activity.MainActivity.client;
 
-public class MakeNewTaskActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class MakeNewTaskActivity extends AppCompatActivity implements AdapterView
+        .OnItemSelectedListener {
 
     private HashMap<String, Object> fields;
     ImageView closeButtonCross;
@@ -73,6 +62,8 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
     private Activity appActivity;
     private String getStatusFromSpinner;
     private String getNameFromSpinner;
+    private Record getRecord;
+    private HashMap<String, String> mapOfNameAndIdEngg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,18 +73,21 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
         appActivity = this;
         statusSpinner = (Spinner) findViewById(R.id.spinner_status_change_new_task);
         assignmentSpinner = (Spinner) findViewById(R.id.spinner_assign_user_new_task);
-
+        mapOfNameAndIdEngg = new HashMap<>();
         statusSpinner.setOnItemSelectedListener(this);
         assignmentSpinner.setOnItemSelectedListener(this);
 
-
+        //get the respsonse from intent
+        if (getIntent().getParcelableExtra("RecordObjectFromAdmin") != null) {
+            getRecord = (Record) getIntent().getParcelableExtra("RecordObjectFromAdmin");
+        }
         //input layouts
         inputLayoutTaskName = (TextInputLayout) findViewById(R.id.input_layout_task_name);
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
         inputLayoutDescription = (TextInputLayout) findViewById(R.id.input_layout_description);
         inputLayoutAddress = (TextInputLayout) findViewById(R.id.input_layout_address);
         inputLayoutPhone = (TextInputLayout) findViewById(R.id.input_layout_phone);
-        inputlauoutTaskDueDate = (TextInputLayout)findViewById(R.id.new_task_due_date);
+        inputlauoutTaskDueDate = (TextInputLayout) findViewById(R.id.new_task_due_date);
 
         //EditText
         taskName = (EditText) findViewById(R.id.input_task_name);
@@ -103,6 +97,30 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
         taskPhoneNumber = (EditText) findViewById(R.id.phone_new_task);
         inputDueDate = (EditText) findViewById(R.id.input_due_date);
 
+        //Set the Data is the intent is not empty
+
+        if (getRecord != null) {
+            if (getRecord.getName() != null) {
+                taskName.setText(getRecord.getName());
+            }
+            if (getRecord.getEmail_Id__c() != null) {
+                eMailEdit.setText(getRecord.getEmail_Id__c());
+            }
+            if (getRecord.getDescription__c() != null) {
+                taskDescription.setText(getRecord.getDescription__c());
+            }
+            if (getRecord.getAddress__c() != null) {
+                taskAddress.setText(getRecord.getAddress__c());
+            }
+            if (getRecord.getPhone_Number__c() != null) {
+                taskPhoneNumber.setText(getRecord.getPhone_Number__c());
+            }
+            if (getRecord.getDue_Date__c() != null) {
+                inputDueDate.setText(getRecord.getDue_Date__c());
+            }
+
+        }
+
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("En route");
@@ -111,9 +129,9 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
         categories.add("In Progress");
         categories.add("Not Started");
 
-
         // Spinner Drop down elements
         List<String> categoriesErNames = new ArrayList<String>();
+        categoriesErNames.add("None");
         categoriesErNames.add("Jane Doe");
         categoriesErNames.add("John Doe");
 
@@ -124,16 +142,33 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
 
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, categories);
-        ArrayAdapter<String> dataAdapterErNames = new ArrayAdapter<String>(this, R.layout.spinner_item, categoriesErNames);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item,
+                categories);
+        ArrayAdapter<String> dataAdapterErNames = new ArrayAdapter<String>(this,
+                R.layout.spinner_item,
+                categoriesErNames);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(R.layout.spinner_drop_dow_custom);
         dataAdapterErNames.setDropDownViewResource(R.layout.spinner_drop_dow_custom);
         // attaching data adapter to spinner
         statusSpinner.setAdapter(dataAdapter);
         assignmentSpinner.setAdapter(dataAdapterErNames);
-        //DatePicker
+        //default status value
+        if (getRecord != null) {
+            if (getRecord.getStatus__c() != null) {
+                int mySelectionPosition = dataAdapter.getPosition(getRecord.getStatus__c());
+                statusSpinner.setSelection(mySelectionPosition, true);
+            }
 
+            if (getRecord.getAssign_to_User__r() != null) {
+                mapOfNameAndIdEngg.put(getRecord.getAssign_to_User__r().getName(), getRecord.getAssign_to_User__r().getId());
+                Log.d("Assigned",getRecord.getAssign_to_User__r().getName());
+                int mySelectionPositionUser = dataAdapterErNames.getPosition(getRecord.getAssign_to_User__r().getName());
+                assignmentSpinner.setSelection(mySelectionPositionUser, true);
+            }
+        } else {
+            assignmentSpinner.setSelection(0, true);
+        }
         //close Button
         closeButtonCross = (ImageView) findViewById(R.id.close_task_making_cross);
         closeButtonCross.setOnClickListener(new View.OnClickListener() {
@@ -179,10 +214,11 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
                     fields.put("Address__c", String.valueOf(taskAddress.getText()));
                 if (taskPhoneNumber != null)
                     fields.put("Phone_Number__c", String.valueOf(taskPhoneNumber.getText()));
-                if(getStatusFromSpinner != null)
-                    fields.put("Status__c",String.valueOf(getStatusFromSpinner));
-                if(getNameFromSpinner != null)
-                    fields.put("Assign_to_User__c.Name",String.valueOf(getNameFromSpinner));
+                if (getStatusFromSpinner != null)
+                    fields.put("Status__c", String.valueOf(getStatusFromSpinner));
+                if (getNameFromSpinner != null)
+                    fields.put("Assign_to_User__c", String.valueOf(mapOfNameAndIdEngg.get(getNameFromSpinner)));
+
                 //get the LatLong based on address
                 geo = new Geocoder(getBaseContext(), Locale.getDefault());
                 try {
@@ -199,10 +235,14 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
                 }
 
                 //method to send data to salesforce
-                sendDataToSalesforce(fields, getBaseContext());
+                if (getIntent().getParcelableExtra("RecordObjectFromAdmin") == null) {
+                    sendDataToSalesforce(fields);
+                } else {
+                    updateDataToSalesforce(getRecord.getId(), fields);
+                }
 
 
-                if (mProgressCreate != null || mProgressCreate.isShowing() == true) {
+                if (mProgressCreate.isShowing()) {
                     mProgressCreate.dismiss();
                 }
 
@@ -216,27 +256,50 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
         Spinner spinner = (Spinner) parent;
-        if(spinner.getId() == R.id.spinner_status_change_new_task)
-        {
+        if (spinner.getId() == R.id.spinner_status_change_new_task) {
             String item = parent.getItemAtPosition(position).toString();
 
             // Showing selected spinner item
             getStatusFromSpinner = item;
-        }
-        else if(spinner.getId() == R.id.spinner_assign_user_new_task)
-        {
+        } else if (spinner.getId() == R.id.spinner_assign_user_new_task) {
             String itemOfUser = parent.getItemAtPosition(position).toString();
-            Log.d("Name of the assigned us",itemOfUser);
+            Log.d("Name of the assigned us", itemOfUser);
             getNameFromSpinner = itemOfUser;
         }
 
 
     }
+
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
-    public static void sendDataToSalesforce(HashMap<String, Object> fields, final Context act) {
+    private void updateDataToSalesforce(String id, HashMap<String, Object> fields) {
+
+        RestRequest restRequestUpdate;
+
+        try {
+            restRequestUpdate = RestRequest.getRequestForUpdate("v36.0", "Task__c", id, fields);
+            client.sendAsync(restRequestUpdate, new RestClient.AsyncRequestCallback() {
+                @Override
+                public void onSuccess(RestRequest request, RestResponse result) {
+                    Log.d("Request From the Server", String.valueOf(request.getRequestBody()));
+                    Log.d("Result Form server", String.valueOf(result.getStatusCode()));
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void sendDataToSalesforce(HashMap<String, Object> fields) {
         RestRequest restRequest;
 
         try {
@@ -244,7 +307,7 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
             client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                 @Override
                 public void onSuccess(RestRequest request, RestResponse result) {
-                    Log.d("Request From the Server",String.valueOf(request.getRequestBody()));
+                    Log.d("Request From the Server", String.valueOf(request.getRequestBody()));
                     Log.d("Result Form server", String.valueOf(result.getStatusCode()));
                 }
 
@@ -317,7 +380,8 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
 
 
     private static boolean isValidEmail(String email) {
-        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email)
+                .matches();
     }
 
     private void requestFocus(View view) {
@@ -326,12 +390,13 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
         }
     }
 
-    private boolean isValidDate(String date){
-        if(date != null){
-        return true;
+    private boolean isValidDate(String date) {
+        if (date != null) {
+            return true;
         }
         return false;
     }
+
     private class MyTextWatcher implements TextWatcher {
 
         private View view;
@@ -360,8 +425,6 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
             }
         }
     }
-
-
 
 
 }

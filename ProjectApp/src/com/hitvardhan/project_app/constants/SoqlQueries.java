@@ -12,7 +12,7 @@ public class SoqlQueries {
     public static String soqlForTasks =
             "SELECT Id, Name, Due_Date__c, Description__c, Status__c," +
                     " Email_Id__c, Location__c, Phone_Number__c" +
-                    ", Address__c,Assign_to_User__r.Name" +
+                    ", Address__c,Assign_to_User__r.Name, Assign_to_User__r.Id" +
                     "  FROM Task__c ";
 
     public static String soqlForEngineers =

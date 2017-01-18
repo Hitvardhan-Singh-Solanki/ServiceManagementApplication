@@ -294,7 +294,7 @@ ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\Android
 	android:label
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:86:13-45
 	android:theme
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:87:13-53
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:87:13-56
 	android:name
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:85:19-63
 meta-data#com.google.android.gms.version

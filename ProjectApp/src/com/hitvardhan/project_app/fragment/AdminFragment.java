@@ -42,6 +42,7 @@ import com.hitvardhan.project_app.constants.SoqlQueries;
 import com.hitvardhan.project_app.interfaces.NetworkCallbackForAdmin;
 import com.hitvardhan.project_app.response_classes.RecordForAdmin;
 import com.hitvardhan.project_app.response_classes.ResponseForAdmin;
+import com.hitvardhan.project_app.utils.CommanUtils;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
@@ -94,32 +95,59 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = ((SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.mapForAdminFragmentFrag));
-        mapFragment.getMapAsync(this);
+
+        if(CommanUtils.isNetworkAvailable(getContext())) {
+            mapFragment.getMapAsync(this);
+        }
+        else{
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.no_network_title)
+                    .setMessage(R.string.no_network_desc)
+                    .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .setIcon(R.drawable.ic_no_network)
+                    .show();
+        }
 
 
         mSwipeRefreshLayout2.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                try {
-                    getDetailsofEngineers(getContext(), ((MainActivity) getActivity()).client,
-                            new NetworkCallbackForAdmin() {
-                                @Override
-                                public void onSuccess(ResponseForAdmin responseAdmin) {
-                                    for (RecordForAdmin rA : responseAdmin.getRecords()) {
-                                        if (rA.getName() != null)
-                                            listOfUsers.add(rA);
+                if(CommanUtils.isNetworkAvailable(getContext())) {
+                    try {
+                        getDetailsofEngineers(getContext(), ((MainActivity) getActivity()).client,
+                                new NetworkCallbackForAdmin() {
+                                    @Override
+                                    public void onSuccess(ResponseForAdmin responseAdmin) {
+                                        for (RecordForAdmin rA : responseAdmin.getRecords()) {
+                                            if (rA.getName() != null)
+                                                listOfUsers.add(rA);
+                                        }
+                                        upDataOnAdminUi(getActivity(), responseAdmin);
+
                                     }
-                                    upDataOnAdminUi(getActivity(), responseAdmin);
 
+                                    @Override
+                                    public void onError() {
+                                        getActivity().finish();
+                                    }
+                                });
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                else{
+                    new AlertDialog.Builder(getContext())
+                            .setTitle(R.string.no_network_title)
+                            .setMessage(R.string.no_network_desc)
+                            .setPositiveButton(R.string.yes_response, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
                                 }
-
-                                @Override
-                                public void onError() {
-                                    getActivity().finish();
-                                }
-                            });
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+                            })
+                            .setIcon(R.drawable.ic_no_network)
+                            .show();
                 }
                 mSwipeRefreshLayout2.setRefreshing(false);
             }
@@ -259,8 +287,6 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
                     ex.printStackTrace();
                     Log.d("Exception", String.valueOf(ex));
                 }
-               /* if (mProgressDialog != null && mProgressDialog.isShowing())
-                    mProgressDialog.dismiss();*/
 
                 //finally update the changes to the UI
                 callbackInterface.onSuccess(resAdmin);
@@ -268,8 +294,6 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
 
             @Override
             public void onError(final Exception exception) {
-                /*if (mProgressDialog != null && mProgressDialog.isShowing())
-                    mProgressDialog.dismiss();*/
                 ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
