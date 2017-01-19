@@ -11,13 +11,16 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -44,10 +47,9 @@ import java.util.Locale;
 import static com.hitvardhan.project_app.activity.MainActivity.client;
 
 public class MakeNewTaskActivity extends AppCompatActivity implements AdapterView
-        .OnItemSelectedListener {
+        .OnItemSelectedListener{
 
     private HashMap<String, Object> fields;
-    ImageView closeButtonCross;
     Geocoder geo;
     private TextView makeATaskButton;
     private EditText taskName, eMailEdit, taskDescription, taskAddress, taskPhoneNumber,
@@ -71,11 +73,24 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_make_new_task);
         fields = new HashMap<String, Object>();
         appActivity = this;
+
+        //Setup Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMainTestNew);
+        setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.primary));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
         statusSpinner = (Spinner) findViewById(R.id.spinner_status_change_new_task);
         assignmentSpinner = (Spinner) findViewById(R.id.spinner_assign_user_new_task);
         mapOfNameAndIdEngg = new HashMap<>();
         statusSpinner.setOnItemSelectedListener(this);
         assignmentSpinner.setOnItemSelectedListener(this);
+
+
+
+
 
         //get the respsonse from intent
         if (getIntent().getParcelableExtra("RecordObjectFromAdmin") != null) {
@@ -161,22 +176,16 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
             }
 
             if (getRecord.getAssign_to_User__r() != null) {
-                mapOfNameAndIdEngg.put(getRecord.getAssign_to_User__r().getName(), getRecord.getAssign_to_User__r().getId());
+                mapOfNameAndIdEngg.put(getRecord.getAssign_to_User__r().getName(),
+                        getRecord.getAssign_to_User__r().getId());
                 Log.d("Assigned",getRecord.getAssign_to_User__r().getName());
-                int mySelectionPositionUser = dataAdapterErNames.getPosition(getRecord.getAssign_to_User__r().getName());
+                int mySelectionPositionUser = dataAdapterErNames
+                        .getPosition(getRecord.getAssign_to_User__r().getName());
                 assignmentSpinner.setSelection(mySelectionPositionUser, true);
             }
         } else {
             assignmentSpinner.setSelection(0, true);
         }
-        //close Button
-        closeButtonCross = (ImageView) findViewById(R.id.close_task_making_cross);
-        closeButtonCross.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         //Make a task Button
         makeATaskButton = (TextView) findViewById(R.id.make_a_task_button);
@@ -217,7 +226,8 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
                 if (getStatusFromSpinner != null)
                     fields.put("Status__c", String.valueOf(getStatusFromSpinner));
                 if (getNameFromSpinner != null)
-                    fields.put("Assign_to_User__c", String.valueOf(mapOfNameAndIdEngg.get(getNameFromSpinner)));
+                    fields.put("Assign_to_User__c", String.valueOf(mapOfNameAndIdEngg
+                            .get(getNameFromSpinner)));
 
                 //get the LatLong based on address
                 geo = new Geocoder(getBaseContext(), Locale.getDefault());
@@ -251,7 +261,15 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item

@@ -1787,7 +1787,7 @@ int id ad_in_progress_label 0x7f0f00f0
 int id ad_label 0x7f0f00ef
 int id add 0x7f0f0041
 int id add_task_admin 0x7f0f012c
-int id address_new_task 0x7f0f00dc
+int id address_new_task 0x7f0f00dd
 int id adjust_height 0x7f0f006d
 int id adjust_width 0x7f0f006e
 int id alertTitle 0x7f0f00af
@@ -1797,7 +1797,7 @@ int id android_pay 0x7f0f009f
 int id android_pay_dark 0x7f0f0096
 int id android_pay_light 0x7f0f0097
 int id android_pay_light_with_border 0x7f0f0098
-int id appbar 0x7f0f00e5
+int id appbar 0x7f0f00d2
 int id audio_empty_message 0x7f0f010b
 int id audio_list_view 0x7f0f0109
 int id auto 0x7f0f0048
@@ -1842,8 +1842,7 @@ int id chronometer 0x7f0f017a
 int id classic 0x7f0f0099
 int id clip_horizontal 0x7f0f0055
 int id clip_vertical 0x7f0f0056
-int id close_task_detail_cross 0x7f0f00e3
-int id close_task_making_cross 0x7f0f00d2
+int id close_task_detail_cross 0x7f0f00e4
 int id collapseActionView 0x7f0f0073
 int id contact 0x7f0f0068
 int id contact_number 0x7f0f01bc
@@ -1861,7 +1860,7 @@ int id default_activity_button 0x7f0f00a6
 int id delete_card 0x7f0f01b3
 int id demote_common_words 0x7f0f007b
 int id demote_rfc822_hostnames 0x7f0f007c
-int id description_new_task 0x7f0f00da
+int id description_new_task 0x7f0f00db
 int id design_bottom_sheet 0x7f0f0111
 int id design_menu_item_action_area 0x7f0f0118
 int id design_menu_item_action_area_stub 0x7f0f0117
@@ -1872,6 +1871,7 @@ int id donate_with 0x7f0f0093
 int id donate_with_google 0x7f0f0094
 int id dpResult 0x7f0f010d
 int id drawer_layout 0x7f0f012f
+int id drawer_layout_new_task 0x7f0f00d1
 int id due_date_task 0x7f0f01b2
 int id edit_query 0x7f0f00c3
 int id email 0x7f0f0069
@@ -1915,14 +1915,14 @@ int id imageView 0x7f0f01a2
 int id imageView_profile 0x7f0f016b
 int id index_entity_types 0x7f0f007d
 int id info 0x7f0f017b
-int id input_due_date 0x7f0f00d6
-int id input_email 0x7f0f00d8
-int id input_layout_address 0x7f0f00db
-int id input_layout_description 0x7f0f00d9
-int id input_layout_email 0x7f0f00d7
-int id input_layout_phone 0x7f0f00dd
-int id input_layout_task_name 0x7f0f00d3
-int id input_task_name 0x7f0f00d4
+int id input_due_date 0x7f0f00d7
+int id input_email 0x7f0f00d9
+int id input_layout_address 0x7f0f00dc
+int id input_layout_description 0x7f0f00da
+int id input_layout_email 0x7f0f00d8
+int id input_layout_phone 0x7f0f00de
+int id input_layout_task_name 0x7f0f00d4
+int id input_task_name 0x7f0f00d5
 int id instant_message 0x7f0f006a
 int id intent_action 0x7f0f005f
 int id intent_activity 0x7f0f0060
@@ -1943,8 +1943,8 @@ int id live_stream_indicator 0x7f0f00f7
 int id live_stream_seek_bar 0x7f0f00f9
 int id loading_indicator 0x7f0f00f2
 int id logo_only 0x7f0f0095
-int id main_root 0x7f0f00e4
-int id make_a_task_button 0x7f0f00e1
+int id main_root 0x7f0f00e5
+int id make_a_task_button 0x7f0f00e2
 int id manage_space_layout 0x7f0f019a
 int id map 0x7f0f0121
 int id map1234322343245 0x7f0f0137
@@ -2034,8 +2034,7 @@ int id navigation_logout_main 0x7f0f0135
 int id navigation_tasks_admin 0x7f0f0131
 int id navigation_users_button 0x7f0f0133
 int id never 0x7f0f0075
-int id new_task_due_date 0x7f0f00d5
-int id new_task_name_title 0x7f0f00d1
+int id new_task_due_date 0x7f0f00d6
 int id none 0x7f0f0037
 int id normal 0x7f0f0033
 int id notification_background 0x7f0f017c
@@ -2047,7 +2046,7 @@ int id onLogoutClicked 0x7f0f01bf
 int id pager_for_admin 0x7f0f012a
 int id parallax 0x7f0f0053
 int id parentPanel 0x7f0f00ac
-int id phone_new_task 0x7f0f00de
+int id phone_new_task 0x7f0f00df
 int id pin 0x7f0f0054
 int id place_autocomplete_clear_button 0x7f0f0185
 int id place_autocomplete_powered_by_google 0x7f0f0187
@@ -2138,9 +2137,9 @@ int id snackbar_action 0x7f0f0113
 int id snackbar_text 0x7f0f0112
 int id snap 0x7f0f0040
 int id spacer 0x7f0f00ab
-int id spinner_assign_user_new_task 0x7f0f00e0
+int id spinner_assign_user_new_task 0x7f0f00e1
 int id spinner_status_change 0x7f0f01a8
-int id spinner_status_change_new_task 0x7f0f00df
+int id spinner_status_change_new_task 0x7f0f00e0
 int id split_action_bar 0x7f0f002d
 int id src_atop 0x7f0f0044
 int id src_in 0x7f0f0045
@@ -2185,6 +2184,7 @@ int id title_template 0x7f0f00ae
 int id title_view 0x7f0f0104
 int id toolbar 0x7f0f00eb
 int id toolbarMainTest 0x7f0f00e6
+int id toolbarMainTestNew 0x7f0f00d3
 int id top 0x7f0f0052
 int id topPanel 0x7f0f00ad
 int id touch_outside 0x7f0f0110
@@ -2193,7 +2193,7 @@ int id transition_scene_layoutid_cache 0x7f0f002f
 int id up 0x7f0f0030
 int id url 0x7f0f007a
 int id useLogo 0x7f0f003b
-int id user_name_detail 0x7f0f00e2
+int id user_name_detail 0x7f0f00e3
 int id view_offset_helper 0x7f0f0031
 int id viewpager 0x7f0f0124
 int id volume_item_container 0x7f0f0163

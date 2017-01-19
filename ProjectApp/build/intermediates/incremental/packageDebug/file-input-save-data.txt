@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jan 18 14:51:14 IST 2017
+#Wed Jan 18 17:29:16 IST 2017
 100.set=ANDROID_RESOURCE
 57.file=C\:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_btn_colored_borderless_text_material.xml
 145.file=C\:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\abc_screen_toolbar.xml

@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:scrollIndicators="top"
                 android:scrollbarAlwaysDrawHorizontalTrack="true"
-                android:scrollbarSize="32dp"
+                android:scrollbarSize="4dp"
                 android:scrollbarThumbVertical="@drawable/recycler_scroll"
                 android:scrollbars="vertical" />
 

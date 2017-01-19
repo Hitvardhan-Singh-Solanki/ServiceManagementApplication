@@ -84,7 +84,7 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
         mRcvUserListV = (RecyclerView) contentViewAdmin.findViewById(R.id.recycler_view_for_users);
         mUserAdapter = new UserAdapter(getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(),
-                LinearLayoutManager.HORIZONTAL,false);
+                LinearLayoutManager.VERTICAL,false);
         mRcvUserListV.setLayoutManager(mLayoutManager);
         mRcvUserListV.setItemAnimator(new DefaultItemAnimator());
 

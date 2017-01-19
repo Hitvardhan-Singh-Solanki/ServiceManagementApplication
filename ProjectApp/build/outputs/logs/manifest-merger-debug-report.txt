@@ -156,14 +156,14 @@ uses-permission#com.hitvardhan.project_app.C2D_MESSAGE
 ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:34:5-78
 	android:name
 		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:34:22-75
-android:uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:36:5-83
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:36:5-75
 	android:name
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:36:30-80
-android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:37:5-88
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:36:22-72
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:37:5-80
 	android:name
-		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:37:30-85
+		ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:37:22-77
 application
 ADDED from C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\AndroidManifest.xml:39:5-99:19
 MERGED from [ProjectApp.forcedroid.libs:SalesforceSDK:unspecified] C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\exploded-aar\ProjectApp.forcedroid.libs\SalesforceSDK\unspecified\AndroidManifest.xml:23:5-103:19

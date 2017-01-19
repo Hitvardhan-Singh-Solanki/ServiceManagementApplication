@@ -4891,7 +4891,7 @@ containing a value of this type.
         public static final int ad_label=0x7f0f00ef;
         public static final int add=0x7f0f0041;
         public static final int add_task_admin=0x7f0f012c;
-        public static final int address_new_task=0x7f0f00dc;
+        public static final int address_new_task=0x7f0f00dd;
         public static final int adjust_height=0x7f0f006d;
         public static final int adjust_width=0x7f0f006e;
         public static final int alertTitle=0x7f0f00af;
@@ -4901,7 +4901,7 @@ containing a value of this type.
         public static final int android_pay_dark=0x7f0f0096;
         public static final int android_pay_light=0x7f0f0097;
         public static final int android_pay_light_with_border=0x7f0f0098;
-        public static final int appbar=0x7f0f00e5;
+        public static final int appbar=0x7f0f00d2;
         public static final int audio_empty_message=0x7f0f010b;
         public static final int audio_list_view=0x7f0f0109;
         public static final int auto=0x7f0f0048;
@@ -4946,8 +4946,7 @@ containing a value of this type.
         public static final int classic=0x7f0f0099;
         public static final int clip_horizontal=0x7f0f0055;
         public static final int clip_vertical=0x7f0f0056;
-        public static final int close_task_detail_cross=0x7f0f00e3;
-        public static final int close_task_making_cross=0x7f0f00d2;
+        public static final int close_task_detail_cross=0x7f0f00e4;
         public static final int collapseActionView=0x7f0f0073;
         public static final int contact=0x7f0f0068;
         public static final int contact_number=0x7f0f01bc;
@@ -4965,7 +4964,7 @@ containing a value of this type.
         public static final int delete_card=0x7f0f01b3;
         public static final int demote_common_words=0x7f0f007b;
         public static final int demote_rfc822_hostnames=0x7f0f007c;
-        public static final int description_new_task=0x7f0f00da;
+        public static final int description_new_task=0x7f0f00db;
         public static final int design_bottom_sheet=0x7f0f0111;
         public static final int design_menu_item_action_area=0x7f0f0118;
         public static final int design_menu_item_action_area_stub=0x7f0f0117;
@@ -4976,6 +4975,7 @@ containing a value of this type.
         public static final int donate_with_google=0x7f0f0094;
         public static final int dpResult=0x7f0f010d;
         public static final int drawer_layout=0x7f0f012f;
+        public static final int drawer_layout_new_task=0x7f0f00d1;
         public static final int due_date_task=0x7f0f01b2;
         public static final int edit_query=0x7f0f00c3;
         public static final int email=0x7f0f0069;
@@ -5019,14 +5019,14 @@ containing a value of this type.
         public static final int imageView_profile=0x7f0f016b;
         public static final int index_entity_types=0x7f0f007d;
         public static final int info=0x7f0f017b;
-        public static final int input_due_date=0x7f0f00d6;
-        public static final int input_email=0x7f0f00d8;
-        public static final int input_layout_address=0x7f0f00db;
-        public static final int input_layout_description=0x7f0f00d9;
-        public static final int input_layout_email=0x7f0f00d7;
-        public static final int input_layout_phone=0x7f0f00dd;
-        public static final int input_layout_task_name=0x7f0f00d3;
-        public static final int input_task_name=0x7f0f00d4;
+        public static final int input_due_date=0x7f0f00d7;
+        public static final int input_email=0x7f0f00d9;
+        public static final int input_layout_address=0x7f0f00dc;
+        public static final int input_layout_description=0x7f0f00da;
+        public static final int input_layout_email=0x7f0f00d8;
+        public static final int input_layout_phone=0x7f0f00de;
+        public static final int input_layout_task_name=0x7f0f00d4;
+        public static final int input_task_name=0x7f0f00d5;
         public static final int instant_message=0x7f0f006a;
         public static final int intent_action=0x7f0f005f;
         public static final int intent_activity=0x7f0f0060;
@@ -5047,8 +5047,8 @@ containing a value of this type.
         public static final int live_stream_seek_bar=0x7f0f00f9;
         public static final int loading_indicator=0x7f0f00f2;
         public static final int logo_only=0x7f0f0095;
-        public static final int main_root=0x7f0f00e4;
-        public static final int make_a_task_button=0x7f0f00e1;
+        public static final int main_root=0x7f0f00e5;
+        public static final int make_a_task_button=0x7f0f00e2;
         public static final int manage_space_layout=0x7f0f019a;
         public static final int map=0x7f0f0121;
         public static final int map1234322343245=0x7f0f0137;
@@ -5138,8 +5138,7 @@ containing a value of this type.
         public static final int navigation_tasks_admin=0x7f0f0131;
         public static final int navigation_users_button=0x7f0f0133;
         public static final int never=0x7f0f0075;
-        public static final int new_task_due_date=0x7f0f00d5;
-        public static final int new_task_name_title=0x7f0f00d1;
+        public static final int new_task_due_date=0x7f0f00d6;
         public static final int none=0x7f0f0037;
         public static final int normal=0x7f0f0033;
         public static final int notification_background=0x7f0f017c;
@@ -5151,7 +5150,7 @@ containing a value of this type.
         public static final int pager_for_admin=0x7f0f012a;
         public static final int parallax=0x7f0f0053;
         public static final int parentPanel=0x7f0f00ac;
-        public static final int phone_new_task=0x7f0f00de;
+        public static final int phone_new_task=0x7f0f00df;
         public static final int pin=0x7f0f0054;
         public static final int place_autocomplete_clear_button=0x7f0f0185;
         public static final int place_autocomplete_powered_by_google=0x7f0f0187;
@@ -5242,9 +5241,9 @@ containing a value of this type.
         public static final int snackbar_text=0x7f0f0112;
         public static final int snap=0x7f0f0040;
         public static final int spacer=0x7f0f00ab;
-        public static final int spinner_assign_user_new_task=0x7f0f00e0;
+        public static final int spinner_assign_user_new_task=0x7f0f00e1;
         public static final int spinner_status_change=0x7f0f01a8;
-        public static final int spinner_status_change_new_task=0x7f0f00df;
+        public static final int spinner_status_change_new_task=0x7f0f00e0;
         public static final int split_action_bar=0x7f0f002d;
         public static final int src_atop=0x7f0f0044;
         public static final int src_in=0x7f0f0045;
@@ -5289,6 +5288,7 @@ containing a value of this type.
         public static final int title_view=0x7f0f0104;
         public static final int toolbar=0x7f0f00eb;
         public static final int toolbarMainTest=0x7f0f00e6;
+        public static final int toolbarMainTestNew=0x7f0f00d3;
         public static final int top=0x7f0f0052;
         public static final int topPanel=0x7f0f00ad;
         public static final int touch_outside=0x7f0f0110;
@@ -5297,7 +5297,7 @@ containing a value of this type.
         public static final int up=0x7f0f0030;
         public static final int url=0x7f0f007a;
         public static final int useLogo=0x7f0f003b;
-        public static final int user_name_detail=0x7f0f00e2;
+        public static final int user_name_detail=0x7f0f00e3;
         public static final int view_offset_helper=0x7f0f0031;
         public static final int viewpager=0x7f0f0124;
         public static final int volume_item_container=0x7f0f0163;
@@ -5941,14 +5941,8 @@ containing a value of this type.
         public static final int CustomCastTheme=0x7f0a00f7;
         public static final int Material_DrawerArrowStyle=0x7f0a00f8;
         public static final int Material_Light_DrawerArrowStyle=0x7f0a00f9;
-        /**  Material specific values 
-         */
         public static final int MaterialBaseBaseTheme=0x7f0a00fa;
-        /**  Material specific values 
-         */
         public static final int MaterialBaseBaseTheme_Light=0x7f0a00fb;
-        /**  Material specific values 
-         */
         public static final int MaterialBaseBaseTheme_Light_DarkToolbar=0x7f0a00fc;
         /** 
         <item name="android:dialogTheme">@style/MaterialBaseTheme.Dialog</item>
