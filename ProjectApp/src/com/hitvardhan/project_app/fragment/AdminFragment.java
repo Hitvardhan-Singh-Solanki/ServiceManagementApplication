@@ -82,21 +82,24 @@ public class AdminFragment extends Fragment {
         // Inflate the layout for this fragment
         contentViewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
-
-        ((MainActivity)getActivity()).showHamburger();
+        ((MainActivity) getActivity()).setTitle("Service Engineers");
+        ((MainActivity) getActivity()).setCurrentFragment(this);
+        ((MainActivity) getActivity()).showHamburger();
+        ((MainActivity)getActivity()).addTaskToolbar.setVisibility(View.GONE);
+        ((MainActivity)getActivity()).refreshScreenToolbar.setVisibility(View.VISIBLE);
 
         //Recycler View
         mRcvUserListV = (RecyclerView) contentViewAdmin.findViewById(R.id.recycler_view_for_users);
         mUserAdapter = new UserAdapter(getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(),
-                LinearLayoutManager.VERTICAL,false);
+                LinearLayoutManager.VERTICAL, false);
         mRcvUserListV.setLayoutManager(mLayoutManager);
         mRcvUserListV.setItemAnimator(new DefaultItemAnimator());
 
         mSwipeRefreshLayout2 = (SwipeRefreshLayout) contentViewAdmin.findViewById(R.id
                 .swipeRefreshLayoutAdminView);
 
-        if(CommanUtils.isNetworkAvailable(getContext())) {
+        if (CommanUtils.isNetworkAvailable(getContext())) {
             if (((MainActivity) getActivity()).getmResponseForAdmin() != null) {
                 setListData(((MainActivity) getActivity()).getmResponseForAdmin());
             } else {
@@ -127,8 +130,7 @@ public class AdminFragment extends Fragment {
                     ex.printStackTrace();
                 }
             }
-        }
-        else{
+        } else {
             new AlertDialog.Builder(getContext())
                     .setTitle(R.string.no_network_title)
                     .setMessage(R.string.no_network_desc)
@@ -144,7 +146,7 @@ public class AdminFragment extends Fragment {
         mSwipeRefreshLayout2.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(CommanUtils.isNetworkAvailable(getContext())) {
+                if (CommanUtils.isNetworkAvailable(getContext())) {
                     try {
                         getDetailsofEngineers(getContext(), ((MainActivity) getActivity()).client,
                                 new NetworkCallbackForAdmin() {
@@ -156,6 +158,7 @@ public class AdminFragment extends Fragment {
                                         }
                                         upDataOnAdminUi(getActivity(), responseAdmin);
                                     }
+
                                     @Override
                                     public void onError() {
                                         getActivity().finish();
@@ -164,8 +167,7 @@ public class AdminFragment extends Fragment {
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
-                }
-                else{
+                } else {
                     new AlertDialog.Builder(getContext())
                             .setTitle(R.string.no_network_title)
                             .setMessage(R.string.no_network_desc)
@@ -277,10 +279,9 @@ public class AdminFragment extends Fragment {
     }
 
 
-    public void onRefreshClicked(){
+    public void onRefreshClicked() {
         getTheDetailsForAdminFragment();
     }
-
 
 
     public void getTheDetailsForAdminFragment() {
@@ -306,8 +307,6 @@ public class AdminFragment extends Fragment {
             ex.printStackTrace();
         }
     }
-
-
 
 
 }

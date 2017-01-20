@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#96ffd294"
+        android:background="#96252423"
         android:fitsSystemWindows="true"
         android:paddingBottom="10dp"
         android:paddingTop="30dp"

@@ -121,6 +121,8 @@ public class ServiceEngineer extends Fragment implements OnMapReadyCallback,
         //Get the fragment
         thisActivity = getActivity();
         thisFragment = this;
+        ((MainActivity)thisActivity).setCurrentFragment(thisFragment);
+
         //Get tabs
         viewPager = (ViewPager) contentView.findViewById(R.id.viewpager);
 

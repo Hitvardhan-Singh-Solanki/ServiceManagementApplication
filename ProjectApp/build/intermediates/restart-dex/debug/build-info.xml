@@ -5,30 +5,30 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="404853122110719"
+    timestamp="420608946776227"
     token="2112899474766603816"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="BINARY_MANIFEST_FILE_CHANGE" >
 
     <task
         name="javac"
-        duration="2018" />
+        duration="1635" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="3256" />
+        duration="277" />
     <task
         name="verifier"
-        duration="1352" />
+        duration="106" />
 
     <artifact
         location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="404853122110719"
-        verifier="FULL_BUILD_REQUESTED" >
+        timestamp="420608946776227"
+        verifier="BINARY_MANIFEST_FILE_CHANGE" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
             type="MAIN" />

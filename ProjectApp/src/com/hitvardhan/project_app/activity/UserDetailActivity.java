@@ -19,6 +19,7 @@ import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.response_classes.RecordForAdmin;
 import com.jakewharton.picasso.OkHttp3Downloader;
+import com.salesforce.androidsdk.rest.RestClient;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -41,23 +42,65 @@ public class UserDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
 
+        //get the intent
         Intent nameForTheUser = getIntent();
         RecordForAdmin userRecordForAdmin = nameForTheUser
                 .getParcelableExtra("RecordObjectForAdmin");
+
+        //finally set the data on the UI
         setDataOnTheUIPanel(userRecordForAdmin);
     }
 
+
+    /**
+     * OverRidden method to set the on Click of the back button
+     * on toolbar
+     *
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * set the data on the UI panel local method
+     *
+     * @param userRecordForAdmin
+     */
     private void setDataOnTheUIPanel(RecordForAdmin userRecordForAdmin) {
         toolbar = (Toolbar) findViewById(R.id.toolbarMainTestNewUserDetail);
         usersProfileImageView = (ImageView) findViewById(R.id.profile_image_of_user_from_activity);
-
         cTL = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-
         setSupportActionBar(toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.transparen_csutom));
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+
         actionBar.setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        setTheImageInCollapsibleToolbar(userRecordForAdmin.getFullPhotoUrl(),
+                usersProfileImageView, client);
+        cTL.setTitle(userRecordForAdmin.getName());
+
+
+    }
+
+    /**
+     * set the image from the URL into the Image view
+     *
+     * @param url
+     * @param imgView
+     * @param client
+     */
+    private void setTheImageInCollapsibleToolbar(String url, ImageView imgView,
+                                                 final RestClient client) {
         OkHttpClient clientForImage = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -73,18 +116,6 @@ public class UserDetailActivity extends AppCompatActivity {
         Picasso picasso = new Picasso.Builder(getBaseContext())
                 .downloader(new OkHttp3Downloader(clientForImage))
                 .build();
-        picasso.load(userRecordForAdmin.getFullPhotoUrl()).into(usersProfileImageView);
-        cTL.setTitle(userRecordForAdmin.getName());
+        picasso.load(url).into(imgView);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // handle arrow click here
-        if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to preview activity (if there is any)
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 }

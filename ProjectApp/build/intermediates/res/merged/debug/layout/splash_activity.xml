@@ -8,21 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_splash_test" />
-
+        android:src="@drawable/bg_sample_splash_name" />
+    
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="center"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:rotation="-6"
-        android:shadowColor="#000"
+        android:shadowColor="#f5f2f2"
         android:text="Task management"
         android:textAllCaps="true"
         android:textStyle="bold"
-        android:textColor="#1e1b1b"
+        android:textColor="#aea4a4"
         android:textSize="40dp"
         android:elevation="15dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"/>
 </FrameLayout>

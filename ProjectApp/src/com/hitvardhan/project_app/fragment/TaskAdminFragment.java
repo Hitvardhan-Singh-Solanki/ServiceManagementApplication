@@ -55,7 +55,12 @@ public class TaskAdminFragment extends Fragment {
         // Inflate the layout for this fragment
         fragmentTaskAdminView = inflater.inflate(R.layout.fragment_task_admin, container, false);
 
+        ((MainActivity)getActivity()).setTitle("Tasks");
+        ((MainActivity)getActivity()).setCurrentFragment(this);
         ((MainActivity)getActivity()).showBack();
+        ((MainActivity)getActivity()).addTaskToolbar.setVisibility(View.VISIBLE);
+        ((MainActivity)getActivity()).refreshScreenToolbar.setVisibility(View.GONE);
+
 
         viewPager = (ViewPager) fragmentTaskAdminView
                 .findViewById(R.id.pager_for_admin);

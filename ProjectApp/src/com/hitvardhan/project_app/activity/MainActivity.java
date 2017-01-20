@@ -5,19 +5,14 @@ package com.hitvardhan.project_app.activity;
  * Main Activity class to controll and show the Main screen UI with map and tab layout
  */
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -30,7 +25,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
@@ -38,8 +32,6 @@ import com.google.gson.Gson;
 import com.hitvardhan.project_app.ImageCache.ImageLoader;
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
 import com.hitvardhan.project_app.fragment.TaskAdminFragment;
-import com.hitvardhan.project_app.interfaces.NetworkCallbackForAdmin;
-import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
 import com.hitvardhan.project_app.response_classes.ResponseForAdmin;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
@@ -53,24 +45,14 @@ import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.utils.CommanUtils;
 
-import butterknife.ButterKnife;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 import com.hitvardhan.project_app.fragment.AdminFragment;
-import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.sql.Date;
-
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.hitvardhan.project_app.fragment.AdminFragment.getDetailsofEngineers;
 
 
 public class MainActivity extends AppCompatActivity
@@ -89,15 +71,15 @@ public class MainActivity extends AppCompatActivity
     public static LatLng latLngMyLoc;
     private NavigationView navigationView;
     private DrawerLayout drawer;
-    private LinearLayout logoutButtonNavigation, secondButtonNavigation, thirdButtonNavigation;
-    private ImageView reloadButtonOnNavHeader;
+    private LinearLayout logoutButtonNavigation
+            , taskButtonnavigation
+            , userButtonNavigation;
     private Fragment currentFragment;
     public static RestClient client;
     private String salesForceImageUrl;
-    private ImageLoader imgLoader;
     private View navHeader;
     private ResponseForAdmin mResponseForAdmin;
-    private ImageView addTaskToolbar, refreshScreenToolbar;
+    public ImageView addTaskToolbar, refreshScreenToolbar;
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
 
@@ -165,12 +147,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        secondButtonNavigation = (LinearLayout) navigationView
+        taskButtonnavigation = (LinearLayout) navigationView
                 .findViewById(R.id.navigation_tasks_admin);
-        thirdButtonNavigation = (LinearLayout) navigationView
+        userButtonNavigation = (LinearLayout) navigationView
                 .findViewById(R.id.navigation_users_button);
 
-        secondButtonNavigation.setOnClickListener(new View.OnClickListener() {
+        taskButtonnavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (currentFragment.getClass() != TaskAdminFragment.class) {
@@ -179,7 +161,6 @@ public class MainActivity extends AppCompatActivity
                             getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frm_container, currentFragment, "");
                     transaction.addToBackStack(null);
-                    getSupportActionBar().setTitle("Tasks");
                     refreshScreenToolbar.setVisibility(View.GONE);
                     addTaskToolbar.setVisibility(View.VISIBLE);
                     addTaskToolbar.setOnClickListener(new View.OnClickListener() {
@@ -198,7 +179,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        thirdButtonNavigation.setOnClickListener(new View.OnClickListener() {
+        userButtonNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (currentFragment.getClass() != AdminFragment.class) {
@@ -207,7 +188,6 @@ public class MainActivity extends AppCompatActivity
                             getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frm_container, currentFragment, "");
                     transaction.addToBackStack(null);
-                    getSupportActionBar().setTitle("Service Engineers");
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                     refreshScreenToolbar.setVisibility(View.VISIBLE);
                     addTaskToolbar.setVisibility(View.GONE);
@@ -264,19 +244,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
+        if(!(currentFragment instanceof ServiceEngineer) &&
+                !(currentFragment instanceof AdminFragment)) {
+            super.onBackPressed();
+        }
         //Close the navigation slider
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }/* else {
-            //Move to home screen instead of the previous activity
-            Intent startMain = new Intent(Intent.ACTION_MAIN);
-            startMain.addCategory(Intent.CATEGORY_HOME);
-            startMain.setFlags(FLAG_ACTIVITY_NEW_TASK);
-            startActivity(startMain);
-        }*/
+        }
     }
 
     @Override
@@ -374,9 +350,6 @@ public class MainActivity extends AppCompatActivity
 
 
             //caching of the image
-            /*imgLoader = new ImageLoader(this);
-            imgLoader.DisplayImage(salesForceImageUrl, imgProfile,null,this,null);*/
-
             OkHttpClient clientForImage = new OkHttpClient.Builder()
                     .addInterceptor(new Interceptor() {
                         @Override
@@ -403,33 +376,29 @@ public class MainActivity extends AppCompatActivity
                         Snackbar.LENGTH_SHORT)
                         .setAction(R.string.action, null).show();
                 if (client.getClientInfo().userId.equalsIgnoreCase(getString(R.string.adminUserId))) {
-                    secondButtonNavigation.setVisibility(View.VISIBLE);
-                    thirdButtonNavigation.setVisibility(View.VISIBLE);
+                    taskButtonnavigation.setVisibility(View.VISIBLE);
+                    userButtonNavigation.setVisibility(View.VISIBLE);
                     //Inflate a fragment based on the ADMIN user logged in
                     if (currentFragment == null) {
                         currentFragment = new AdminFragment();
-                        getSupportActionBar().setTitle("Service Engineers");
                     }
                     if (!currentFragment.isAdded()) {
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
                         transaction.addToBackStack("");
-                        getSupportActionBar().setTitle("Service Engineers");
                         transaction.commitAllowingStateLoss();
                     }
                 } else {
                     //Inflate a fragment based on the service user logged in
                     if (currentFragment == null) {
                         currentFragment = new ServiceEngineer();
-                        getSupportActionBar().setTitle("Service Engineers");
                     }
 
                     if (!currentFragment.isAdded()) {
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
-                        getSupportActionBar().setTitle("Service Engineers");
                         transaction.addToBackStack("");
                         transaction.commitAllowingStateLoss();
                     }
@@ -447,6 +416,22 @@ public class MainActivity extends AppCompatActivity
                         .show();
             }
         }
+    }
+
+   /* public void replaceFragment (Fragment fragment, String backStateName{
+        String backStateName = fragment.getClass().getName();
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0);
+        if (!fragmentPopped){ //fragment not in back stack, create it.
+             FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.frm_container, fragment);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+    }*/
+
+    public void setCurrentFragment(Fragment fragment) {
+        currentFragment = fragment;
     }
 
     /**
@@ -481,5 +466,8 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    public void setTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 
 }
