@@ -5,6 +5,7 @@ package com.hitvardhan.project_app.activity;
  * Main Activity class to controll and show the Main screen UI with map and tab layout
  */
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -29,6 +30,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
@@ -36,6 +38,7 @@ import com.google.gson.Gson;
 import com.hitvardhan.project_app.ImageCache.ImageLoader;
 import com.hitvardhan.project_app.fragment.ServiceEngineer;
 import com.hitvardhan.project_app.fragment.TaskAdminFragment;
+import com.hitvardhan.project_app.interfaces.NetworkCallbackForAdmin;
 import com.hitvardhan.project_app.interfaces.ReloadButtonHandler;
 import com.hitvardhan.project_app.response_classes.ResponseForAdmin;
 import com.jakewharton.picasso.OkHttp3Downloader;
@@ -66,9 +69,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.sql.Date;
 
-import static android.R.attr.handle;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.hitvardhan.project_app.activity.MainActivity.client;
+import static com.hitvardhan.project_app.fragment.AdminFragment.getDetailsofEngineers;
 
 
 public class MainActivity extends AppCompatActivity
@@ -95,7 +97,9 @@ public class MainActivity extends AppCompatActivity
     private ImageLoader imgLoader;
     private View navHeader;
     private ResponseForAdmin mResponseForAdmin;
-
+    private ImageView addTaskToolbar, refreshScreenToolbar;
+    private ActionBarDrawerToggle toggle;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +112,7 @@ public class MainActivity extends AppCompatActivity
 
 
         //Setup Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMainTest);
+        toolbar = (Toolbar) findViewById(R.id.toolbarMainTest);
         setSupportActionBar(toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.primary));
 
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity
         //Setup Navigation Drawer
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         //Toggle button
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
 
@@ -147,6 +151,20 @@ public class MainActivity extends AppCompatActivity
         imgProfile = (ImageView) navHeader.findViewById(R.id.imageView_profile);
 
 
+        addTaskToolbar =
+                (ImageView) findViewById(R.id.add_task_admin);
+        refreshScreenToolbar =
+                (ImageView) findViewById(R.id.refresh_in_toolbar);
+
+
+        refreshScreenToolbar.setVisibility(View.VISIBLE);
+        refreshScreenToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AdminFragment)currentFragment).onRefreshClicked();
+            }
+        });
+
         secondButtonNavigation = (LinearLayout) navigationView
                 .findViewById(R.id.navigation_tasks_admin);
         thirdButtonNavigation = (LinearLayout) navigationView
@@ -155,15 +173,27 @@ public class MainActivity extends AppCompatActivity
         secondButtonNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                     if (currentFragment.getClass() != TaskAdminFragment.class) {
-                         currentFragment = new TaskAdminFragment();
-                         FragmentTransaction transaction =
-                                 getSupportFragmentManager().beginTransaction();
-                         transaction.replace(R.id.frm_container, currentFragment, "");
-                         //transaction.addToBackStack("");
-                         transaction.commitAllowingStateLoss();
-                     }
-                     drawer.closeDrawer(GravityCompat.START);
+                if (currentFragment.getClass() != TaskAdminFragment.class) {
+                    currentFragment = new TaskAdminFragment();
+                    FragmentTransaction transaction =
+                            getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frm_container, currentFragment, "");
+                    transaction.addToBackStack(null);
+                    getSupportActionBar().setTitle("Tasks");
+                    refreshScreenToolbar.setVisibility(View.GONE);
+                    addTaskToolbar.setVisibility(View.VISIBLE);
+                    addTaskToolbar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent createANewTaskActivity =
+                                    new Intent(getApplicationContext(),
+                                            MakeNewTaskActivity.class);
+                            startActivity(createANewTaskActivity);
+                        }
+                    });
+                    transaction.commitAllowingStateLoss();
+                }
+                drawer.closeDrawer(GravityCompat.START);
             }
         });
 
@@ -171,12 +201,17 @@ public class MainActivity extends AppCompatActivity
         thirdButtonNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(currentFragment.getClass() != AdminFragment.class) {
-                currentFragment = new AdminFragment();
-                FragmentTransaction transaction =
+                if (currentFragment.getClass() != AdminFragment.class) {
+                    currentFragment = new AdminFragment();
+                    FragmentTransaction transaction =
                             getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frm_container, currentFragment, "");
-                    //transaction.addToBackStack("");
+                    transaction.addToBackStack(null);
+                    getSupportActionBar().setTitle("Service Engineers");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    refreshScreenToolbar.setVisibility(View.VISIBLE);
+                    addTaskToolbar.setVisibility(View.GONE);
+
                     transaction.commitAllowingStateLoss();
                 }
                 drawer.closeDrawer(GravityCompat.START);
@@ -235,15 +270,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-
+        }/* else {
             //Move to home screen instead of the previous activity
             Intent startMain = new Intent(Intent.ACTION_MAIN);
             startMain.addCategory(Intent.CATEGORY_HOME);
             startMain.setFlags(FLAG_ACTIVITY_NEW_TASK);
             startActivity(startMain);
-        }
-
+        }*/
     }
 
     @Override
@@ -362,7 +395,6 @@ public class MainActivity extends AppCompatActivity
             picasso.load(salesForceImageUrl).into(imgProfile);
 
 
-
             // Show everything
             // findViewById(R.id.root).setVisibility(View.VISIBLE);
 
@@ -376,30 +408,34 @@ public class MainActivity extends AppCompatActivity
                     //Inflate a fragment based on the ADMIN user logged in
                     if (currentFragment == null) {
                         currentFragment = new AdminFragment();
+                        getSupportActionBar().setTitle("Service Engineers");
                     }
                     if (!currentFragment.isAdded()) {
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
                         transaction.addToBackStack("");
+                        getSupportActionBar().setTitle("Service Engineers");
                         transaction.commitAllowingStateLoss();
                     }
                 } else {
                     //Inflate a fragment based on the service user logged in
                     if (currentFragment == null) {
                         currentFragment = new ServiceEngineer();
+                        getSupportActionBar().setTitle("Service Engineers");
                     }
 
                     if (!currentFragment.isAdded()) {
                         FragmentTransaction transaction =
                                 getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_container, currentFragment, "");
+                        getSupportActionBar().setTitle("Service Engineers");
                         transaction.addToBackStack("");
                         transaction.commitAllowingStateLoss();
                     }
                 }
 
-            }else{
+            } else {
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.no_network_title)
                         .setMessage(R.string.no_network_desc)
@@ -423,8 +459,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
-
     public ResponseForAdmin getmResponseForAdmin() {
         return mResponseForAdmin;
     }
@@ -432,4 +466,20 @@ public class MainActivity extends AppCompatActivity
     public void setmResponseForAdmin(ResponseForAdmin mResponseForAdmin) {
         this.mResponseForAdmin = mResponseForAdmin;
     }
+
+    public void showHamburger() {
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        toggle.setDrawerIndicatorEnabled(true);
+        toggle.syncState();
+    }
+
+    public void showBack() {
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        toggle.setDrawerIndicatorEnabled(false);
+        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
 }

@@ -5,100 +5,33 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="248248131572048"
+    timestamp="404853122110719"
     token="2112899474766603816"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1641" />
+        duration="2018" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="247" />
+        duration="3256" />
     <task
         name="verifier"
-        duration="133" />
+        duration="1352" />
 
     <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-        type="RESOURCES" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_3\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
-        type="DEX" />
+        location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="246693413052548"
+        timestamp="404853122110719"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\outputs\apk\ProjectApp-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="248248131572048"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-            type="RESOURCES" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_3\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Hitvardhan\NativeSalesforceApp\ProjectApp\ProjectApp\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

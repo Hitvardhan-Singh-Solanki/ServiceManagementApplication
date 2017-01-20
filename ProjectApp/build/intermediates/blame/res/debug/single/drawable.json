@@ -32,12 +32,16 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\ProjectApp.forcedroid.libs\\SalesforceSDK\\unspecified\\res\\drawable\\sf__progress_spinner.xml"
     },
     {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_email.png",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\ic_email.png"
+    },
+    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_mono_light.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\24.0.0\\res\\drawable\\mr_ic_media_route_mono_light.xml"
     },
     {
-        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_email.png",
-        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\ic_email.png"
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_splash.jpg",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\bg_splash.jpg"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
@@ -138,6 +142,10 @@
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_splash_1.jpg",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\bg_splash_1.jpg"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_marker_today_1.png",
@@ -404,6 +412,10 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.0.1\\res\\drawable\\cast_ic_notification_pause.xml"
     },
     {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_delete_bin.png",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\ic_delete_bin.png"
+    },
+    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
@@ -568,6 +580,10 @@
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_splash_test.jpg",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\bg_splash_test.jpg"
+    },
+    {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_play_large.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.0.1\\res\\drawable\\cast_ic_mini_controller_play_large.xml"
     },
@@ -658,6 +674,10 @@
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
         "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_plus.png",
+        "source": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\res\\drawable\\ic_plus.png"
     },
     {
         "merged": "C:\\Users\\Hitvardhan\\NativeSalesforceApp\\ProjectApp\\ProjectApp\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_mute.xml",

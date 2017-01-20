@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_root"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
+
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/appbar">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbarMainTest"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageView
+                android:id="@+id/add_task_admin"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_plus"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/refresh_in_toolbar"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginRight="5dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_reload"
+                android:visibility="gone"/>
+
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
+
     <FrameLayout
         android:id="@+id/frm_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

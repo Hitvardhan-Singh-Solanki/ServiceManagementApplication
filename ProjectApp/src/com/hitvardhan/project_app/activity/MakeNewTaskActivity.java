@@ -56,10 +56,7 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
             inputDueDate;
     private TextInputLayout inputLayoutTaskName,
             inputLayoutEmail,
-            inputLayoutDescription,
-            inputLayoutAddress,
-            inputLayoutPhone,
-            inputlauoutTaskDueDate;
+            inputLayoutAddress;
     private Spinner statusSpinner, assignmentSpinner;
     private Activity appActivity;
     private String getStatusFromSpinner;
@@ -88,21 +85,15 @@ public class MakeNewTaskActivity extends AppCompatActivity implements AdapterVie
         statusSpinner.setOnItemSelectedListener(this);
         assignmentSpinner.setOnItemSelectedListener(this);
 
-
-
-
-
-        //get the respsonse from intent
+        //get the response from intent
         if (getIntent().getParcelableExtra("RecordObjectFromAdmin") != null) {
             getRecord = (Record) getIntent().getParcelableExtra("RecordObjectFromAdmin");
         }
         //input layouts
         inputLayoutTaskName = (TextInputLayout) findViewById(R.id.input_layout_task_name);
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
-        inputLayoutDescription = (TextInputLayout) findViewById(R.id.input_layout_description);
         inputLayoutAddress = (TextInputLayout) findViewById(R.id.input_layout_address);
-        inputLayoutPhone = (TextInputLayout) findViewById(R.id.input_layout_phone);
-        inputlauoutTaskDueDate = (TextInputLayout) findViewById(R.id.new_task_due_date);
+
 
         //EditText
         taskName = (EditText) findViewById(R.id.input_task_name);

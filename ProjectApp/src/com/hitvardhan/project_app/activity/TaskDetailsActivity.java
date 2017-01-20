@@ -68,6 +68,7 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
     private Record getRecord;
     private Spinner statusSpinner;
     private Boolean isSpinnerChangedFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -75,6 +76,14 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.task_details);
 
         isSpinnerChangedFlag = true;
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMainTestTaskDetail);
+        setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.primary));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         //Initialization
         fields = new HashMap<String, Object>();
@@ -93,24 +102,24 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
         getContactNumberView = (TextView) findViewById(R.id.ContactInfoPhone);
         getAddressView = (TextView) findViewById(R.id.AddressOfTask);
         getStatusOfTaskView = (TextView) findViewById(R.id.Status);
-        closeButton = (ImageView) findViewById(R.id.close_task_detail_cross);
+        //closeButton = (ImageView) findViewById(R.id.close_task_detail_cross);
         statusSpinner = (Spinner) findViewById(R.id.spinner_status_change);
         statusSpinner.setOnItemSelectedListener(this);
-        closeButton.setOnClickListener(new View.OnClickListener() {
+      /*  closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
         //changeStatusButton = (Button) findViewById(R.id.Button_to_change_status);
 
         //set the text from the parced object
         getNameView.setText(getRecord.getName());
         getDescView.setText(getRecord.getDescription__c());
         getDueDateView.setText(getRecord.getDue_Date__c());
-        getContactNumberView.append("\n"+getRecord.getPhone_Number__c());
+        getContactNumberView.append("\n" + getRecord.getPhone_Number__c());
         getAddressView.setText(getRecord.getAddress__c());
-        getStatusOfTaskView.append("\n"+getRecord.getStatus__c());
+        getStatusOfTaskView.append("\n" + getRecord.getStatus__c());
 
 
         // Spinner Drop down elements
@@ -129,8 +138,18 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
         statusSpinner.setAdapter(dataAdapter);
 
 
-       int mySelectionPosition = dataAdapter.getPosition(getRecord.getStatus__c());
-       statusSpinner.setSelection(mySelectionPosition,true);
+        int mySelectionPosition = dataAdapter.getPosition(getRecord.getStatus__c());
+        statusSpinner.setSelection(mySelectionPosition, true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -145,7 +164,7 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
         fields.put("Status__c", statusToChange);
         new AlertDialog.Builder(this)
                 .setTitle(R.string.updateTitle)
-                .setMessage("Change Status to '"+statusToChange+"' of task " + getNameView.getText() + "?")
+                .setMessage("Change Status to '" + statusToChange + "' of task " + getNameView.getText() + "?")
                 .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //UPDATE on POSITIVE RESPONSE
@@ -168,6 +187,7 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
 
     /**
      * save data to salesforce
+     *
      * @param id
      * @param fields
      */
@@ -209,23 +229,23 @@ public class TaskDetailsActivity extends AppCompatActivity implements AdapterVie
     }
 
 
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
-       if(!isSpinnerChangedFlag) {
-           String item = parent.getItemAtPosition(position).toString();
-           // Showing selected spinner item
-           //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-           if (item.equalsIgnoreCase(getRecord.getStatus__c())) {
-               Toast.makeText(this, "Status is " + item, Toast.LENGTH_SHORT).show();
-           } else {
-               ChangeStatusCall(item);
-           }
-       } else {
-           isSpinnerChangedFlag = false;
-       }
+        if (!isSpinnerChangedFlag) {
+            String item = parent.getItemAtPosition(position).toString();
+            // Showing selected spinner item
+            //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            if (item.equalsIgnoreCase(getRecord.getStatus__c())) {
+                Toast.makeText(this, "Status is " + item, Toast.LENGTH_SHORT).show();
+            } else {
+                ChangeStatusCall(item);
+            }
+        } else {
+            isSpinnerChangedFlag = false;
+        }
     }
+
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }

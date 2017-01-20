@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -40,7 +41,9 @@ import com.hitvardhan.project_app.R;
 import com.hitvardhan.project_app.activity.MainActivity;
 import com.hitvardhan.project_app.constants.SoqlQueries;
 import com.hitvardhan.project_app.interfaces.NetworkCallbackForAdmin;
+import com.hitvardhan.project_app.interfaces.NetworkCallbackInterface;
 import com.hitvardhan.project_app.response_classes.RecordForAdmin;
+import com.hitvardhan.project_app.response_classes.Response;
 import com.hitvardhan.project_app.response_classes.ResponseForAdmin;
 import com.hitvardhan.project_app.utils.CommanUtils;
 import com.salesforce.androidsdk.rest.ApiVersionStrings;
@@ -54,7 +57,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdminFragment extends Fragment implements OnMapReadyCallback {
+public class AdminFragment extends Fragment {
 
 
     //Global Variable Declaration
@@ -80,6 +83,8 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
         contentViewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
 
+        ((MainActivity)getActivity()).showHamburger();
+
         //Recycler View
         mRcvUserListV = (RecyclerView) contentViewAdmin.findViewById(R.id.recycler_view_for_users);
         mUserAdapter = new UserAdapter(getActivity());
@@ -91,13 +96,37 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
         mSwipeRefreshLayout2 = (SwipeRefreshLayout) contentViewAdmin.findViewById(R.id
                 .swipeRefreshLayoutAdminView);
 
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = ((SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.mapForAdminFragmentFrag));
-
         if(CommanUtils.isNetworkAvailable(getContext())) {
-            mapFragment.getMapAsync(this);
+            if (((MainActivity) getActivity()).getmResponseForAdmin() != null) {
+                setListData(((MainActivity) getActivity()).getmResponseForAdmin());
+            } else {
+
+                mProgressDialog = new ProgressDialog(getContext());
+                mProgressDialog.setMessage("Fetching Users...");
+                mProgressDialog.show();
+
+                try {
+                    getDetailsofEngineers(getContext(), ((MainActivity) getActivity()).client,
+                            new NetworkCallbackForAdmin() {
+                                @Override
+                                public void onSuccess(ResponseForAdmin responseAdmin) {
+                                    upDataOnAdminUi(getActivity(), responseAdmin);
+                                    if (mProgressDialog.isShowing() != false) {
+                                        mProgressDialog.dismiss();
+                                    }
+                                }
+
+                                @Override
+                                public void onError() {
+                                    if (mProgressDialog.isShowing() != false) {
+                                        getActivity().finish();
+                                    }
+                                }
+                            });
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
         else{
             new AlertDialog.Builder(getContext())
@@ -126,9 +155,7 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
                                                 listOfUsers.add(rA);
                                         }
                                         upDataOnAdminUi(getActivity(), responseAdmin);
-
                                     }
-
                                     @Override
                                     public void onError() {
                                         getActivity().finish();
@@ -158,95 +185,18 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
                 R.color.refresh_progress_2,
                 R.color.refresh_progress_3);
 
-
         return contentViewAdmin;
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mAdminUserPositionsMap = googleMap;
-
-        if (((MainActivity) getActivity()).getmResponseForAdmin() != null) {
-            setListData(((MainActivity) getActivity()).getmResponseForAdmin());
-        } else {
-
-            mProgressDialog = new ProgressDialog(getContext());
-            mProgressDialog.setMessage("Fetching Users...");
-            mProgressDialog.show();
-
-            try {
-                getDetailsofEngineers(getContext(), ((MainActivity) getActivity()).client,
-                        new NetworkCallbackForAdmin() {
-                            @Override
-                            public void onSuccess(ResponseForAdmin responseAdmin) {
-                                upDataOnAdminUi(getActivity(), responseAdmin);
-                                if (mProgressDialog.isShowing() != false) {
-                                    mProgressDialog.dismiss();
-                                }
-                            }
-
-                            @Override
-                            public void onError() {
-                                if (mProgressDialog.isShowing() != false) {
-                                    getActivity().finish();
-                                }
-                            }
-                        });
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-
-    private void setListData(ResponseForAdmin responseForAdmin) {
+    public void setListData(ResponseForAdmin responseForAdmin) {
         listOfUsers.clear();
         Integer i = 0;
-        Marker newMrker = null;
-        ArrayList<Marker> markers = new ArrayList<Marker>();
         for (RecordForAdmin rec4A : responseForAdmin.getRecords()) {
             if (rec4A != null) {
                 listOfUsers.add(rec4A);
             }
 
         }
-        for (i = 0; i < responseForAdmin.getRecords().size(); i++) {
-            LatLng anyLoc = new LatLng(responseForAdmin.getRecords().get(i)
-                    .getLocationC().getLatitude(),
-                    responseForAdmin.getRecords().get(i).getLocationC().getLongitude());
-            Bitmap imageBitForMarker = null;
-
-            ImageLoader imgLoadrer = new ImageLoader(getActivity());
-            imgLoadrer.DisplayImage(responseForAdmin.getRecords().get(i)
-                    .getFullPhotoUrl(), null, mAdminUserPositionsMap, getActivity(), anyLoc);
-
-            newMrker = mAdminUserPositionsMap.addMarker(new MarkerOptions().position(anyLoc)
-                    .title(responseForAdmin.getRecords().get(i).getName()));
-
-            markers.add(newMrker);
-
-        }
-
-        Log.d("SIZE OF MARKER LIST", String.valueOf(markers.size()));
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        for (Marker marker : markers) {
-            builder.include(marker.getPosition());
-        }
-        LatLngBounds bounds = builder.build();
-        int padding = 0;
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        mAdminUserPositionsMap.animateCamera(cu);
-        mAdminUserPositionsMap.setMaxZoomPreference(10);
         mUserAdapter.addItem(listOfUsers);
         mRcvUserListV.setAdapter(mUserAdapter);
 
@@ -325,4 +275,39 @@ public class AdminFragment extends Fragment implements OnMapReadyCallback {
             }
         });
     }
+
+
+    public void onRefreshClicked(){
+        getTheDetailsForAdminFragment();
+    }
+
+
+
+    public void getTheDetailsForAdminFragment() {
+        try {
+            getDetailsofEngineers(getContext(), ((MainActivity) getActivity()).client,
+                    new NetworkCallbackForAdmin() {
+                        @Override
+                        public void onSuccess(ResponseForAdmin responseAdmin) {
+                            upDataOnAdminUi(getActivity(), responseAdmin);
+                            if (mProgressDialog.isShowing() != false) {
+                                mProgressDialog.dismiss();
+                            }
+                        }
+
+                        @Override
+                        public void onError() {
+                            if (mProgressDialog.isShowing() != false) {
+                                getActivity().finish();
+                            }
+                        }
+                    });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+
+
 }

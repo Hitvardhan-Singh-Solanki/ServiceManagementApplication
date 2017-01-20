@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e2e2e2"
-    android:orientation="vertical">
+    android:background="#e2e2e2">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_gravity="center|center_vertical"
-        android:layout_marginTop="96dp"
-        android:src="@drawable/sf__icon" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_splash_test" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:elegantTextHeight="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="Welcome"
+        android:rotation="-6"
+        android:shadowColor="#000"
+        android:text="Task management"
         android:textAllCaps="true"
-        android:textColor="#e9b37c"
-        android:textSize="32sp"
-        android:textStyle="bold" />
-</LinearLayout>
+        android:textStyle="bold"
+        android:textColor="#1e1b1b"
+        android:textSize="40dp"
+        android:elevation="15dp"
+        android:id="@+id/textView2" />
+</FrameLayout>

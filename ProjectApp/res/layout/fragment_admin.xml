@@ -9,37 +9,17 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
 
-        <fragment
-            android:id="@+id/mapForAdminFragmentFrag"
-            class="com.google.android.gms.maps.SupportMapFragment"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            app:layout_scrollFlags="scroll|enterAlways" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="45dp"
-            android:background="@color/colorPrimary"
-            android:elegantTextHeight="true"
-            android:gravity="center"
-            android:text="Service Engineers"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefreshLayoutAdminView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayoutAdminView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_for_users"
@@ -50,8 +30,8 @@
                 android:scrollbarSize="4dp"
                 android:scrollbarThumbVertical="@drawable/recycler_scroll"
                 android:scrollbars="vertical" />
+            </android.support.v4.widget.SwipeRefreshLayout>
 
+        </LinearLayout>
 
-        </android.support.v4.widget.SwipeRefreshLayout>
-    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

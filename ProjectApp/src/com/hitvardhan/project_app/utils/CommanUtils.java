@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -26,6 +28,9 @@ import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -290,5 +295,26 @@ public class CommanUtils extends Activity{
         }
 
         return hasImage;
+    }
+
+    public static void storeSnappedPicture(Bitmap bitmap, String imageName) {
+        File storingDirectory ;
+        File file;
+        storingDirectory = new File(Environment.getExternalStorageDirectory()+"/TaskManagement/UsersPictures");
+        if(!storingDirectory.exists()){
+            storingDirectory.mkdirs();
+        }
+        file = new File((storingDirectory+"/"+imageName));
+
+        try {
+            file.createNewFile();
+            FileOutputStream ostream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, ostream);
+            ostream.flush();
+            ostream.close();
+        } catch (IOException e) {
+            Log.e("IOException", e.getLocalizedMessage());
+        }
+
     }
 }

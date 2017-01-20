@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -40,7 +41,7 @@ public class TaskAdminFragment extends Fragment {
 
 
     private View fragmentTaskAdminView;
-    private CardView addTaskFloatingButton;
+    private ImageView addTaskFloatingButton;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     public TaskAdminFragment() {
@@ -53,6 +54,9 @@ public class TaskAdminFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragmentTaskAdminView = inflater.inflate(R.layout.fragment_task_admin, container, false);
+
+        ((MainActivity)getActivity()).showBack();
+
         viewPager = (ViewPager) fragmentTaskAdminView
                 .findViewById(R.id.pager_for_admin);
         adapter = new ViewPagerAdapter(getFragmentManager());
@@ -67,18 +71,12 @@ public class TaskAdminFragment extends Fragment {
             Toast.makeText(getContext(), "No Network", Toast.LENGTH_SHORT).show();
         }
 
-        addTaskFloatingButton =
-                (CardView) fragmentTaskAdminView.findViewById(R.id.add_task_admin);
+
         tabLayout.setupWithViewPager(viewPager);
-        addTaskFloatingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent createANewTaskActivity = new Intent(getActivity(), MakeNewTaskActivity.class);
-                startActivity(createANewTaskActivity);
-            }
-        });
+
         return fragmentTaskAdminView;
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     public void getTheDetailsForAdmin() {
         try {
